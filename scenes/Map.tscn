@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://btnjoif2fi10n"]
+
+[ext_resource type="Texture2D" uid="uid://jg8xi5ne1wvq" path="res://assets/maps/Bagno.png" id="1_3fyti"]
+[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://PlayerCharacter.tscn" id="2_a7y65"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3fyti")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_a7y65")]
+position = Vector2(375, 581)

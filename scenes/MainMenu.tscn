@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://no7gco06hit0"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_w5788"]
+[ext_resource type="Texture2D" uid="uid://dc1xoc6ngmbf3" path="res://assets/misc/MainMenuBackground.jpg" id="2_iq0sj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5788")
+
+[node name="MenuBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5263
+offset_top = -20.0
+offset_right = 35.5263
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iq0sj")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="MenuTitleContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_right = 130.0
+offset_bottom = 69.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MenuTitleContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Balefire Wasteland
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -133.0
+offset_right = 130.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtonContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NewGameMenuButton" type="Button" parent="MarginContainer/MenuButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+
+[node name="LoadGameMenuButton" type="Button" parent="MarginContainer/MenuButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Load Game"
+
+[node name="SettingsMenuButton" type="Button" parent="MarginContainer/MenuButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="CreditsMenuButton" type="Button" parent="MarginContainer/MenuButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Credits"
+
+[node name="ExitGameMenuButton" type="Button" parent="MarginContainer/MenuButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Exit Game
+"
+
+[connection signal="pressed" from="MarginContainer/MenuButtonContainer/NewGameMenuButton" to="." method="_on_new_game_menu_button_pressed"]

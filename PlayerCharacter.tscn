@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://j71sbfwl0syn"]
+
+[ext_resource type="Script" path="res://scripts/PlayerCharacter.cs" id="1_6eslj"]
+[ext_resource type="Texture2D" uid="uid://dtaw4skqr8llv" path="res://assets/sprites/Cloud Ice-walk.png" id="2_p8n2o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtcig"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_6eslj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vtcig")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p8n2o")
+hframes = 11
