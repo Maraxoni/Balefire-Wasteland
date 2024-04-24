@@ -1,4 +1,6 @@
 res://scenes/Map.tscn
-res://scenes/MainMenu.tscn
 res://scripts/PlayerCharacter.cs
+res://scenes/MainMenu.tscn
 res://scripts/MainMenu.cs
+res://PlayerCharacter.tscn
+res://PlayerCharacter.cs
