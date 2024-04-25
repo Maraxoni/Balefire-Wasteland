@@ -8,6 +8,10 @@
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_6eslj")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p8n2o")
+hframes = 11
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-1, 12)
 scale = Vector2(2.5, 2.5)
@@ -15,9 +19,5 @@ scale = Vector2(2.5, 2.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_vtcig")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_p8n2o")
-hframes = 11
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
