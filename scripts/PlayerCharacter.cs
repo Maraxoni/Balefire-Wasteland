@@ -12,13 +12,25 @@ public partial class PlayerCharacter : CharacterBody2D
 	public bool is_moving = false;
 	
 	private Control outline;
+	// Reference to the material with the shader
+	private ShaderMaterial shaderMaterial;
 	
 	public override void _Ready()
 	{
 		_target = Position; // Set initial target position to the character's starting position
 		
-		outline = new Control();
-		AddChild(outline);
+		// Access the material of the character sprite
+		var spriteMaterial = GetNode<Sprite2D>("Sprite2D").Material as ShaderMaterial;
+		if (spriteMaterial != null)
+		{
+			// Store the reference to the shader material
+			shaderMaterial = spriteMaterial;
+		}
+		// Update the shader visibility based on selection
+		if (shaderMaterial != null)
+		{
+			shaderMaterial.SetShaderParameter("visible", is_selected ? 1 : 0);
+		}
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -61,25 +73,15 @@ public partial class PlayerCharacter : CharacterBody2D
 				is_moving = false;
 			}
 		}
-		// Update visibility of the outline based on selection
-		outline.Visible = is_selected;
-		
+		// Update the shader visibility based on selection
+		if (shaderMaterial != null)
+		{
+			shaderMaterial.SetShaderParameter("visible", is_selected ? 1 : 0);
+		}
+
 	}
 	
-	public override void _Draw()
-	{
-		if (outline.Visible)
-		{
-			var color = new Color(1, 1, 1); // Outline color (white in this example)
-			var thickness = 2; // Outline thickness
 
-			// Get the bounding rectangle of the character sprite
-			Rect2 spriteRect = GetNode<Sprite2D>("Sprite2D").GetRect();
-			
-			// Draw the outline around the character sprite
-			outline.DrawRect(spriteRect, color, false, thickness);
-		}
-	}
 }
 
 

@@ -1,7 +1,6 @@
-res://scenes/Map.tscn
-res://scripts/PlayerCharacter.cs
-res://scenes/MainMenu.tscn
-res://scripts/MainMenu.cs
-res://PlayerCharacter.tscn
-res://PlayerCharacter.cs
 res://scenes/PlayerCharacter.tscn
+res://scripts/PlayerCharacter.cs
+res://scenes/PlayerCharacter.gdshader
+res://scenes/MainMenu.tscn
+res://scenes/Map.tscn
+res://scripts/MainMenu.cs

@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://j71sbfwl0syn"]
+[gd_scene load_steps=6 format=3 uid="uid://j71sbfwl0syn"]
 
 [ext_resource type="Script" path="res://scripts/PlayerCharacter.cs" id="1_6eslj"]
+[ext_resource type="Shader" path="res://scenes/PlayerCharacter.gdshader" id="2_a86n2"]
 [ext_resource type="Texture2D" uid="uid://dtaw4skqr8llv" path="res://assets/sprites/Cloud Ice-walk.png" id="2_p8n2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ijkt"]
+shader = ExtResource("2_a86n2")
+shader_parameter/line_color = Color(0, 0.639216, 0.364706, 1)
+shader_parameter/line_thickness = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtcig"]
 
@@ -9,6 +15,7 @@
 script = ExtResource("1_6eslj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4ijkt")
 texture = ExtResource("2_p8n2o")
 hframes = 11
 
@@ -17,7 +24,6 @@ position = Vector2(-1, 12)
 scale = Vector2(2.5, 2.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_vtcig")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

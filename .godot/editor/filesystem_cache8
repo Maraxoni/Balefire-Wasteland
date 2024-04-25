@@ -1,7 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1713994187
+::res://::1714028209
 icon.svg::CompressedTexture2D::8224858452583056634::1710330943::1710330949::1::::<><>::
-PlayerCharacter.tscn::PackedScene::699370528237075965::1713994187::0::1::::<><>::res://scripts/PlayerCharacter.cs<>uid://dtaw4skqr8llv::::res://assets/sprites/Cloud Ice-walk.png
 ::res://assets/::1713978258
 ::res://assets/maps/::1713978263
 Bagno.png::CompressedTexture2D::646131060415743586::1712746002::1713978263::1::::<><>::
@@ -9,9 +8,10 @@ Bagno.png::CompressedTexture2D::646131060415743586::1712746002::1713978263::1:::
 MainMenuBackground.jpg::CompressedTexture2D::7354735205444008042::1713971532::1713972932::1::::<><>::
 ::res://assets/sprites/::1713971973
 Cloud Ice-walk.png::CompressedTexture2D::8494238603685364047::1713971961::1713971973::1::::<><>::
-::res://scenes/::1713994187
-MainMenu.tscn::PackedScene::943310042234773255::1713994187::0::1::::<><>::res://scripts/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
-Map.tscn::PackedScene::3747417506812666871::1713994889::0::1::::<><>::uid://jg8xi5ne1wvq::::res://assets/maps/Bagno.png<>uid://j71sbfwl0syn::::res://PlayerCharacter.tscn
-::res://scripts/::1713994186
+::res://scenes/::1714005065
+MainMenu.tscn::PackedScene::943310042234773255::1714004964::0::1::::<><>::res://scripts/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
+Map.tscn::PackedScene::3747417506812666871::1714004964::0::1::::<><>::uid://jg8xi5ne1wvq::::res://assets/maps/Bagno.png<>uid://j71sbfwl0syn::::res://scenes/PlayerCharacter.tscn
+PlayerCharacter.tscn::PackedScene::699370528237075965::1714005065::0::1::::<><>::res://scripts/PlayerCharacter.cs<>uid://dtaw4skqr8llv::::res://assets/sprites/Cloud Ice-walk.png
+::res://scripts/::1714004963
 MainMenu.cs::CSharpScript::-1::1713971406::0::1::::<>Control<>::
-PlayerCharacter.cs::CSharpScript::-1::1713994186::0::1::::<>CharacterBody2D<>::
+PlayerCharacter.cs::CSharpScript::-1::1714004963::0::1::::<>CharacterBody2D<>::
