@@ -29,7 +29,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Update the shader visibility based on selection
 		if (shaderMaterial != null)
 		{
-			shaderMaterial.SetShaderParameter("visible", is_selected ? 1 : 0);
+			shaderMaterial.SetShaderParameter("line_thickness", is_selected ? 4 : 0);
 		}
 	}
 	
@@ -76,7 +76,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		// Update the shader visibility based on selection
 		if (shaderMaterial != null)
 		{
-			shaderMaterial.SetShaderParameter("visible", is_selected ? 1 : 0);
+			shaderMaterial.SetShaderParameter("line_thickness", is_selected ? 4 : 0);
 		}
 
 	}

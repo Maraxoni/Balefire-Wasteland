@@ -4,3 +4,4 @@ res://scenes/PlayerCharacter.gdshader
 res://scenes/MainMenu.tscn
 res://scenes/Map.tscn
 res://scripts/MainMenu.cs
+res://scenes/ChestBody.tscn
