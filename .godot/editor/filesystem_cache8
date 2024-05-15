@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1714043485
+::res://::1715770583
 icon.svg::CompressedTexture2D::8224858452583056634::1710330943::1710330949::1::::<><>::
 ::res://assets/::1714043330
 ::res://assets/maps/::1713978263
@@ -7,14 +7,24 @@ Bagno.png::CompressedTexture2D::646131060415743586::1712746002::1713978263::1:::
 ::res://assets/misc/::1714043330
 ChestTexture.png::CompressedTexture2D::1883353800535480696::1714043322::1714043330::1::::<><>::
 MainMenuBackground.jpg::CompressedTexture2D::7354735205444008042::1713971532::1713972932::1::::<><>::
-::res://assets/sprites/::1713971973
-Cloud Ice-walk.png::CompressedTexture2D::8494238603685364047::1713971961::1713971973::1::::<><>::
-::res://scenes/::1714043485
-ChestObject.tscn::PackedScene::3227351789633700407::1714043475::0::1::::<><>::uid://13ktduh2vmia::::res://assets/misc/ChestTexture.png
-MainMenu.tscn::PackedScene::943310042234773255::1714042337::0::1::::<><>::res://scripts/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
-Map.tscn::PackedScene::3747417506812666871::1714042337::0::1::::<><>::uid://jg8xi5ne1wvq::::res://assets/maps/Bagno.png<>uid://j71sbfwl0syn::::res://scenes/PlayerCharacter.tscn
-PlayerCharacter.gdshader::Shader::-1::1714043475::0::1::::<><>::
-PlayerCharacter.tscn::PackedScene::699370528237075965::1714042338::0::1::::<><>::res://scripts/PlayerCharacter.cs<>res://scenes/PlayerCharacter.gdshader<>uid://dtaw4skqr8llv::::res://assets/sprites/Cloud Ice-walk.png
-::res://scripts/::1714043328
-MainMenu.cs::CSharpScript::-1::1713971406::0::1::::<>Control<>::
-PlayerCharacter.cs::CSharpScript::-1::1714042337::0::1::::<>CharacterBody2D<>::
+::res://assets/sprites/::1715763349
+Pony-stand.png::CompressedTexture2D::8635993203478557023::1715763320::1715763320::1::::<><>::
+Pony-trot.png::CompressedTexture2D::4922183096701902510::1715763320::1715763320::1::::<><>::
+::res://scenes/::1715770583
+a.tscn::PackedScene::8032247050438413494::1715770444::0::1::::<><>::res://scripts/SettingsMenu.cs
+ChestBody.tscn::PackedScene::3227351789633700407::1715770280::0::1::::<><>::uid://13ktduh2vmia::::res://assets/misc/ChestTexture.png
+LoadGameMenu.tscn::PackedScene::3434296663854735324::1715770585::0::1::::<><>::res://scripts/SettingsMenu.cs
+MainMenu.tscn::PackedScene::943310042234773255::1715770280::0::1::::<><>::res://scripts/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
+Map.tscn::PackedScene::3747417506812666871::1715770280::0::1::::<><>::uid://jg8xi5ne1wvq::::res://assets/maps/Bagno.png<>res://scripts/Map.cs<>uid://j71sbfwl0syn::::res://scenes/PlayerCharacter.tscn<>uid://bl8maonp0txl4::::res://scenes/ChestBody.tscn
+PlayerCharacter.gdshader::Shader::-1::1715770585::0::1::::<><>::
+PlayerCharacter.tscn::PackedScene::699370528237075965::1715770280::0::1::::<><>::res://scripts/PlayerCharacter.cs<>uid://ccelvv0sb8ym5::::res://assets/sprites/Pony-trot.png<>uid://dvblsts3kcy3x::::res://assets/sprites/Pony-stand.png
+SettingsMenu.tscn::PackedScene::8868694129000853610::1715770280::0::1::::<><>::res://scripts/SettingsMenu.cs
+::res://scripts/::1715770426
+BackSettingsMenuButton.cs::CSharpScript::-1::1715713367::0::1::::<>Button<>::
+CreditsMenu.cs::CSharpScript::-1::1715770403::0::1::::<><>::
+GameScript.cs::CSharpScript::-1::1715763255::0::1::::<>Node<>::
+LoadGameMenu.cs::CSharpScript::-1::1715770426::0::1::::<><>::
+MainMenu.cs::CSharpScript::-1::1715763479::0::1::::<>Control<>::
+Map.cs::CSharpScript::-1::1715770279::0::1::::<>Node2D<>::
+PlayerCharacter.cs::CSharpScript::-1::1715767536::0::1::::<>CharacterBody2D<>::
+SettingsMenu.cs::CSharpScript::-1::1715763415::0::1::::<>Control<>::

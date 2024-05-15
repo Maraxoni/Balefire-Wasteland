@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtaw4skqr8llv"
-path="res://.godot/imported/Cloud Ice-walk.png-b33b8a0197eee5f25e90ccd1d3262acb.ctex"
+uid="uid://ccelvv0sb8ym5"
+path="res://.godot/imported/Pony-trot.png-42a8dda9dea01dced3032eb111e1a2d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Cloud Ice-walk.png"
-dest_files=["res://.godot/imported/Cloud Ice-walk.png-b33b8a0197eee5f25e90ccd1d3262acb.ctex"]
+source_file="res://assets/sprites/Pony-trot.png"
+dest_files=["res://.godot/imported/Pony-trot.png-42a8dda9dea01dced3032eb111e1a2d2.ctex"]
 
 [params]
 

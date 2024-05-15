@@ -15,12 +15,17 @@ public partial class PlayerCharacter : CharacterBody2D
 	// Reference to the material with the shader
 	private ShaderMaterial shaderMaterial;
 	
+	private AnimatedSprite2D _animatedSprite;
+	
 	public override void _Ready()
 	{
 		_target = Position; // Set initial target position to the character's starting position
 		
+		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
 		// Access the material of the character sprite
-		var spriteMaterial = GetNode<Sprite2D>("Sprite2D").Material as ShaderMaterial;
+		var spriteMaterial = GetNode<AnimatedSprite2D>("AnimatedSprite2D").Material as ShaderMaterial;
+		
 		if (spriteMaterial != null)
 		{
 			// Store the reference to the shader material
@@ -35,6 +40,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	
 	public override void _Input(InputEvent @event)
 	{
+		
 		if (is_selected)
 		{
 			if (@event.IsActionPressed("right_click"))
@@ -77,6 +83,15 @@ public partial class PlayerCharacter : CharacterBody2D
 		if (shaderMaterial != null)
 		{
 			shaderMaterial.SetShaderParameter("line_thickness", is_selected ? 4 : 0);
+		}
+		
+		if (is_moving == true)
+		{
+			_animatedSprite.Play("walk");
+		}
+		else
+		{
+			_animatedSprite.Play("default");
 		}
 
 	}
