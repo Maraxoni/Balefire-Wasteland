@@ -13,3 +13,10 @@ res://scripts/Map.cs
 res://scripts/BackSettingsMenuButton.cs
 res://scenes/SettingsMenu.tscn
 res://scenes/LoadGameMenu.tscn
+res://scripts/LoadGameMenu.cs
+res://scenes/LoadGameMenu.cs
+res://scripts/LoadGameMenu.tscn
+res://scenes/CreditsMenu.tscn
+res://scripts/CreditsMenu.cs
+res://scripts/DrawClicked.cs
+res://scripts/DrawSelected.cs

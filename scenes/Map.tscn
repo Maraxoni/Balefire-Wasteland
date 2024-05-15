@@ -16,8 +16,29 @@ texture = ExtResource("1_3fyti")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_a7y65")]
 position = Vector2(731, 439)
 
-[node name="Sprite2D" parent="." instance=ExtResource("3_v3n64")]
-position = Vector2(522, 498)
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, 16)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(966, 545)
+[node name="Sprite2D" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(588, 495)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(588, 462)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(588, 429)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(621, 408)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(654, 429)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(621, 514)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(654, 530)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("3_v3n64")]
+position = Vector2(686, 443)

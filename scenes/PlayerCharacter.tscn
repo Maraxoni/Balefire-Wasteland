@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ccelvv0sb8ym5" path="res://assets/sprites/Pony-trot.png" id="3_5e2oc"]
 [ext_resource type="Texture2D" uid="uid://dvblsts3kcy3x" path="res://assets/sprites/Pony-stand.png" id="3_27wju"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtcig"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kugj"]
 atlas = ExtResource("3_5e2oc")
 region = Rect2(0, 0, 80, 90)
@@ -132,25 +134,26 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vtcig"]
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_6eslj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4y1mq")
-animation = &"walk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 12)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_vtcig")
+one_way_collision_margin = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-1, 12)
 scale = Vector2(2.5, 2.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionSelectableShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9.53674e-07, -1.90735e-06)
 shape = SubResource("CircleShape2D_vtcig")
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4y1mq")
+animation = &"walk"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

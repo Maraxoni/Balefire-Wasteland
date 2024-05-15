@@ -20,7 +20,7 @@ public partial class MainMenu : Control
 	
 	private void _on_load_game_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/SettingsMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/LoadGameMenu.tscn");
 	}
 	
 	private void _on_settings_menu_button_pressed()
@@ -30,7 +30,7 @@ public partial class MainMenu : Control
 	
 	private void _on_credits_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/SettingsMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/CreditsMenu.tscn");
 	}
 	
 	private void _on_exit_game_menu_button_pressed()

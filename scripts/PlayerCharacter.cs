@@ -6,36 +6,39 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export]
 	public int Speed { get; set; } = 200;
 	
-	private Vector2 _target;
+	private Vector2 _mouse_position;
+	private Vector2 _character_position;
+	private Vector2 _destination_position;
 	
 	public bool is_selected = false;
 	public bool is_moving = false;
 	
-	private Control outline;
-	// Reference to the material with the shader
-	private ShaderMaterial shaderMaterial;
-	
+	// Shapes
+	private CollisionShape2D _selectedShape;
 	private AnimatedSprite2D _animatedSprite;
 	
+	public override void _Draw()
+	{
+		Color green = Colors.Green;
+		Color godotBlue = new Color("478cbf");
+		Color grey = new Color("414042");
+		
+		if(is_selected){
+			DrawCircle(new Vector2(0, 10.0f), 25.0f, green);
+		}
+		
+		if(is_moving){
+			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 15.0f, godotBlue);
+		}
+		
+	}
+
 	public override void _Ready()
 	{
-		_target = Position; // Set initial target position to the character's starting position
-		
+		_character_position = Position; // Set initial character position
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_selectedShape = GetNode<CollisionShape2D>("CollisionShape");
 		
-		// Access the material of the character sprite
-		var spriteMaterial = GetNode<AnimatedSprite2D>("AnimatedSprite2D").Material as ShaderMaterial;
-		
-		if (spriteMaterial != null)
-		{
-			// Store the reference to the shader material
-			shaderMaterial = spriteMaterial;
-		}
-		// Update the shader visibility based on selection
-		if (shaderMaterial != null)
-		{
-			shaderMaterial.SetShaderParameter("line_thickness", is_selected ? 4 : 0);
-		}
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -45,32 +48,53 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			if (@event.IsActionPressed("right_click"))
 			{
-				_target = GetGlobalMousePosition();
+				_mouse_position = GetGlobalMousePosition();
+				_character_position = Position; // Initialize _character_position here
+				
+				if (_mouse_position[0] > _character_position[0])
+				{
+					_animatedSprite.FlipH = true;
+				}
+				else
+				{
+					_animatedSprite.FlipH = false;
+				}
+				
 				is_moving = true;
 			}
 			if (@event.IsActionPressed("left_click"))
 			{
+				_selectedShape.Visible = false;
 				is_selected = false;
+				QueueRedraw();
 			}
 		}	
 	}
+	
 	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx)
 	{
 		if (@event.IsActionPressed("left_click"))
 		{
+			_selectedShape.Visible = true;
 			is_selected = true;
+			QueueRedraw();
 		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Velocity = Position.DirectionTo(_target) * Speed;
-		// LookAt(_target);
+		//very not effective
+		_character_position = Position;
+		_destination_position = _mouse_position-_character_position;
+		QueueRedraw();
+		
+		Velocity = Position.DirectionTo(_mouse_position) * Speed;
 		if (is_moving)
 		{
-			Velocity = Position.DirectionTo(_target) * Speed;
-			// LookAt(_target);
-			if (Position.DistanceTo(_target) > 10)
+			QueueRedraw();
+			Velocity = Position.DirectionTo(_mouse_position) * Speed;
+			// LookAt(_mouse_position);
+			if (Position.DistanceTo(_mouse_position) > 10)
 			{
 				MoveAndSlide();
 			}
@@ -79,12 +103,7 @@ public partial class PlayerCharacter : CharacterBody2D
 				is_moving = false;
 			}
 		}
-		// Update the shader visibility based on selection
-		if (shaderMaterial != null)
-		{
-			shaderMaterial.SetShaderParameter("line_thickness", is_selected ? 4 : 0);
-		}
-		
+
 		if (is_moving == true)
 		{
 			_animatedSprite.Play("walk");
