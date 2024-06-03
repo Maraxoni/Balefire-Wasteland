@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://btnjoif2fi10n"]
+
+[ext_resource type="Script" path="res://scripts/MapSwamp.cs" id="1_gbkwx"]
+[ext_resource type="Texture2D" uid="uid://jg8xi5ne1wvq" path="res://assets/maps/Bagno.png" id="2_he4fb"]
+[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/PlayerCharacter.tscn" id="3_o0oox"]
+[ext_resource type="PackedScene" uid="uid://bl8maonp0txl4" path="res://scenes/ChestBody.tscn" id="4_kiuhn"]
+
+[node name="MapSwamp" type="Node2D"]
+script = ExtResource("1_gbkwx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 4096.0
+offset_bottom = 4096.0
+texture = ExtResource("2_he4fb")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_o0oox")]
+position = Vector2(731, 439)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, 16)
+
+[node name="Sprite2D" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(588, 495)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(588, 462)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(588, 429)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(621, 408)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(654, 429)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(621, 514)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(654, 530)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("4_kiuhn")]
+position = Vector2(686, 443)

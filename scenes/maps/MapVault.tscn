@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://baqmgqhqrkmu1"]
+
+[ext_resource type="Script" path="res://scripts/MapVault.cs" id="1_thua5"]
+[ext_resource type="Texture2D" uid="uid://cq4kdmfidr50r" path="res://assets/maps/Cave_Vault.png" id="2_oa1e1"]
+[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/PlayerCharacter.tscn" id="3_a652v"]
+[ext_resource type="PackedScene" uid="uid://bl8maonp0txl4" path="res://scenes/ChestBody.tscn" id="4_hwgdw"]
+
+[node name="MapVault" type="Node2D"]
+script = ExtResource("1_thua5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -26.0
+offset_top = 24.0
+offset_right = 4070.0
+offset_bottom = 4120.0
+texture = ExtResource("2_oa1e1")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_a652v")]
+position = Vector2(933, 506)
+
+[node name="Sprite2D" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(796, 1360)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(732, 1350)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(635, 1340)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(1044, 1483)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(889, 1412)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(848, 1387)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(929, 1435)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("4_hwgdw")]
+position = Vector2(966, 1445)

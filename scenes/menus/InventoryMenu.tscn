@@ -1,0 +1,136 @@
+[gd_scene load_steps=2 format=3 uid="uid://rahc4t3l8uhq"]
+
+[ext_resource type="Script" path="res://scenes/InventoryMenu.cs" id="1_85heo"]
+
+[node name="InventoryMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_85heo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 748.0
+offset_top = 339.5
+offset_right = 838.0
+offset_bottom = 740.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PauseMenuButtonContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Strength"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Perception"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Endurance"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Charisma"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Intelligence"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Agility"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Luck"
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "5"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PauseMenuButtonContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/PauseMenuButtonContainer"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/PauseMenuButtonContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/MarginContainer2/PauseMenuButtonContainer"]
+layout_mode = 2
+max_text_lines = 10
+
+[node name="BackInventoryMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back
+"
+
+[connection signal="pressed" from="VBoxContainer/BackInventoryMenuButton" to="." method="_on_back_inventory_menu_button_pressed"]

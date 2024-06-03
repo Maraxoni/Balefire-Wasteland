@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://no7gco06hit0"]
 
-[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_w5788"]
-[ext_resource type="Texture2D" uid="uid://dc1xoc6ngmbf3" path="res://assets/misc/MainMenuBackground.jpg" id="2_iq0sj"]
+[ext_resource type="Script" path="res://scripts/menus/MainMenu.cs" id="1_32iv5"]
+[ext_resource type="Texture2D" uid="uid://dc1xoc6ngmbf3" path="res://assets/misc/MainMenuBackground.jpg" id="2_cshcw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w5788")
+script = ExtResource("1_32iv5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -29,7 +29,7 @@ grow_vertical = 2
 
 [node name="MenuBackground" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
-texture = ExtResource("2_iq0sj")
+texture = ExtResource("2_cshcw")
 expand_mode = 2
 stretch_mode = 5
 

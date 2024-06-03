@@ -15,28 +15,27 @@ public partial class MainMenu : Control
 	
 	private void _on_new_game_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Map.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/CharacterCreationMenu.tscn");
 	}
 	
 	private void _on_load_game_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/LoadGameMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/LoadGameMenu.tscn");
 	}
 	
 	private void _on_settings_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/SettingsMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/SettingsMenu.tscn");
 	}
 	
 	private void _on_credits_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/CreditsMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/CreditsMenu.tscn");
 	}
 	
 	private void _on_exit_game_menu_button_pressed()
 	{
-		var scene = ResourceLoader.Load<PackedScene>("res://scenes/Map.tscn").Instantiate();
-		GetTree().Root.AddChild(scene);
+		GetTree().Quit();
 	}
 
 }

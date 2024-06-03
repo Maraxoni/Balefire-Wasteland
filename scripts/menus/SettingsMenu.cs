@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class Map : Node2D
+public partial class SettingsMenu : Control
 {
-	public Camera2D camera;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,7 +12,11 @@ public partial class Map : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+	}
+	
+	private void _on_back_options_menu_button_pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -21,7 +24,8 @@ public partial class Map : Node2D
 		
 		if (@event.IsActionPressed("esc_key"))
 		{
-			GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
+			GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
 		}
 	}
+
 }

@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=3 uid="uid://dymcdjvw6tkfq"]
+
+[ext_resource type="Script" path="res://scripts/menus/SettingsMenu.cs" id="1_bwacn"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bwacn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Graphics" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Graphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Graphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button3" type="Button" parent="MarginContainer/TabContainer/Graphics/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Graphics/HBoxContainer"]
+layout_mode = 2
+text = "1920x1080"
+
+[node name="Button4" type="Button" parent="MarginContainer/TabContainer/Graphics/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="Audio" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button3" type="Button" parent="MarginContainer/TabContainer/Audio/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/HBoxContainer"]
+layout_mode = 2
+text = "100%
+"
+
+[node name="Button4" type="Button" parent="MarginContainer/TabContainer/Audio/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="Keybinds" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Keybinds"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Keybinds"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button3" type="Button" parent="MarginContainer/TabContainer/Keybinds/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Keybinds/HBoxContainer"]
+layout_mode = 2
+text = "Key"
+
+[node name="Button4" type="Button" parent="MarginContainer/TabContainer/Keybinds/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="BackSettingsMenuButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 937.0
+offset_top = 1049.0
+offset_right = 982.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back
+"
+
+[connection signal="pressed" from="BackSettingsMenuButton" to="." method="_on_back_options_menu_button_pressed"]

@@ -20,15 +20,18 @@ public partial class PlayerCharacter : CharacterBody2D
 	public override void _Draw()
 	{
 		Color green = Colors.Green;
-		Color godotBlue = new Color("478cbf");
+		Color blue = new Color("478cbf");
 		Color grey = new Color("414042");
+		Color transparent = new Color("0000008f");
 		
 		if(is_selected){
 			DrawCircle(new Vector2(0, 10.0f), 25.0f, green);
+			DrawCircle(new Vector2(0, 10.0f), 20.0f, transparent);
 		}
 		
 		if(is_moving){
-			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 15.0f, godotBlue);
+			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 15.0f, blue);
+			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 10.0f, transparent);
 		}
 		
 	}
@@ -115,7 +118,6 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	}
 	
-
 }
 
 
