@@ -3,13 +3,15 @@ using System;
 
 public partial class UserInterface : Control
 {
-	private bool _IsPauseMenuVisible = false;
+	private bool _isPauseMenuVisible = false;
 	private bool _isInventoryVisible = false;
 	private Control pauseMenu;
 	private Control inventoryMenu;
-	private Node2D interfaceNode;
-	private float cameraSpeed = 100.0f; // Adjust camera speed as needed
-	// Called when the node enters the scene tree for the first time.
+	private Godot.Camera2D interfaceCamera;
+	private float _cameraSpeed = 400.0f;
+	private float _scrollSpeed = 20.0f;
+	private float _scaleChange = 0.05f;
+	
 	public override void _Ready()
 	{
 		// Preload the PauseMenu scene once
@@ -18,35 +20,61 @@ public partial class UserInterface : Control
 		var inventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/InventoryMenu.tscn");
 		inventoryMenu = inventoryScene.Instantiate<Control>();
 		
-		// Find the node the camera is attached to
-		interfaceNode = GetNode<Node2D>("/root");
+		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		// Get mouse position
-		Vector2 mousePosition = GetGlobalMousePosition();
+		Vector2 mousePosition = GetLocalMousePosition();
 
 		// Get screen size
 		Vector2 screenSize = GetViewportRect().Size;
 
 		// Define movement thresholds
-		float threshold = 20.0f;
+		float threshold = 100.0f;
 
 		// Calculate camera movement based on mouse position
 		Vector2 cameraMovement = new Vector2();
-		if (mousePosition[0] < threshold)
-			cameraMovement[0] = -1;
-		else if (mousePosition[0] > screenSize[0] - threshold)
-			cameraMovement[0] = 1;
-		if (mousePosition[1] < threshold)
-			cameraMovement[1] = -1;
-		else if (mousePosition[1] > screenSize[1] - threshold)
-			cameraMovement[1] = 1;
+		if(_isPauseMenuVisible == false && _isInventoryVisible == false){
+			if (mousePosition[0] < threshold)
+			{
+				cameraMovement[0] -= 1;
+			}
+			else if (mousePosition[0] > screenSize[0] - threshold)
+			{
+				cameraMovement[0] += 1;
+			}
+			if (mousePosition[1] < threshold)
+			{
+				cameraMovement[1] -= 1;
+			}
+			else if (mousePosition[1] > screenSize[1] - threshold)
+			{
+				cameraMovement[1] += 1;
+			}
+			if (Input.IsActionPressed("arrow_right"))
+			{
+				cameraMovement[0] += 1;
+			}
+			else if (Input.IsActionPressed("arrow_left"))
+			{
+				cameraMovement[0] -= 1;
+			} 
+			if (Input.IsActionPressed("arrow_down"))
+			{
+				cameraMovement[1] += 1;
+			}
+			else if (Input.IsActionPressed("arrow_up"))
+			{
+				cameraMovement[1] -= 1;
+			} 
+		}
+		
 
 		// Move the camera
-		interfaceNode.Position += new Vector2(cameraMovement[0] * (float)(cameraSpeed * delta), cameraMovement[1] * (float)(cameraSpeed * delta));
+		Position += cameraMovement * (float)(_cameraSpeed * delta);
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -55,6 +83,58 @@ public partial class UserInterface : Control
 		if (@event.IsActionPressed("esc_key"))
 		{
 			TogglePauseMenu();
+		}
+		else if (@event.IsActionPressed("i_key"))
+		{
+			ToggleInventoryMenu();
+		}
+		
+		if(_isPauseMenuVisible == false && _isInventoryVisible == false)
+		{
+			if (@event is InputEventMouse eventMouse)
+			{
+				if (eventMouse.IsAction("mousewheel_up"))
+				{
+					// Scroll up action
+					ScrollContent(true);
+				}
+				else if (eventMouse.IsAction("mousewheel_down"))
+				{
+					// Scroll down action
+					ScrollContent(false);
+				}
+			}
+		}
+		
+	
+	}
+	
+	private void ScrollContent(bool direction)
+	{
+		Vector2 TempSize;
+		
+		if(direction)
+		{
+			if((Scale[0] > 0.5f) && (Scale[1] > 0.5f))
+			{
+				Scale = new Vector2(Scale[0] - _scaleChange, Scale[1] - _scaleChange);
+				interfaceCamera.Zoom = new Vector2(1 / Scale[0], 1 / Scale[1]);
+				Position = new Vector2(
+					Position[0], 
+					Position[1]
+				);
+			}
+		}
+		else{
+			if((Scale[0] < 4f) && (Scale[1] < 4f))
+			{
+				Scale = new Vector2(Scale[0] + _scaleChange, Scale[1] + _scaleChange);
+				interfaceCamera.Zoom = new Vector2(1 / Scale[0], 1 / Scale[1]);
+				Position = new Vector2( 
+					Position[0],
+					Position[1]
+				);
+			}
 		}
 	}
 	
@@ -68,21 +148,21 @@ public partial class UserInterface : Control
 		ToggleInventoryMenu();
 	}
 
-	
 	private void TogglePauseMenu()
 	{
-		if (!_IsPauseMenuVisible)
+		if (!_isPauseMenuVisible)
 		{
-			_IsPauseMenuVisible = true;
+			_isPauseMenuVisible = true;
 			if (pauseMenu.GetParent() == null)
 			{
 				GetTree().Root.AddChild(pauseMenu);
 			}
+			pauseMenu.Position = new Vector2(Position[0], Position[1]);
 			pauseMenu.Show();
 		}
 		else
 		{
-			_IsPauseMenuVisible = false;
+			_isPauseMenuVisible = false;
 			if (pauseMenu.GetParent() != null)
 			{
 				GetTree().Root.RemoveChild(pauseMenu);
@@ -99,6 +179,7 @@ public partial class UserInterface : Control
 			{
 				GetTree().Root.AddChild(inventoryMenu);
 			}
+			inventoryMenu.Position = new Vector2(Position[0], Position[1]);
 			inventoryMenu.Show();
 		}
 		else
@@ -111,10 +192,10 @@ public partial class UserInterface : Control
 		}
 	}
 	
-	public bool IsPauseMenuVisible
+	public bool isPauseMenuVisible
 	{
-		get { return _IsPauseMenuVisible; }
-		set { _IsPauseMenuVisible = value; }
+		get { return _isPauseMenuVisible; }
+		set { _isPauseMenuVisible = value; }
 	}
 	
 	public bool IsInventoryVisible
@@ -123,8 +204,3 @@ public partial class UserInterface : Control
 		set { _isInventoryVisible = value; }
 	}
 }
-
-
-
-
-

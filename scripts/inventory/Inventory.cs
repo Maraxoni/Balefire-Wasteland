@@ -5,9 +5,8 @@ using System.Collections.Generic;
 namespace GameProject {
 	public partial class Inventory : Resource
 	{
-		
 		private List<Item> items;
-
+		
 		public Inventory()
 		{
 			items = new List<Item>();
@@ -32,7 +31,7 @@ namespace GameProject {
 			return items[index];
 		}
 
-		public Item[] GetAllItems()
+		public Item[] GetItems()
 		{
 			return items.ToArray();
 		}

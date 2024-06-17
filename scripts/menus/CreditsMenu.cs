@@ -15,7 +15,7 @@ public partial class CreditsMenu : Control
 	
 	private void _on_back_options_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -23,7 +23,7 @@ public partial class CreditsMenu : Control
 		
 		if (@event.IsActionPressed("esc_key"))
 		{
-			GetTree().ChangeSceneToFile("res://scenes/MainMenu.tscn");
+			GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
 		}
 	}
 

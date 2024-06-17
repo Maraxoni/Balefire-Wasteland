@@ -4,14 +4,33 @@
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2ymdd")
+
+[node name="MenuTitleContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 205.0
+grow_horizontal = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuTitleContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 150
+text = "Balefire Wasteland
+"
+horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(300, 300)
@@ -21,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -66,25 +85,6 @@ text = "Exit to Main Menu"
 [node name="ExitGameMenuButton" type="Button" parent="MarginContainer/PauseMenuButtonContainer"]
 layout_mode = 2
 text = "Exit Game"
-
-[node name="MenuTitleContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -964.0
-offset_top = -540.0
-offset_right = 956.0
-offset_bottom = -471.0
-grow_horizontal = 2
-size_flags_vertical = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="MenuTitleContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 150
-text = "Balefire Wasteland
-"
-horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/PauseMenuButtonContainer/ResumeMenuButton" to="." method="_on_resume_menu_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PauseMenuButtonContainer/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]

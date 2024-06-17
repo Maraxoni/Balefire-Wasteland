@@ -154,6 +154,5 @@ one_way_collision_margin = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4y1mq")
-animation = &"walk"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

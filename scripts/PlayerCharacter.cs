@@ -1,10 +1,14 @@
 using Godot;
 using System;
+using GameProject;
 
 public partial class PlayerCharacter : CharacterBody2D
 {
 	[Export]
 	public int Speed { get; set; } = 200;
+	
+	private Inventory inventory = new Inventory(); // Przechowywanie inwentarza jako pole klasy
+	private Stats stats = new Stats();
 	
 	private Vector2 _mouse_position;
 	private Vector2 _character_position;
@@ -41,7 +45,37 @@ public partial class PlayerCharacter : CharacterBody2D
 		_character_position = Position; // Set initial character position
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_selectedShape = GetNode<CollisionShape2D>("CollisionShape");
+
+		stats.Strength = 1;
+		stats.Perception = 2;
+		stats.Endurance = 3;
+		stats.Charisma = 4;
+		stats.Intelligence = 5;
+		stats.Agility = 6;
+		stats.Luck = 7;
 		
+		// Adding three items to the inventory
+		inventory.AddItem(new Item(1, "Sample", "res://sword.png", 1, 1, false));
+		inventory.AddItem(new Item(2, "Banana", "res://shield.png", 1, 1, false));
+		inventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
+		// Print inventory contents to console
+		PrintInventoryContents();
+		// Accessing and modifying stats
+		GD.Print($"Initial Strength: {stats.Strength}");
+		stats.Strength += 5; // Increase Strength
+		GD.Print($"Updated Strength: {stats.Strength}");
+		
+		// Wypisanie statystyk do konsoli
+		PrintStats();
+	}
+
+	private void PrintInventoryContents()
+	{
+		GD.Print("Inventory contents:");
+		foreach (var item in inventory.GetItems())
+		{
+			GD.Print($"Item ID: {item.Id}, Name: {item.Name}");
+		}
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -117,7 +151,25 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 	}
-	
+	public Inventory GetInventory()
+	{
+		return inventory;
+	}
+	public Stats GetStats()
+	{
+		return stats;
+	}
+	private void PrintStats()
+	{
+		GD.Print("Current Stats:");
+		GD.Print($"Strength: {stats.Strength}");
+		GD.Print($"Perception: {stats.Perception}");
+		GD.Print($"Endurance: {stats.Endurance}");
+		GD.Print($"Charisma: {stats.Charisma}");
+		GD.Print($"Intelligence: {stats.Intelligence}");
+		GD.Print($"Agility: {stats.Agility}");
+		GD.Print($"Luck: {stats.Luck}");
+	}
 }
 
 

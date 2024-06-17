@@ -7,7 +7,7 @@ namespace GameProject {
 		[Export]
 		public int Id { get; set; }
 		[Export]
-		public string Name { get; set; }
+		public string Name { get; private set; }
 		[Export]
 		public string ResourcePath { get; set; }
 		[Export]
@@ -17,9 +17,14 @@ namespace GameProject {
 		[Export]
 		public bool IsStackable { get; set; }
 
-		public Item(string name)
+		public Item(int id, string name, string resourcePath, int quantity, int stackSize, bool isStackable)
 		{
+			Id = id;
 			Name = name;
+			ResourcePath = resourcePath;
+			Quantity = quantity;
+			StackSize = stackSize;
+			IsStackable = isStackable;
 		}
 
 		public override string ToString()

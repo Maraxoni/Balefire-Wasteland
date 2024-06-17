@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba314c4e1aovd"]
+[gd_scene load_steps=3 format=3 uid="uid://ba314c4e1aovd"]
 
 [ext_resource type="Script" path="res://scripts/menus/CharacterCreationMenu.cs" id="1_5flfi"]
+[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/PlayerCharacter.tscn" id="2_44hwj"]
 
 [node name="CharacterCreationMenu" type="Control"]
 layout_mode = 3
@@ -272,6 +273,11 @@ size_flags_horizontal = 10
 layout_mode = 2
 text = "Create Character"
 icon_alignment = 1
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_44hwj")]
+position = Vector2(967, 456)
+scale = Vector2(6, 6)
+script = null
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer2/CreateCharButton" to="." method="_on_create_char_button_pressed"]

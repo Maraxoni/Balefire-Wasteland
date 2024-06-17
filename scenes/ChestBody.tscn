@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl8maonp0txl4"]
+[gd_scene load_steps=4 format=3 uid="uid://bl8maonp0txl4"]
 
 [ext_resource type="Texture2D" uid="uid://13ktduh2vmia" path="res://assets/misc/ChestTexture.png" id="1_fbaj1"]
+[ext_resource type="Script" path="res://scripts/ChestBody.cs" id="1_t13ae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pas3u"]
 size = Vector2(32, 32)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_t13ae")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fbaj1")

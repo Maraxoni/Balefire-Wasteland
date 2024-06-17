@@ -1,4 +1,7 @@
 Camera2D
+SubViewport
+CanvasLayer
+TileMap
 VBoxContainer
 ItemList
 HBoxContainer
@@ -9,7 +12,3 @@ MarginContainer
 TextEdit
 PanelContainer
 Control
-CollisionShape2D
-Line2D
-Area2D
-CollisionPolygon2D

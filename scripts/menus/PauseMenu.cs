@@ -19,17 +19,31 @@ public partial class PauseMenu : Control
 	{
 		Node parent = GetParent();
 		parent.RemoveChild(this);
-		_userInterface.IsPauseMenuVisible = false;
+		_userInterface.isPauseMenuVisible = false;
 	}
 
 	private void _on_settings_menu_button_pressed()
 	{
+		
 		GetTree().ChangeSceneToFile("res://scenes/menus/SettingsMenu.tscn");
+		// Hide and then exit the UserInterface
+		_userInterface.isPauseMenuVisible = false;
+		_userInterface.Hide();
+		_userInterface.QueueFree(); // Free the UserInterface node from the scene tree
+		Node parent = GetParent();
+		parent.RemoveChild(this);
 	}
 
 	private void _on_exit_to_main_menu_menu_button_pressed()
 	{
+		
 		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
+		// Hide and then exit the UserInterface
+		_userInterface.isPauseMenuVisible = false;
+		_userInterface.Hide();
+		_userInterface.QueueFree(); // Free the UserInterface node from the scene tree
+		Node parent = GetParent();
+		parent.RemoveChild(this);
 	}
 
 	private void _on_exit_game_menu_button_pressed()
