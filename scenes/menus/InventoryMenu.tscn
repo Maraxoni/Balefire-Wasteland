@@ -45,11 +45,6 @@ layout_mode = 2
 [node name="PauseMenuButtonContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/PauseMenuButtonContainer"]
-layout_mode = 2
-text = "Stats"
-horizontal_alignment = 1
-
 [node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/PauseMenuButtonContainer"]
 layout_mode = 2
 text = "Strength"
@@ -136,21 +131,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
-[node name="PauseMenuButtonContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/PauseMenuButtonContainer"]
-layout_mode = 2
-text = "Inventory"
-horizontal_alignment = 1
-
-[node name="InventoryList" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/PauseMenuButtonContainer"]
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/PauseMenuButtonContainer"]
+[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2"]
 layout_mode = 2
 max_text_lines = 10
+item_count = 3
+item_0/text = "Asd"
+item_1/text = "Asd"
+item_2/text = "Asd"
 
 [node name="BackInventoryMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

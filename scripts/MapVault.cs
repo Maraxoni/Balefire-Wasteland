@@ -10,6 +10,8 @@ public partial class MapVault : Node2D
 		GetTree().Root.AddChild(player);
 		var scene = ResourceLoader.Load<PackedScene>("res://scenes/UserInterface.tscn").Instantiate();
 		GetTree().Root.AddChild(scene);
+		NodePath mapVaultPath = GetPath();
+		GD.Print("Path of MapVault:", mapVaultPath.ToString());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

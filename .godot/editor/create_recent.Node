@@ -1,3 +1,4 @@
+PanelContainer
 Camera2D
 SubViewport
 CanvasLayer
@@ -10,5 +11,4 @@ TabContainer
 Label
 MarginContainer
 TextEdit
-PanelContainer
 Control

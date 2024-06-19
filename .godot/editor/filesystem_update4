@@ -1,4 +1,4 @@
-res://scenes/UserInterface.tscn
+res://scenes/menus/InventoryMenu.tscn
 res://scripts/PlayerCharacter.cs
 res://scripts/inventory/Inventory.cs
 res://scripts/inventory/Item.cs
@@ -7,15 +7,16 @@ res://scenes/PlayerCharacter.tscn
 res://scenes/menus/SettingsMenu.tscn
 res://scenes/menus/LoadGameMenu.tscn
 res://scenes/menus/CreditsMenu.tscn
+res://scenes/UserInterface.tscn
 res://scenes/maps/MapVault.tscn
 res://scenes/menus/PauseMenu.tscn
 res://scenes/menus/CharacterCreationMenu.tscn
-res://scenes/menus/InventoryMenu.tscn
 res://scenes/maps/MapSwamp.tscn
-res://scenes/ChestBody.tscn
-res://scenes/InventoryMenu.cs
 res://scenes/maps/Camera2D.cs
+res://scripts/ChestBody.cs
 res://scripts/GameScript.cs
+res://scripts/InventoryMenu.cs
+res://scripts/inventory/Stats.cs
 res://scripts/MapSwamp.cs
 res://scripts/MapVault.cs
 res://scripts/menus/CharacterCreationMenu.cs
@@ -25,10 +26,3 @@ res://scripts/menus/MainMenu.cs
 res://scripts/menus/PauseMenu.cs
 res://scripts/menus/SettingsMenu.cs
 res://scripts/UserInterface.cs
-res://scenes/HUD.tscn
-res://scripts/ChestBody.tscn
-res://scenes/ChestBody.cs
-res://scripts/inventory/Stats.cs
-res://scenes/HUD.cs
-res://scripts/InventoryMenu.cs
-res://scripts/ChestBody.cs

@@ -6,7 +6,7 @@ public partial class UserInterface : Control
 	private bool _isPauseMenuVisible = false;
 	private bool _isInventoryVisible = false;
 	private Control pauseMenu;
-	private Control inventoryMenu;
+	private InventoryMenu inventoryMenu;
 	private Godot.Camera2D interfaceCamera;
 	private float _cameraSpeed = 400.0f;
 	private float _scrollSpeed = 20.0f;
@@ -18,7 +18,7 @@ public partial class UserInterface : Control
 		var pauseScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/PauseMenu.tscn");
 		pauseMenu = pauseScene.Instantiate<Control>();
 		var inventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/InventoryMenu.tscn");
-		inventoryMenu = inventoryScene.Instantiate<Control>();
+		inventoryMenu = inventoryScene.Instantiate<InventoryMenu>();
 		
 		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 	}
@@ -180,7 +180,9 @@ public partial class UserInterface : Control
 				GetTree().Root.AddChild(inventoryMenu);
 			}
 			inventoryMenu.Position = new Vector2(Position[0], Position[1]);
+			
 			inventoryMenu.Show();
+			inventoryMenu.Refresh();
 		}
 		else
 		{
