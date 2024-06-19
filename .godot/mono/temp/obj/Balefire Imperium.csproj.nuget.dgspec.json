@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj": {}
+    "C:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj": {}
   },
   "projects": {
-    "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj": {
+    "C:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj",
+        "projectUniqueName": "C:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj",
         "projectName": "Balefire Imperium",
-        "projectPath": "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj",
+        "projectPath": "C:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj",
         "packagesPath": "C:\\Users\\Marax\\.nuget\\packages\\",
-        "outputPath": "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Marax\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Marax\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -42,15 +45,15 @@
           "dependencies": {
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.2.1, )"
+              "version": "[4.2.2, )"
             },
             "GodotSharp": {
               "target": "Package",
-              "version": "[4.2.1, )"
+              "version": "[4.2.2, )"
             },
             "GodotSharpEditor": {
               "target": "Package",
-              "version": "[4.2.1, )"
+              "version": "[4.2.2, )"
             }
           },
           "imports": [
@@ -64,12 +67,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

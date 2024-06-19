@@ -8,6 +8,7 @@ public partial class MapVault : Node2D
 	{
 		var player = ResourceLoader.Load<PackedScene>("res://scenes/PlayerCharacter.tscn").Instantiate();
 		GetTree().Root.AddChild(player);
+		
 		var scene = ResourceLoader.Load<PackedScene>("res://scenes/UserInterface.tscn").Instantiate();
 		GetTree().Root.AddChild(scene);
 		NodePath mapVaultPath = GetPath();

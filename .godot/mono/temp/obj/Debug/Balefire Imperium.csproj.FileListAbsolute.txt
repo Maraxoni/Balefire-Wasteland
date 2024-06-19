@@ -32,3 +32,21 @@ D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Godot
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.csproj.CopyComplete
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.genruntimeconfig.cache
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\ref\Balefire Imperium.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.deps.json
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.runtimeconfig.json
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.pdb
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.csproj.AssemblyReference.cache
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.GeneratedMSBuildEditorConfig.editorconfig
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.AssemblyInfoInputs.cache
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.AssemblyInfo.cs
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.csproj.CoreCompileInputs.cache
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.sourcelink.json
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire.5159088A.Up2Date
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\refint\Balefire Imperium.dll
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.pdb
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.genruntimeconfig.cache
+C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\ref\Balefire Imperium.dll

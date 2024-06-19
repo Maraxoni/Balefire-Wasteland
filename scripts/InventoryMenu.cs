@@ -83,4 +83,25 @@ public partial class InventoryMenu : Control
 		UpdateInventoryLabel();
 		UpdateStatsLabels();
 	}
+	
+	private void _on_item_list_item_clicked(long index, Vector2 at_position, long mouse_button_index)
+	{
+		if (_playerCharacter == null)
+		{
+			GD.PrintErr("Error: PlayerCharacter is null in _on_item_list_item_clicked.");
+			return;
+		}
+		var inventory = _playerCharacter.GetInventory();
+		if (inventory == null)
+		{
+			GD.PrintErr("Error: Inventory is null in PlayerCharacter in _on_item_list_item_clicked.");
+			return;
+		}
+		var item = inventory.GetItems()[(int)index];
+		inventory.RemoveItem(item);
+		Refresh();
+	}
 }
+
+
+

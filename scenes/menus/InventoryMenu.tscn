@@ -146,4 +146,5 @@ size_flags_vertical = 8
 text = "Back
 "
 
+[connection signal="item_clicked" from="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BackInventoryMenuButton" to="." method="_on_back_inventory_menu_button_pressed"]

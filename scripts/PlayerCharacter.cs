@@ -6,15 +6,16 @@ public partial class PlayerCharacter : CharacterBody2D
 {
 	[Export]
 	public int Speed { get; set; } = 200;
+	
+	private Inventory inventory = new Inventory(); // Przechowywanie inwentarza jako pole klasy
+	private Stats stats = new Stats();
 
-	private Inventory _inventory = new Inventory();
-	private Stats _stats = new Stats();
+	private Vector2 _mouse_position;
+	private Vector2 _character_position;
+	private Vector2 _destination_position;
 
-	private Vector2 _mousePosition;
-	private Vector2 _destinationPosition;
-
-	public bool IsSelected { get; set; } = false;
-	public bool IsMoving { get; set; } = false;
+	public bool is_selected = false;
+	public bool is_moving = false;
 
 	// Shapes
 	private CollisionShape2D _selectedShape;
@@ -26,54 +27,49 @@ public partial class PlayerCharacter : CharacterBody2D
 		Color blue = new Color("478cbf");
 		Color grey = new Color("414042");
 		Color transparent = new Color("0000008f");
-
-		if (IsSelected)
-		{
+		
+		if(is_selected){
 			DrawCircle(new Vector2(0, 10.0f), 25.0f, green);
 			DrawCircle(new Vector2(0, 10.0f), 20.0f, transparent);
 		}
-
-		if (IsMoving)
-		{
-			DrawCircle(new Vector2(_destinationPosition[0], _destinationPosition[1]), 15.0f, blue);
-			DrawCircle(new Vector2(_destinationPosition[0], _destinationPosition[1]), 10.0f, transparent);
+		
+		if(is_moving){
+			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 15.0f, blue);
+			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 10.0f, transparent);
 		}
+		
 	}
 
 	public override void _Ready()
 	{
+		_character_position = Position; // Set initial character position
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_selectedShape = GetNode<CollisionShape2D>("CollisionShape");
-
-		_stats.Strength = 1;
-		_stats.Perception = 2;
-		_stats.Endurance = 3;
-		_stats.Charisma = 4;
-		_stats.Intelligence = 5;
-		_stats.Agility = 6;
-		_stats.Luck = 7;
-
+		SetInitialPosition(200, 200);
+		stats.Strength = 10;
+		stats.Perception = 8;
+		stats.Endurance = 15;
+		stats.Charisma = 12;
+		stats.Intelligence = 18;
+		stats.Agility = 20;
+		stats.Luck = 5;
+		
 		// Adding three items to the inventory
-		_inventory.AddItem(new Item(1, "Sample", "res://sword.png", 1, 1, false));
-		_inventory.AddItem(new Item(2, "Banana", "res://shield.png", 1, 1, false));
-		_inventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
+		inventory.AddItem(new Item(1, "Sample", "res://sword.png", 1, 1, false));
+		inventory.AddItem(new Item(2, "Banana", "res://shield.png", 1, 1, false));
+		inventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
 		// Print inventory contents to console
 		PrintInventoryContents();
 		// Accessing and modifying stats
-		GD.Print($"Initial Strength: {_stats.Strength}");
-		_stats.Strength += 5; // Increase Strength
-		GD.Print($"Updated Strength: {_stats.Strength}");
-
-		// Print stats to console
-		PrintStats();
-		NodePath playerCharacterPath = GetPath();
-		GD.Print("Path of playerCharacter:", playerCharacterPath.ToString());
+		GD.Print($"Initial Strength: {stats.Strength}");
+		stats.Strength += 5; // Increase Strength
+		GD.Print($"Updated Strength: {stats.Strength}");
 	}
 
 	private void PrintInventoryContents()
 	{
 		GD.Print("Inventory contents:");
-		foreach (var item in _inventory.GetItems())
+		foreach (var item in inventory.GetItems())
 		{
 			GD.Print($"Item ID: {item.Id}, Name: {item.Name}");
 		}
@@ -81,14 +77,15 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (IsSelected)
+		
+		if (is_selected)
 		{
 			if (@event.IsActionPressed("right_click"))
 			{
-				_mousePosition = GetGlobalMousePosition();
-				_destinationPosition = _mousePosition;
-
-				if (_mousePosition[0] > Position[0])
+				_mouse_position = GetGlobalMousePosition();
+				_character_position = Position; // Initialize _character_position here
+				
+				if (_mouse_position[0] > _character_position[0])
 				{
 					_animatedSprite.FlipH = true;
 				}
@@ -96,46 +93,52 @@ public partial class PlayerCharacter : CharacterBody2D
 				{
 					_animatedSprite.FlipH = false;
 				}
-
-				IsMoving = true;
+				
+				is_moving = true;
 			}
 			if (@event.IsActionPressed("left_click"))
 			{
 				_selectedShape.Visible = false;
-				IsSelected = false;
+				is_selected = false;
 				QueueRedraw();
 			}
-		}
+		}	
 	}
 
-	private void _on_Area2D_InputEvent(Node viewport, InputEvent @event, long shape_idx)
+	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx)
 	{
 		if (@event.IsActionPressed("left_click"))
 		{
 			_selectedShape.Visible = true;
-			IsSelected = true;
+			is_selected = true;
 			QueueRedraw();
 		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (IsMoving)
+		//very not effective
+		_character_position = Position;
+		_destination_position = _mouse_position-_character_position;
+		QueueRedraw();
+		
+		Velocity = Position.DirectionTo(_mouse_position) * Speed;
+		if (is_moving)
 		{
-			Vector2 direction = Position.DirectionTo(_mousePosition);
-			Velocity = direction * Speed;
-			MoveAndSlide();
-
-			if (Position.DistanceTo(_mousePosition) <= 10)
-			{
-				IsMoving = false;
-				Velocity = Vector2.Zero;
-			}
-
 			QueueRedraw();
+			Velocity = Position.DirectionTo(_mouse_position) * Speed;
+			// LookAt(_mouse_position);
+			if (Position.DistanceTo(_mouse_position) > 10)
+			{
+				MoveAndSlide();
+			}
+			else
+			{
+				is_moving = false;
+			}
 		}
 
-		if (IsMoving)
+		if (is_moving == true)
 		{
 			_animatedSprite.Play("walk");
 		}
@@ -143,27 +146,20 @@ public partial class PlayerCharacter : CharacterBody2D
 		{
 			_animatedSprite.Play("default");
 		}
-	}
 
+	}
 	public Inventory GetInventory()
 	{
-		return _inventory;
+		return inventory;
 	}
-
 	public Stats GetStats()
 	{
-		return _stats;
+		return stats;
+	}
+	
+	public void SetInitialPosition(int x, int y)
+	{
+		this.Position = new Vector2(x, y);
 	}
 
-	private void PrintStats()
-	{
-		GD.Print("Current Stats:");
-		GD.Print($"Strength: {_stats.Strength}");
-		GD.Print($"Perception: {_stats.Perception}");
-		GD.Print($"Endurance: {_stats.Endurance}");
-		GD.Print($"Charisma: {_stats.Charisma}");
-		GD.Print($"Intelligence: {_stats.Intelligence}");
-		GD.Print($"Agility: {_stats.Agility}");
-		GD.Print($"Luck: {_stats.Luck}");
-	}
 }

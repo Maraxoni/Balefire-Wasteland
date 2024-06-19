@@ -85,7 +85,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="ButtonStrengthDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = "<"
 
@@ -94,7 +94,7 @@ layout_mode = 2
 text = "5
 "
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="ButtonStrengthIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = ">"
 
@@ -107,7 +107,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonPerceptionDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "<"
 
@@ -116,7 +116,7 @@ layout_mode = 2
 text = "5
 "
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonPerceptionIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = ">"
 
@@ -129,7 +129,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+[node name="ButtonEnduranceDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
 text = "<"
 
@@ -137,7 +137,7 @@ text = "<"
 layout_mode = 2
 text = "5"
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+[node name="ButtonEnduranceIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
 text = ">"
 
@@ -150,7 +150,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+[node name="ButtonCharismaDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
 layout_mode = 2
 text = "<"
 
@@ -158,7 +158,7 @@ text = "<"
 layout_mode = 2
 text = "5"
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+[node name="ButtonCharismaIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
 layout_mode = 2
 text = ">"
 
@@ -171,7 +171,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+[node name="ButtonIntelligenceDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
 layout_mode = 2
 text = "<"
 
@@ -179,7 +179,7 @@ text = "<"
 layout_mode = 2
 text = "5"
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+[node name="ButtonIntelligenceIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
 layout_mode = 2
 text = ">"
 
@@ -192,7 +192,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+[node name="ButtonAgilityDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
 layout_mode = 2
 text = "<"
 
@@ -200,7 +200,7 @@ text = "<"
 layout_mode = 2
 text = "5"
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+[node name="ButtonAgilityIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
 layout_mode = 2
 text = ">"
 
@@ -213,7 +213,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+[node name="ButtonLuckDecrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 layout_mode = 2
 text = "<"
 
@@ -221,7 +221,7 @@ text = "<"
 layout_mode = 2
 text = "5"
 
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+[node name="ButtonLuckIncrease" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 layout_mode = 2
 text = ">"
 
@@ -279,5 +279,19 @@ position = Vector2(967, 456)
 scale = Vector2(6, 6)
 script = null
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ButtonStrengthDecrease" to="." method="_on_button_strength_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ButtonStrengthIncrease" to="." method="_on_button_strength_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/ButtonPerceptionDecrease" to="." method="_on_button_perception_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/ButtonPerceptionIncrease" to="." method="_on_button_perception_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/ButtonEnduranceDecrease" to="." method="_on_button_endurance_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/ButtonEnduranceIncrease" to="." method="_on_button_endurance_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/ButtonCharismaDecrease" to="." method="_on_button_charisma_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/ButtonCharismaIncrease" to="." method="_on_button_charisma_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/ButtonIntelligenceDecrease" to="." method="_on_button_intelligence_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/ButtonIntelligenceIncrease" to="." method="_on_button_intelligence_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/ButtonAgilityDecrease" to="." method="_on_button_agility_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/ButtonAgilityIncrease" to="." method="_on_button_agility_increase_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/ButtonLuckDecrease" to="." method="_on_button_luck_decrease_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/ButtonLuckIncrease" to="." method="_on_button_luck_increase_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer2/CreateCharButton" to="." method="_on_create_char_button_pressed"]
