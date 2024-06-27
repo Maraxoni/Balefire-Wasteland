@@ -33,7 +33,7 @@ public partial class UserInterface : Control
 		Vector2 screenSize = GetViewportRect().Size;
 
 		// Define movement thresholds
-		float threshold = 100.0f;
+		float threshold = 1.0f;
 
 		// Calculate camera movement based on mouse position
 		Vector2 cameraMovement = new Vector2();
@@ -194,7 +194,7 @@ public partial class UserInterface : Control
 		}
 	}
 	
-	public bool isPauseMenuVisible
+	public bool IsPauseMenuVisible
 	{
 		get { return _isPauseMenuVisible; }
 		set { _isPauseMenuVisible = value; }

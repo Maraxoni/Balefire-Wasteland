@@ -124,6 +124,12 @@ position = Vector2(153, 156)
 scale = Vector2(4, 4)
 script = null
 
+[node name="CharacterName" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Sample"
+
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 

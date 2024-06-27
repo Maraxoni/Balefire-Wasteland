@@ -3,7 +3,8 @@ using System;
 
 public partial class Stats : Node
 {
-	// Private attributes
+	
+	private String _name;
 	private int _strength;
 	private int _perception;
 	private int _endurance;
@@ -20,6 +21,13 @@ public partial class Stats : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	// Methods to set and get attributes
+	public String Name 
+	{
+		get { return _name; }
+		set { _name = value; }
 	}
 	
 	// Methods to set and get attributes
@@ -64,4 +72,10 @@ public partial class Stats : Node
 		get { return _luck; }
 		set { _luck = value; }
 	}
+	
+	public int TotalStats()
+	{
+		return _strength + _perception + _endurance + _charisma + _intelligence + _agility + _luck;
+	}
+	
 }

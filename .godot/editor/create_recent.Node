@@ -1,14 +1,14 @@
+Label
+TileMap
 PanelContainer
 Camera2D
 SubViewport
 CanvasLayer
-TileMap
 VBoxContainer
 ItemList
 HBoxContainer
 Button
 TabContainer
-Label
 MarginContainer
 TextEdit
 Control

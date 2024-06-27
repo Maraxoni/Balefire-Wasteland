@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://baqmgqhqrkmu1"]
 
 [ext_resource type="Script" path="res://scripts/MapVault.cs" id="1_thua5"]
-[ext_resource type="Texture2D" uid="uid://c6qoithnysjq3" path="res://Game_Tiles.png" id="4_frrtl"]
+[ext_resource type="Texture2D" uid="uid://c6qoithnysjq3" path="res://assets/maps/Vault_Tiles.png" id="4_frrtl"]
 [ext_resource type="PackedScene" uid="uid://bl8maonp0txl4" path="res://scenes/ChestBody.tscn" id="4_hwgdw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ghaq0"]

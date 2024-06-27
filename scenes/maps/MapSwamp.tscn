@@ -1,23 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://btnjoif2fi10n"]
+[gd_scene load_steps=4 format=3 uid="uid://btnjoif2fi10n"]
 
 [ext_resource type="Script" path="res://scripts/MapSwamp.cs" id="1_gbkwx"]
-[ext_resource type="Texture2D" uid="uid://jg8xi5ne1wvq" path="res://assets/maps/Bagno.png" id="2_he4fb"]
-[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/PlayerCharacter.tscn" id="3_o0oox"]
 [ext_resource type="PackedScene" uid="uid://bl8maonp0txl4" path="res://scenes/ChestBody.tscn" id="4_kiuhn"]
+
+[sub_resource type="TileSet" id="TileSet_5j2yw"]
 
 [node name="MapSwamp" type="Node2D"]
 script = ExtResource("1_gbkwx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 4096.0
-offset_bottom = 4096.0
-texture = ExtResource("2_he4fb")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_o0oox")]
-position = Vector2(731, 439)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(0, 16)
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5j2yw")
+format = 2
 
 [node name="Sprite2D" parent="." instance=ExtResource("4_kiuhn")]
 position = Vector2(588, 495)

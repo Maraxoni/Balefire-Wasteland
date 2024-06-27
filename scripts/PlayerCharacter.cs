@@ -7,9 +7,6 @@ public partial class PlayerCharacter : CharacterBody2D
 	[Export]
 	public int Speed { get; set; } = 200;
 	
-	private Inventory inventory = new Inventory(); // Przechowywanie inwentarza jako pole klasy
-	private Stats stats = new Stats();
-
 	private Vector2 _mouse_position;
 	private Vector2 _character_position;
 	private Vector2 _destination_position;
@@ -17,6 +14,7 @@ public partial class PlayerCharacter : CharacterBody2D
 	public bool is_selected = false;
 	public bool is_moving = false;
 
+	private CharacterData _characterData;
 	// Shapes
 	private CollisionShape2D _selectedShape;
 	private AnimatedSprite2D _animatedSprite;
@@ -42,34 +40,31 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	public override void _Ready()
 	{
+		NodePath Path = GetPath();
+		GD.Print("Path of PlayerCharacter:", Path.ToString());
+		
+		_characterData = GetNode<CharacterData>("/root/CharacterData");
+		
 		_character_position = Position; // Set initial character position
+		
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_selectedShape = GetNode<CollisionShape2D>("CollisionShape");
 		SetInitialPosition(200, 200);
-		stats.Strength = 10;
-		stats.Perception = 8;
-		stats.Endurance = 15;
-		stats.Charisma = 12;
-		stats.Intelligence = 18;
-		stats.Agility = 20;
-		stats.Luck = 5;
-		
+
 		// Adding three items to the inventory
-		inventory.AddItem(new Item(1, "Sample", "res://sword.png", 1, 1, false));
-		inventory.AddItem(new Item(2, "Banana", "res://shield.png", 1, 1, false));
-		inventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
+		_characterData.PlayerInventory.AddItem(new Item(1, "Sample", "res://sword.png", 1, 1, false));
+		_characterData.PlayerInventory.AddItem(new Item(2, "Banana", "res://shield.png", 1, 1, false));
+		_characterData.PlayerInventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
 		// Print inventory contents to console
 		PrintInventoryContents();
 		// Accessing and modifying stats
-		GD.Print($"Initial Strength: {stats.Strength}");
-		stats.Strength += 5; // Increase Strength
-		GD.Print($"Updated Strength: {stats.Strength}");
+		GD.Print($"Initial Strength: {_characterData.PlayerStats.Strength}");
 	}
 
 	private void PrintInventoryContents()
 	{
 		GD.Print("Inventory contents:");
-		foreach (var item in inventory.GetItems())
+		foreach (var item in _characterData.PlayerInventory.GetItems())
 		{
 			GD.Print($"Item ID: {item.Id}, Name: {item.Name}");
 		}
@@ -148,15 +143,7 @@ public partial class PlayerCharacter : CharacterBody2D
 		}
 
 	}
-	public Inventory GetInventory()
-	{
-		return inventory;
-	}
-	public Stats GetStats()
-	{
-		return stats;
-	}
-	
+
 	public void SetInitialPosition(int x, int y)
 	{
 		this.Position = new Vector2(x, y);
