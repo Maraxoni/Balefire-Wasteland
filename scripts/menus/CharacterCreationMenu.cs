@@ -189,10 +189,3 @@ public partial class CharacterCreationMenu : Control
 	//}
 	
 }
-
-
-
-
-
-
-

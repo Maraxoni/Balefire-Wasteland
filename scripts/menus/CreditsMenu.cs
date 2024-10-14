@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GameProject;
 
 public partial class CreditsMenu : Control
 {

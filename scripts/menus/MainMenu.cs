@@ -3,9 +3,19 @@ using System;
 
 public partial class MainMenu : Control
 {
+	private Control uiInstance;  // Referencja do załadowanego interfejsu UI
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Załaduj scenę UI
+		var scene = ResourceLoader.Load<PackedScene>("res://scenes/UserInterface.tscn").Instantiate();
+		uiInstance = (Control)scene;  // Przypisz referencję do interfejsu
+
+		// Dodaj UI do drzewa scen
+		GetTree().Root.CallDeferred("add_child", uiInstance);
+
+		// Na początku ukryj interfejs
+		uiInstance.Visible = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

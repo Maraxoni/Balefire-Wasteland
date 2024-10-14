@@ -21,10 +21,12 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
+current_tab = 0
 
 [node name="Graphics" type="VBoxContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
 alignment = 1
+metadata/_tab_index = 0
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Graphics"]
 layout_mode = 2
@@ -52,6 +54,7 @@ text = ">"
 visible = false
 layout_mode = 2
 alignment = 1
+metadata/_tab_index = 1
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio"]
 layout_mode = 2
@@ -80,6 +83,7 @@ text = ">"
 visible = false
 layout_mode = 2
 alignment = 1
+metadata/_tab_index = 2
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Keybinds"]
 layout_mode = 2

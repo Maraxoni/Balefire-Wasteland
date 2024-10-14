@@ -1,6 +1,7 @@
-res://scripts/data
-res://scenes
 res://
+res://scripts
+res://scenes
+res://scripts/data
 res://scripts/inventory
 res://assets/maps
 res://assets/sprites

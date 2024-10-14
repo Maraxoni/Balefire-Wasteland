@@ -99,8 +99,3 @@ public partial class InventoryMenu : Control
 	}
 
 }
-
-
-
-
-

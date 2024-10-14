@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvgav5bbl8e0"]
+
+[ext_resource type="Script" path="res://scripts/MapChange.cs" id="1_m8v8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y65n"]
+size = Vector2(65, 62)
+
+[node name="MapChange" type="Area2D"]
+script = ExtResource("1_m8v8k")
+metadata/map_path = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, 31)
+shape = SubResource("RectangleShape2D_2y65n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

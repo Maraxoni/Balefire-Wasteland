@@ -52,6 +52,3 @@ public partial class PauseMenu : Control
 	}
 	
 }
-
-
-

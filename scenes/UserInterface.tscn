@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/UserInterface.cs" id="1_8a63e"]
 
 [node name="UserInterface" type="Control"]
+z_index = 10
 clip_contents = true
 layout_direction = 1
 layout_mode = 3
