@@ -3,14 +3,14 @@ using System;
 
 public partial class GhoulEnemy : EnemyCharacter
 {
-	 [Export]
+	[Export]
 	public int MeleeDamage { get; set; } = 20;
 
 	public override void _Ready()
 	{
 		base._Ready();
 		GD.Print("Melee enemy ready.");
-		Speed = 150; // Specific speed for melee enemies
+		Speed = 50; // Specific speed for melee enemies
 	}
 
 	protected override void AttackPlayer()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://baqmgqhqrkmu1"]
+[gd_scene load_steps=10 format=3 uid="uid://baqmgqhqrkmu1"]
 
 [ext_resource type="Script" path="res://scripts/maps/MapVault.cs" id="1_thua5"]
 [ext_resource type="Texture2D" uid="uid://c6qoithnysjq3" path="res://assets/maps/Vault_Tiles.png" id="4_frrtl"]
 [ext_resource type="PackedScene" uid="uid://cjk8lfc5831l0" path="res://scenes/objects/ChestBody.tscn" id="4_hwgdw"]
 [ext_resource type="PackedScene" uid="uid://ddvgav5bbl8e0" path="res://scenes/maps/MapChange.tscn" id="4_ofha7"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="5_p64dw"]
+[ext_resource type="PackedScene" uid="uid://bt1hdrlpb3ybx" path="res://scenes/characters/npcs/VaultMemberCharacter.tscn" id="6_0p3eb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ghaq0"]
 
@@ -301,3 +302,8 @@ PathToFile = "res://scenes/maps/MapSwamp.tscn"
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_p64dw")]
 position = Vector2(133, 159)
+
+[node name="GhoulCharacter" parent="." instance=ExtResource("6_0p3eb")]
+position = Vector2(520, 350)
+Speed = 100
+PatrolPoints = [Vector2(520, 350), Vector2(520, 450)]

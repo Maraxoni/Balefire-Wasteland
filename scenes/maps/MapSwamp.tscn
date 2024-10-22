@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cjk8lfc5831l0" path="res://scenes/objects/ChestBody.tscn" id="4_kiuhn"]
 [ext_resource type="PackedScene" uid="uid://ddvgav5bbl8e0" path="res://scenes/maps/MapChange.tscn" id="4_pwnk3"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="5_7ayj1"]
-[ext_resource type="Texture2D" uid="uid://13ktduh2vmia" path="res://assets/misc/BarrelTexture.png" id="6_hg8od"]
-[ext_resource type="PackedScene" uid="uid://bk0roe1asf4ky" path="res://scenes/enemies/GhoulCharacter.tscn" id="7_sd61i"]
+[ext_resource type="PackedScene" uid="uid://83mvj0e2uqmh" path="res://scenes/objects/BarrelBody.tscn" id="7_cb3gm"]
+[ext_resource type="PackedScene" uid="uid://bk0roe1asf4ky" path="res://scenes/characters/enemies/GhoulCharacter.tscn" id="7_sd61i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et0xb"]
 texture = ExtResource("2_2lx2i")
@@ -79,6 +79,7 @@ texture_region_size = Vector2i(64, 64)
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:1/0 = 0
 5:1/0 = 0
 6:1/0 = 0
@@ -4110,6 +4111,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_5j2yw"]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_et0xb")
 
 [node name="MapSwamp" type="Node2D"]
@@ -4123,21 +4125,22 @@ layer_0/tile_data = PackedInt32Array(0, 196609, 1, 1, 196609, 1, 2, 196609, 1, 3
 [node name="StaticBody2D2" parent="." instance=ExtResource("4_kiuhn")]
 position = Vector2(493, 372)
 
-[node name="MapChange" parent="." instance=ExtResource("4_pwnk3")]
-position = Vector2(-1, 385)
-script = null
-
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_7ayj1")]
 position = Vector2(171, 414)
 
-[node name="BarrelTexture" type="Sprite2D" parent="."]
-position = Vector2(442, 537)
-texture = ExtResource("6_hg8od")
-
-[node name="BarrelTexture2" type="Sprite2D" parent="."]
-position = Vector2(616, 529)
-texture = ExtResource("6_hg8od")
-
 [node name="GhoulCharacter" parent="." instance=ExtResource("7_sd61i")]
-position = Vector2(1061, 495)
-PatrolPoints = [Vector2(300, 300), Vector2(400, 400)]
+position = Vector2(1000, 500)
+AttackRange = 50.0
+DetectionRange = 100.0
+StopChaseRange = 200.0
+PatrolPoints = [Vector2(1000, 500), Vector2(1100, 400), Vector2(1000, 600)]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("7_cb3gm")]
+position = Vector2(581, 614)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("7_cb3gm")]
+position = Vector2(824, 466)
+
+[node name="MapChange" parent="." instance=ExtResource("4_pwnk3")]
+position = Vector2(-1, 385)
+PathToFile = "res://scenes/maps/MapVault.tscn"

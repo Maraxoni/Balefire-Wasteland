@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvblsts3kcy3x"
-path="res://.godot/imported/Pony-stand.png-d627bd92289bd2dc77d60e478c62ce4f.ctex"
+uid="uid://dhhh3wfixnvhb"
+path="res://.godot/imported/vaultmember-stand.png-f72444b4852c57a1559bb6c82a02ae47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Pony-stand.png"
-dest_files=["res://.godot/imported/Pony-stand.png-d627bd92289bd2dc77d60e478c62ce4f.ctex"]
+source_file="res://assets/sprites/vaultmember/vaultmember-stand.png"
+dest_files=["res://.godot/imported/vaultmember-stand.png-f72444b4852c57a1559bb6c82a02ae47.ctex"]
 
 [params]
 

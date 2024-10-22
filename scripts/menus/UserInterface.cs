@@ -12,6 +12,10 @@ public partial class UserInterface : Control
 	private float _scrollSpeed = 20.0f;
 	private float _scaleChange = 0.05f;
 	
+	// Map boundaries
+	private Vector2 _mapMinBounds = new Vector2(0, 0); // Minimum X and Y of the map
+	private Vector2 _mapMaxBounds = new Vector2(1000, 1000); // Maximum X and Y of the map
+	
 	public override void _Ready()
 	{
 		// Preload the PauseMenu scene once
@@ -74,7 +78,15 @@ public partial class UserInterface : Control
 		
 
 		// Move the camera
-		Position += cameraMovement * (float)(_cameraSpeed * delta);
+	Position += cameraMovement * (float)(_cameraSpeed * delta);
+
+	// Clamp the camera position within the boundaries
+	Position = new Vector2(
+		Mathf.Clamp(Position[0], _mapMinBounds[0], _mapMaxBounds[0]),
+		Mathf.Clamp(Position[1], _mapMinBounds[1], _mapMaxBounds[1])
+	);
+
+
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -141,12 +153,12 @@ public partial class UserInterface : Control
 	private void _on_menu_interface_button_pressed()
 	{
 		TogglePauseMenu();
-		if (_isPauseMenuVisible)
+		if (_isInventoryVisible)
 		{
-			_isPauseMenuVisible = false;
-			if (pauseMenu.GetParent() != null)
+			_isInventoryVisible = false;
+			if (inventoryMenu.GetParent() != null)
 			{
-				GetTree().Root.RemoveChild(pauseMenu);
+				GetTree().Root.RemoveChild(inventoryMenu);
 			}
 		}
 	}
@@ -154,12 +166,12 @@ public partial class UserInterface : Control
 	private void _on_inventory_interface_button_pressed()
 	{
 		ToggleInventoryMenu();
-		if (_isInventoryVisible)
+		if (_isPauseMenuVisible)
 		{
-			_isInventoryVisible = false;
-			if (inventoryMenu.GetParent() != null)
+			_isPauseMenuVisible = false;
+			if (pauseMenu.GetParent() != null)
 			{
-				GetTree().Root.RemoveChild(inventoryMenu);
+				GetTree().Root.RemoveChild(pauseMenu);
 			}
 		}
 	}

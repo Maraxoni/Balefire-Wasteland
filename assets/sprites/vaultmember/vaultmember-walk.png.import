@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccelvv0sb8ym5"
-path="res://.godot/imported/Pony-trot.png-42a8dda9dea01dced3032eb111e1a2d2.ctex"
+uid="uid://dtrhavwjeex6h"
+path="res://.godot/imported/vaultmember-walk.png-2d5af6d02cf5449fde0ab184b79601c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Pony-trot.png"
-dest_files=["res://.godot/imported/Pony-trot.png-42a8dda9dea01dced3032eb111e1a2d2.ctex"]
+source_file="res://assets/sprites/vaultmember/vaultmember-walk.png"
+dest_files=["res://.godot/imported/vaultmember-walk.png-2d5af6d02cf5449fde0ab184b79601c9.ctex"]
 
 [params]
 
