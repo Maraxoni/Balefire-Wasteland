@@ -1,19 +1,15 @@
 using Godot;
 using System;
 
-public partial class MapVault : Node2D
+public partial class NonPlayerCharacter : CharacterBase
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		NodePath Path = GetPath();
-		GD.Print("Path of MapVault:", Path.ToString());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 	}
-	
 }

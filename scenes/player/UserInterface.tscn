@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://2lklqbqxq5k5"]
+[gd_scene load_steps=2 format=3 uid="uid://cx6tq36wyb62u"]
 
-[ext_resource type="Script" path="res://scripts/UserInterface.cs" id="1_8a63e"]
+[ext_resource type="Script" path="res://scripts/menus/UserInterface.cs" id="1_ny0b2"]
 
 [node name="UserInterface" type="Control"]
 z_index = 10
@@ -15,7 +15,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-script = ExtResource("1_8a63e")
+script = ExtResource("1_ny0b2")
 
 [node name="InterfaceCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)

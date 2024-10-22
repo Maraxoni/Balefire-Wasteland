@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddvgav5bbl8e0"]
 
-[ext_resource type="Script" path="res://scripts/MapChange.cs" id="1_m8v8k"]
+[ext_resource type="Script" path="res://scripts/maps/MapChange.cs" id="1_m8v8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y65n"]
 size = Vector2(65, 62)

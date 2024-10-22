@@ -29,7 +29,6 @@ D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balef
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.pdb
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\GodotSharp.dll
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
-D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.csproj.CopyComplete
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.genruntimeconfig.cache
 D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\ref\Balefire Imperium.dll
 C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\bin\Debug\Balefire Imperium.deps.json
@@ -50,3 +49,5 @@ C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\refin
 C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.pdb
 C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.genruntimeconfig.cache
 C:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\ref\Balefire Imperium.dll
+D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire Imperium.sourcelink.json
+D:\Maraxowanie\Programowanie\Balefire-Wasteland\.godot\mono\temp\obj\Debug\Balefire.5159088A.Up2Date

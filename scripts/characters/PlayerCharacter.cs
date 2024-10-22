@@ -2,22 +2,13 @@ using Godot;
 using System;
 using GameProject;
 
-public partial class PlayerCharacter : CharacterBody2D
+public partial class PlayerCharacter : CharacterBase
 {
-	[Export]
-	public int Speed { get; set; } = 200;
-	
 	private Vector2 _mouse_position;
-	private Vector2 _character_position;
 	private Vector2 _destination_position;
 
 	public bool is_selected = false;
 	public bool is_moving = false;
-
-	private CharacterData _characterData;
-	// Shapes
-	private CollisionShape2D _selectedShape;
-	private AnimatedSprite2D _animatedSprite;
 
 	public override void _Draw()
 	{
@@ -30,12 +21,10 @@ public partial class PlayerCharacter : CharacterBody2D
 			DrawCircle(new Vector2(0, 10.0f), 25.0f, green);
 			DrawCircle(new Vector2(0, 10.0f), 20.0f, transparent);
 		}
-		
 		if(is_moving){
 			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 15.0f, blue);
 			DrawCircle(new Vector2(_destination_position[0], _destination_position[1]), 10.0f, transparent);
 		}
-		
 	}
 
 	public override void _Ready()
@@ -57,18 +46,9 @@ public partial class PlayerCharacter : CharacterBody2D
 		_characterData.PlayerInventory.AddItem(new Item(3, "Rotate", "res://potion.png", 5, 10, true));
 		// Print inventory contents to console
 		PrintInventoryContents();
-		// Accessing and modifying stats
-		GD.Print($"Initial Strength: {_characterData.PlayerStats.Strength}");
 	}
 
-	private void PrintInventoryContents()
-	{
-		GD.Print("Inventory contents:");
-		foreach (var item in _characterData.PlayerInventory.GetItems())
-		{
-			GD.Print($"Item ID: {item.Id}, Name: {item.Name}");
-		}
-	}
+
 
 	public override void _Input(InputEvent @event)
 	{
@@ -144,9 +124,6 @@ public partial class PlayerCharacter : CharacterBody2D
 
 	}
 
-	public void SetInitialPosition(int x, int y)
-	{
-		this.Position = new Vector2(x, y);
-	}
+	
 
 }

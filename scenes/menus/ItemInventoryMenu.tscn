@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://leq77rit1agw"]
 
-[ext_resource type="Script" path="res://scenes/menus/ItemInventoryMenu.cs" id="1_xnhcj"]
+[ext_resource type="Script" path="res://scripts/menus/ItemInventoryMenu.cs" id="1_xnhcj"]
 
 [node name="ItemInventoryMenu" type="Control"]
 layout_mode = 3

@@ -141,11 +141,27 @@ public partial class UserInterface : Control
 	private void _on_menu_interface_button_pressed()
 	{
 		TogglePauseMenu();
+		if (_isPauseMenuVisible)
+		{
+			_isPauseMenuVisible = false;
+			if (pauseMenu.GetParent() != null)
+			{
+				GetTree().Root.RemoveChild(pauseMenu);
+			}
+		}
 	}
 	
 	private void _on_inventory_interface_button_pressed()
 	{
 		ToggleInventoryMenu();
+		if (_isInventoryVisible)
+		{
+			_isInventoryVisible = false;
+			if (inventoryMenu.GetParent() != null)
+			{
+				GetTree().Root.RemoveChild(inventoryMenu);
+			}
+		}
 	}
 
 	private void TogglePauseMenu()
