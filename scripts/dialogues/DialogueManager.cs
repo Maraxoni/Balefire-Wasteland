@@ -13,6 +13,7 @@ public partial class DialogueManager : Node
 	{
 		GD.Print($"Dialogues initialized.");
 		LoadDialogueFromFile("assets/dialogues/dialogues.json");
+		PrintAllDialogues();
 	}
 
 	// Load dialogue from a JSON file

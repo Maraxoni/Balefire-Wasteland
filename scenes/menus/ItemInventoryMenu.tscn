@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/ItemInventoryMenu.cs" id="1_xnhcj"]
 
 [node name="ItemInventoryMenu" type="Control"]
+z_index = 7
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,8 +42,10 @@ item_0/text = "Asd"
 item_1/text = "Asd"
 item_2/text = "Asd"
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="BackItemInventoryMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BackItemInventoryMenuButton" to="." method="_on_back_item_inventory_menu_button_pressed"]

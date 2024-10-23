@@ -12,4 +12,11 @@ public partial class ItemInventoryMenu : Control
 	public override void _Process(double delta)
 	{
 	}
+	
+	private void _on_back_item_inventory_menu_button_pressed()
+	{
+		Node parent = GetParent();
+		parent.RemoveChild(this);
+	}
+	
 }

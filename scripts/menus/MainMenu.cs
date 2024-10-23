@@ -7,8 +7,6 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_dialogueManager = GetNode<DialogueManager>("/root/GlobalDialogueManager");
-		_dialogueManager.PrintAllDialogues();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

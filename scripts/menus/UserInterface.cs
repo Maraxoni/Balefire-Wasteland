@@ -4,9 +4,13 @@ using System;
 public partial class UserInterface : Control
 {
 	private bool _isPauseMenuVisible = false;
-	private bool _isInventoryVisible = false;
+	private bool _isInventoryMenuVisible = false;
+	private bool _isItemInventoryMenuVisible = false;
+	private bool _isDialogueMenuVisible = false;
 	private Control pauseMenu;
 	private InventoryMenu inventoryMenu;
+	private ItemInventoryMenu itemInventoryMenu;
+	private DialogueMenu dialogueMenu;
 	private Godot.Camera2D interfaceCamera;
 	private float _cameraSpeed = 400.0f;
 	private float _scrollSpeed = 20.0f;
@@ -21,8 +25,12 @@ public partial class UserInterface : Control
 		// Preload the PauseMenu scene once
 		var pauseScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/PauseMenu.tscn");
 		pauseMenu = pauseScene.Instantiate<Control>();
+		var dialogueScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/DialogueMenu.tscn");
+		dialogueMenu = dialogueScene.Instantiate<DialogueMenu>();
 		var inventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/InventoryMenu.tscn");
 		inventoryMenu = inventoryScene.Instantiate<InventoryMenu>();
+		var itemInventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/ItemInventoryMenu.tscn");
+		itemInventoryMenu = itemInventoryScene.Instantiate<ItemInventoryMenu>();
 		
 		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 	}
@@ -41,7 +49,7 @@ public partial class UserInterface : Control
 
 		// Calculate camera movement based on mouse position
 		Vector2 cameraMovement = new Vector2();
-		if(_isPauseMenuVisible == false && _isInventoryVisible == false){
+		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false){
 			if (mousePosition[0] < threshold)
 			{
 				cameraMovement[0] -= 1;
@@ -101,7 +109,7 @@ public partial class UserInterface : Control
 			ToggleInventoryMenu();
 		}
 		
-		if(_isPauseMenuVisible == false && _isInventoryVisible == false)
+		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false)
 		{
 			if (@event is InputEventMouse eventMouse)
 			{
@@ -153,9 +161,9 @@ public partial class UserInterface : Control
 	private void _on_menu_interface_button_pressed()
 	{
 		TogglePauseMenu();
-		if (_isInventoryVisible)
+		if (_isInventoryMenuVisible)
 		{
-			_isInventoryVisible = false;
+			_isInventoryMenuVisible = false;
 			if (inventoryMenu.GetParent() != null)
 			{
 				GetTree().Root.RemoveChild(inventoryMenu);
@@ -176,7 +184,7 @@ public partial class UserInterface : Control
 		}
 	}
 
-	private void TogglePauseMenu()
+	public void TogglePauseMenu()
 	{
 		if (!_isPauseMenuVisible)
 		{
@@ -198,11 +206,11 @@ public partial class UserInterface : Control
 		}
 	}
 	
-	private void ToggleInventoryMenu()
+	public void ToggleInventoryMenu()
 	{
-		if (!_isInventoryVisible)
+		if (!_isInventoryMenuVisible)
 		{
-			_isInventoryVisible = true;
+			_isInventoryMenuVisible = true;
 			if (inventoryMenu.GetParent() == null)
 			{
 				GetTree().Root.AddChild(inventoryMenu);
@@ -214,10 +222,54 @@ public partial class UserInterface : Control
 		}
 		else
 		{
-			_isInventoryVisible = false;
+			_isInventoryMenuVisible = false;
 			if (inventoryMenu.GetParent() != null)
 			{
 				GetTree().Root.RemoveChild(inventoryMenu);
+			}
+		}
+	}
+	
+	public void ToggleItemInventoryMenu()
+	{
+		if (!_isItemInventoryMenuVisible)
+		{
+			_isItemInventoryMenuVisible = true;
+			if (itemInventoryMenu.GetParent() == null)
+			{
+				GetTree().Root.AddChild(itemInventoryMenu);
+			}
+			itemInventoryMenu.Position = new Vector2(Position[0], Position[1]);
+			itemInventoryMenu.Show();
+		}
+		else
+		{
+			_isItemInventoryMenuVisible = false;
+			if (itemInventoryMenu.GetParent() != null)
+			{
+				GetTree().Root.RemoveChild(itemInventoryMenu);
+			}
+		}
+	}
+	
+	public void ToggleDialogueMenu()
+	{
+		if (!_isDialogueMenuVisible)
+		{
+			_isDialogueMenuVisible = true;
+			if (dialogueMenu.GetParent() == null)
+			{
+				GetTree().Root.AddChild(dialogueMenu);
+			}
+			dialogueMenu.Position = new Vector2(Position[0], Position[1]);
+			dialogueMenu.Show();
+		}
+		else
+		{
+			_isDialogueMenuVisible = false;
+			if (dialogueMenu.GetParent() != null)
+			{
+				GetTree().Root.RemoveChild(dialogueMenu);
 			}
 		}
 	}
@@ -230,7 +282,19 @@ public partial class UserInterface : Control
 	
 	public bool IsInventoryVisible
 	{
-		get { return _isInventoryVisible; }
-		set { _isInventoryVisible = value; }
+		get { return _isInventoryMenuVisible; }
+		set { _isInventoryMenuVisible = value; }
+	}
+	
+	public bool IsItemInventoryVisible
+	{
+		get { return _isItemInventoryMenuVisible; }
+		set { _isItemInventoryMenuVisible = value; }
+	}
+	
+	public bool IsDialogueVisible
+	{
+		get { return _isDialogueMenuVisible; }
+		set { _isDialogueMenuVisible = value; }
 	}
 }

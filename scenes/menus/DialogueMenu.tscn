@@ -1,15 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://djw4ffq2ipg1"]
 
-[ext_resource type="Script" path="res://scripts/menus/DialogueMenu.cs" id="1_bi1ks"]
+[ext_resource type="Script" path="res://scripts/menus/DialogueMenu.cs" id="1_87g7m"]
 
 [node name="DialogueMenu" type="Control"]
+z_index = 7
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bi1ks")
+script = ExtResource("1_87g7m")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(100, 200)
@@ -37,7 +38,9 @@ z_index = 7
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="BackDialogueMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back
 "
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BackDialogueMenuButton" to="." method="_on_back_dialogue_menu_button_pressed"]
