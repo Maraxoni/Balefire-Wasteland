@@ -36,7 +36,7 @@ public partial class CharacterCreationMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_creationCharacterData = GetNode<CharacterData>("/root/CharacterData");
+		_creationCharacterData = GetNode<CharacterData>("/root/GlobalCharacterData");
 		
 		NodePath Path = GetPath();
 		GD.Print("Path of CharacterCreation:", Path.ToString());

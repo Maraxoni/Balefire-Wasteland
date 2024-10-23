@@ -1,89 +1,104 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-public partial class DialogueManager : Control
+public partial class DialogueManager : Node
 {
-	[Export]
-	private Label dialogueLabel;
-
-	[Export]
-	private VBoxContainer choiceContainer;
-
-	private Dialogue currentDialogue;
-	private Dictionary<string, bool> dialogueStates;
+	private Dictionary<string, DialogueCharacter> allCharacterDialogues = new Dictionary<string, DialogueCharacter>();
 
 	public override void _Ready()
 	{
-		dialogueStates = new Dictionary<string, bool>
-		{
-			{ "talked_to_npc", false },
-			{ "item_acquired", false }
-		};
-		StartDialogue();
+		GD.Print($"Dialogues initialized.");
+		LoadDialogueFromFile("assets/dialogues/dialogues.json");
 	}
 
-	private void StartDialogue()
+	// Load dialogue from a JSON file
+	private void LoadDialogueFromFile(string filePath)
 	{
-		var secondDialogue = new Dialogue("What would you like to do next?");
-		secondDialogue.Choices.Add(new DialogueChoice("Go left", null));
-		secondDialogue.Choices.Add(new DialogueChoice("Go right", null));
-
-		var firstDialogue = new Dialogue("Hello! What do you want to do?");
-		firstDialogue.Choices.Add(new DialogueChoice("Talk", secondDialogue, !dialogueStates["talked_to_npc"]));
-		firstDialogue.Choices.Add(new DialogueChoice("Leave", null));
-		firstDialogue.Choices.Add(new DialogueChoice("Ask about the item", null, dialogueStates["item_acquired"]));
-
-		currentDialogue = firstDialogue;
-
-		DisplayDialogue(currentDialogue);
-	}
-
-	private void DisplayDialogue(Dialogue dialogue)
-	{
-		dialogueLabel.Text = dialogue.Text;
-
-		// Remove each child manually
-		foreach (Node child in choiceContainer.GetChildren())
+		GD.Print("Dialogues loading...");
+		try
 		{
-			child.QueueFree();
+			//// Ensure the file exists before reading
+			//if (!File.Exists(filePath))
+			//{
+				//GD.PrintErr($"File not found: {filePath}");
+				//return;
+			//}
+			// Read the JSON file as text
+			string jsonText = File.ReadAllText(filePath);
+			// Deserialize the JSON data into Dictionary<string, DialogueCharacter>
+			allCharacterDialogues = JsonSerializer.Deserialize<Dictionary<string, DialogueCharacter>>(jsonText);
+			GD.Print("Dialogues loaded successfully.");
 		}
-
-		foreach (var choice in dialogue.Choices)
+		catch (JsonException jsonEx)
 		{
-			if (choice.IsAvailable) // Only add available choices
+			GD.PrintErr($"Failed to deserialize dialogues: {jsonEx.Message}");
+		}
+		catch (IOException ioEx)
+		{
+			GD.PrintErr($"I/O error while loading dialogues: {ioEx.Message}");
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"Failed to load dialogues: {ex.Message}");
+		}
+	}
+
+	// Get dialogue for a specific character and key
+	public Dialogue GetDialogue(string character, string key)
+	{
+		if (allCharacterDialogues.ContainsKey(character))
+		{
+			DialogueCharacter dialogueCharacter = allCharacterDialogues[character];
+			if (dialogueCharacter.Dialogues.ContainsKey(key))
 			{
-				var button = new Button { Text = choice.ChoiceText };
-				button.Pressed += () => OnChoiceSelected(choice);
-				choiceContainer.AddChild(button);
+				return dialogueCharacter.Dialogues[key];
 			}
-		}
-	}
-
-	private void OnChoiceSelected(DialogueChoice choice)
-	{
-		// Update the states based on choices made
-		if (choice.ChoiceText == "Talk")
-		{
-			dialogueStates["talked_to_npc"] = true;
-		}
-		else if (choice.ChoiceText == "Ask about the item")
-		{
-			// Assume some logic to show item info, etc.
-			GD.Print("The item was acquired!");
-			dialogueStates["item_acquired"] = true;
-		}
-
-		if (choice.NextDialogue != null)
-		{
-			currentDialogue = choice.NextDialogue;
-			DisplayDialogue(currentDialogue);
+			else
+			{
+				GD.PrintErr($"Dialogue key '{key}' not found for character '{character}'.");
+			}
 		}
 		else
 		{
-			// Handle the end of the dialogue or exit logic
-			GD.Print("Dialogue ended.");
-			Hide();
+			GD.PrintErr($"Character '{character}' not found.");
+		}
+
+		return null;
+	}
+
+	// Print all loaded dialogues to the console
+	public void PrintAllDialogues()
+	{
+		foreach (var character in allCharacterDialogues)
+		{
+			GD.Print($"Character: {character.Key}");
+			foreach (var dialogue in character.Value.Dialogues)
+			{
+				GD.Print($"  Dialogue Key: {dialogue.Key}");
+				GD.Print($"    Text: {dialogue.Value.Text}");
+
+				if (dialogue.Value.Choices != null)
+				{
+					GD.Print("    Choices:");
+					foreach (var choice in dialogue.Value.Choices)
+					{
+						GD.Print($"      {choice.Key}: {choice.Value.Text} -> Next: {choice.Value.Next}");
+					}
+				}
+
+				if (dialogue.Value.Conditions != null)
+				{
+					GD.Print("    Conditions:");
+					foreach (var condition in dialogue.Value.Conditions)
+					{
+						GD.Print($"      {condition.Key}: {condition.Value.Text}");
+					}
+				}
+			}
 		}
 	}
 }

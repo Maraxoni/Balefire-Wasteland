@@ -1,13 +1,17 @@
+using Godot;
+using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class Dialogue
 {
+	[JsonPropertyName("text")]
 	public string Text { get; set; }
-	public List<DialogueChoice> Choices { get; set; }
 
-	public Dialogue(string text)
-	{
-		Text = text;
-		Choices = new List<DialogueChoice>();
-	}
+	[JsonPropertyName("choices")]
+	public Dictionary<string, DialogueChoice> Choices { get; set; }
+	
+	[JsonPropertyName("conditions")]
+	public Dictionary<string, DialogueChoice> Conditions { get; set; }
 }

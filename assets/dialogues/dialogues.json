@@ -1,0 +1,44 @@
+{
+  "vaultmember": {
+	"dialogues": {
+	  "greeting": {
+		"text": "Hello there!",
+		"choices": {
+		  "ask_name": {
+			"text": "What's your name?",
+			"next": "name_response"
+		  },
+		  "ask_job": {
+			"text": "What do you do?",
+			"next": "job_response"
+		  }
+		}
+	  },
+	  "name_response": {
+		"text": "My name is John.",
+		"choices": {}
+	  },
+	  "job_response": {
+		"text": "I am a blacksmith.",
+		"choices": {}
+	  }
+	}
+  },
+  "ghoul": {
+	"dialogues": {
+	  "greeting": {
+		"text": "Hi, nice to meet you!",
+		"choices": {
+		  "ask_weather": {
+			"text": "How's the weather?",
+			"next": "weather_response"
+		  }
+		}
+	  },
+	  "weather_response": {
+		"text": "It's sunny today.",
+		"choices": {}
+	  }
+	}
+  }
+}

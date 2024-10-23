@@ -83,9 +83,4 @@ public partial class ChestBody : StaticBody2D
 		}
 	}
 
-	// Optional: Method to manage inventory (you may implement this according to your game's logic)
-	private void ManageInventory()
-	{
-		// Implement inventory management logic here
-	}
 }

@@ -4,22 +4,13 @@ using System.Collections.Generic;
 public partial class NonPlayerCharacter : CharacterBase
 {
 	// Load the DialogueBox scene
-	public PackedScene DialogueBoxScene = GD.Load<PackedScene>("res://scenes/menus/DialogueMenu.tscn");
-	private Control dialogueBoxInstance;
-
-	// Example choices
-	private List<string> dialogueChoices = new List<string>
-	{
-		"Ask about the quest",
-		"Say goodbye"
-	};
-
-	private bool _isDialogueVisible; // Track dialogue visibility
-
-	// Called when the node enters the scene tree for the first time.
+	private PackedScene _dialogueMenuScene = GD.Load<PackedScene>("res://scenes/menus/DialogueMenu.tscn");
+	private DialogueMenu _dialogueMenuInstance; // Instance of the inventory menu
+	
+	private bool _isDialogueMenuVisible;
+	
 	public override void _Ready()
 	{
-		// Enable input processing to handle clicks
 		SetProcessInput(true);
 	}
 
@@ -37,7 +28,7 @@ public partial class NonPlayerCharacter : CharacterBase
 				// Check if the click happened on this object
 				if (IsMouseOver(mousePosition))
 				{
-					ToggleDialogueMenu(); // Show or hide the dialogue menu
+					ToggleItemInventoryMenu(); // Open the inventory menu
 				}
 			}
 		}
@@ -46,11 +37,14 @@ public partial class NonPlayerCharacter : CharacterBase
 	// Check if the mouse position is over this object
 	private bool IsMouseOver(Vector2 mousePosition)
 	{
-		var collisionShape = GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
+		// Use the CollisionShape2D to check if the mouse is over this object
+		var collisionShape = GetNodeOrNull<CollisionShape2D>("CollisionShape2D"); // Ensure this path is correct
 		if (collisionShape != null)
 		{
-			if (collisionShape.Shape is RectangleShape2D rectangleShape)
+			// Get the shape and calculate the local rectangle based on the collision shape's global position and size
+			if (collisionShape.Shape is RectangleShape2D rectangleShape) // Assuming a rectangle shape; adjust if needed
 			{
+				// Calculate the rectangle for the collision shape
 				Rect2 rect = new Rect2(GlobalPosition - rectangleShape.Size / 2, rectangleShape.Size);
 				return rect.HasPoint(mousePosition);
 			}
@@ -58,78 +52,33 @@ public partial class NonPlayerCharacter : CharacterBase
 		return false;
 	}
 
-	// Method to toggle the dialogue menu
-	private void ToggleDialogueMenu()
+	// Method to open the ItemInventoryMenu
+	private void ToggleItemInventoryMenu()
 	{
-		if (!_isDialogueVisible)
+		if (!_isDialogueMenuVisible)
 		{
-			// If the dialogue menu is not visible, show it
-			_isDialogueVisible = true;
-			if (dialogueBoxInstance == null)
+			// If the inventory menu is not visible, show it
+			_isDialogueMenuVisible = true;
+			if (_dialogueMenuInstance == null)
 			{
-				// Create a new instance of the dialogue menu
-				dialogueBoxInstance = DialogueBoxScene.Instantiate<Control>();
-				GetTree().Root.AddChild(dialogueBoxInstance); // Add to the root viewport
-
-				
-
-				// Set up dialogue text in the dialogue box
-				Label label = dialogueBoxInstance.GetNode<Label>("Label");
-				label.Text = "Hello, I am an NPC! What would you like to do?";
-
-				// Show choices
-				ShowChoices(dialogueBoxInstance);
+				// Create a new instance of the inventory menu
+				_dialogueMenuInstance = _dialogueMenuScene.Instantiate<DialogueMenu>();
+				GetTree().Root.AddChild(_dialogueMenuInstance); // Add to the root viewport
+				_dialogueMenuInstance.Position = GlobalPosition; // Set position relative to global position
+				_dialogueMenuInstance.Show(); // Show the menu
 			}
 		}
 		else
 		{
-			// If the dialogue menu is already visible, toggle it off
-			_isDialogueVisible = false;
-			if (dialogueBoxInstance != null)
+			// If the inventory menu is already visible, toggle it off
+			_isDialogueMenuVisible = false;
+			if (_dialogueMenuInstance != null)
 			{
-				dialogueBoxInstance.QueueFree(); // Remove the dialogue menu
-				dialogueBoxInstance = null; // Reset the instance
+				_dialogueMenuInstance.QueueFree(); // Remove the inventory menu
+				_dialogueMenuInstance = null; // Reset the instance
 			}
 		}
 	}
 
-	private void ShowChoices(Control dialogueBox)
-	{
-		VBoxContainer choicesContainer = dialogueBox.GetNode<VBoxContainer>("ChoicesContainer");
-
-		// Clear existing buttons (in case ShowChoices is called multiple times)
-		foreach (Node child in choicesContainer.GetChildren())
-		{
-			child.QueueFree(); // Free each child node
-		}
-
-		foreach (var choiceText in dialogueChoices)
-		{
-			// Create a new button for each choice
-			Button choiceButton = new Button();
-			choiceButton.Text = choiceText;
-
-			// Connect the button's pressed signal to the OnChoiceSelected method
-			//choiceButton.Connect("pressed", this, nameof(OnChoiceSelected), new Godot.Collections.Array { choiceText });
-
-			choicesContainer.AddChild(choiceButton); // Add button to the container
-		}
-	}
-
-	private void OnChoiceSelected(string choiceText)
-	{
-		// Handle the choice based on the button text
-		if (choiceText == "Ask about the quest")
-		{
-			GD.Print("You asked about the quest!");
-			// Optionally, provide more dialogue or trigger a quest
-		}
-		else if (choiceText == "Say goodbye")
-		{
-			GD.Print("Goodbye!");
-		}
-
-		// Remove the dialogue box after choice is made
-		ToggleDialogueMenu(); // This will close the dialogue menu
-	}
+	
 }

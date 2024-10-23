@@ -1,15 +1,17 @@
+using Godot;
+using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class DialogueChoice
-{
-	public string ChoiceText { get; set; }
-	public Dialogue NextDialogue { get; set; }
-	public bool IsAvailable { get; set; } // This will determine if a choice is available
+{	
+	[JsonPropertyName("text")]
+	public string Text { get; set; }
 
-	public DialogueChoice(string choiceText, Dialogue nextDialogue, bool isAvailable = true)
-	{
-		ChoiceText = choiceText;
-		NextDialogue = nextDialogue;
-		IsAvailable = isAvailable;
-	}
+	[JsonPropertyName("next")]
+	public string Next { get; set; }
+	
+	[JsonPropertyName("conditions")]
+	public Dictionary<string, DialogueChoice> Conditions { get; set; }
 }

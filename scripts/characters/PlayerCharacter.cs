@@ -31,8 +31,8 @@ public partial class PlayerCharacter : CharacterBase
 	{
 		NodePath Path = GetPath();
 		GD.Print("Path of PlayerCharacter:", Path.ToString());
-		
-		_characterData = GetNode<CharacterData>("/root/CharacterData");
+			
+		_characterData = GetNode<CharacterData>("/root/GlobalCharacterData");
 		
 		_character_position = Position; // Set initial character position
 		
