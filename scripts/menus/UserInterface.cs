@@ -49,7 +49,7 @@ public partial class UserInterface : Control
 
 		// Calculate camera movement based on mouse position
 		Vector2 cameraMovement = new Vector2();
-		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false){
+		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false && _isItemInventoryMenuVisible == false && _isDialogueMenuVisible == false){
 			if (mousePosition[0] < threshold)
 			{
 				cameraMovement[0] -= 1;
@@ -252,7 +252,7 @@ public partial class UserInterface : Control
 		}
 	}
 	
-	public void ToggleDialogueMenu()
+	public void ToggleDialogueMenu(string characterName, string startingKey)
 	{
 		if (!_isDialogueMenuVisible)
 		{
@@ -262,6 +262,7 @@ public partial class UserInterface : Control
 				GetTree().Root.AddChild(dialogueMenu);
 			}
 			dialogueMenu.Position = new Vector2(Position[0], Position[1]);
+			dialogueMenu.StartDialogue(characterName, startingKey);
 			dialogueMenu.Show();
 		}
 		else

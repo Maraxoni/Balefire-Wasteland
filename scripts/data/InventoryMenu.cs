@@ -22,7 +22,7 @@ public partial class InventoryMenu : Control
 	public override void _Ready()
 	{
 		_userInterface = GetNode<UserInterface>("/root/UserInterface");
-		_characterData = GetNode<CharacterData>("/root/CharacterData");
+		_characterData = GetNode<CharacterData>("/root/GlobalCharacterData");
 		
 		_itemList = GetNode<ItemList>("PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/ItemList");
 		_strengthLabel = GetNode<Label>("PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/PauseMenuButtonContainer/Label3");

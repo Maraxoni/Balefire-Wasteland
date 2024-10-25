@@ -17,7 +17,7 @@ public partial class NonPlayerCharacter : CharacterBase
 			if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed && _isHovered)
 			{
 				// Call the dialogue menu in UserInterface
-				GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu();
+				GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu("vaultmember", "start");
 			}
 		}
 	}

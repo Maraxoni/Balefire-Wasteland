@@ -5,6 +5,8 @@ using Godot.Collections;
 public partial class CharacterBase : CharacterBody2D
 {
 	[Export]
+	public string Name { get; set; } = "CharacterNameHere";
+	[Export]
 	public int Speed { get; set; } = 200;
 	[Export]
 	public int Health { get; set; } = 200;
