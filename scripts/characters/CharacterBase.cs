@@ -7,11 +7,11 @@ public partial class CharacterBase : CharacterBody2D
 	[Export]
 	public string Name { get; set; } = "CharacterNameHere";
 	[Export]
-	public int Speed { get; set; } = 200;
+	public int Health { get; set; } = 100;
 	[Export]
-	public int Health { get; set; } = 200;
+	public int ActionPoints { get; set; } = 100;
 	[Export]
-	public int ActionPoints { get; set; } = 200;
+	public int Speed { get; set; } = 100;
 	
 	protected Vector2 _character_position;
 	protected CharacterData _characterData;

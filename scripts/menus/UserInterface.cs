@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using GameProject;
 
 public partial class UserInterface : Control
 {
@@ -15,10 +16,13 @@ public partial class UserInterface : Control
 	private float _cameraSpeed = 400.0f;
 	private float _scrollSpeed = 20.0f;
 	private float _scaleChange = 0.05f;
-	
+	//Bars
+	private ProgressBar _healthProgressBar;
+	private ProgressBar _actionProgressBar;
+	private ProgressBar _experienceProgressBar;
 	// Map boundaries
 	private Vector2 _mapMinBounds = new Vector2(0, 0); // Minimum X and Y of the map
-	private Vector2 _mapMaxBounds = new Vector2(1000, 1000); // Maximum X and Y of the map
+	private Vector2 _mapMaxBounds = new Vector2(129, 897); // Maximum X and Y of the map
 	
 	public override void _Ready()
 	{
@@ -32,12 +36,17 @@ public partial class UserInterface : Control
 		var itemInventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/ItemInventoryMenu.tscn");
 		itemInventoryMenu = itemInventoryScene.Instantiate<ItemInventoryMenu>();
 		
+		_healthProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer/HealthProgressBar");
+		_actionProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer/ActionProgressBar");
+		_experienceProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
+		
 		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		UpdateProgressBars();
 		// Get mouse position
 		Vector2 mousePosition = GetLocalMousePosition();
 
@@ -183,7 +192,20 @@ public partial class UserInterface : Control
 			}
 		}
 	}
-
+	
+	public void UpdateProgressBars(){
+		CharacterData _characterData = GetNode<CharacterData>("/root/GlobalCharacterData");
+		_healthProgressBar.MinValue = 0;
+		_healthProgressBar.MaxValue = 100;
+		_actionProgressBar.MinValue = 0;
+		_actionProgressBar.MaxValue = 100;
+		_experienceProgressBar.MinValue = 0;
+		_experienceProgressBar.MaxValue = 100;
+		_healthProgressBar.Value = _characterData.HealthPoints;
+		_actionProgressBar.Value = _characterData.ActionPoints;
+		_experienceProgressBar.Value = _characterData.ExperiencePoints;
+	}
+	
 	public void TogglePauseMenu()
 	{
 		if (!_isPauseMenuVisible)
@@ -205,7 +227,7 @@ public partial class UserInterface : Control
 			}
 		}
 	}
-	
+
 	public void ToggleInventoryMenu()
 	{
 		if (!_isInventoryMenuVisible)
@@ -230,11 +252,12 @@ public partial class UserInterface : Control
 		}
 	}
 	
-	public void ToggleItemInventoryMenu()
+	public void ToggleItemInventoryMenu(Inventory _currentInventory)
 	{
 		if (!_isItemInventoryMenuVisible)
 		{
 			_isItemInventoryMenuVisible = true;
+			itemInventoryMenu.CurrentInventory = _currentInventory;
 			if (itemInventoryMenu.GetParent() == null)
 			{
 				GetTree().Root.AddChild(itemInventoryMenu);
@@ -281,19 +304,19 @@ public partial class UserInterface : Control
 		set { _isPauseMenuVisible = value; }
 	}
 	
-	public bool IsInventoryVisible
+	public bool IsInventoryMenuVisible
 	{
 		get { return _isInventoryMenuVisible; }
 		set { _isInventoryMenuVisible = value; }
 	}
 	
-	public bool IsItemInventoryVisible
+	public bool IsItemInventoryMenuVisible
 	{
 		get { return _isItemInventoryMenuVisible; }
 		set { _isItemInventoryMenuVisible = value; }
 	}
 	
-	public bool IsDialogueVisible
+	public bool IsDialogueMenuVisible
 	{
 		get { return _isDialogueMenuVisible; }
 		set { _isDialogueMenuVisible = value; }

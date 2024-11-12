@@ -10,7 +10,7 @@ public partial class BanditEnemy : EnemyCharacter
 	{
 		base._Ready();
 		GD.Print("Melee enemy ready.");
-		Speed = 150; // Specific speed for melee enemies
+		Speed = 50; // Specific speed for melee enemies
 	}
 
 	protected override void AttackPlayer()
@@ -22,7 +22,7 @@ public partial class BanditEnemy : EnemyCharacter
 			if (player != null)
 			{
 				// Implement melee attack logic, like reducing player health
-				player.Health -= MeleeDamage;
+				player.TakeDamage(MeleeDamage); // Player takes damage
 			}
 		}
 	}

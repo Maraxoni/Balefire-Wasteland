@@ -4,6 +4,14 @@ using GameProject;
 
 public partial class CharacterData : Node
 {
+	private int _healthPoints = 100;
+	private int _actionPoints = 100;
+	private int _currentLevel = 1;
+	private int _experiencePoints = 0;
+	
+	private Weapon _equippedWeapon;
+	private Armor _equippedArmor;
+	
 	private Inventory _playerInventory = new Inventory();
 	private Stats _playerStats = new Stats();
 	
@@ -25,6 +33,18 @@ public partial class CharacterData : Node
 		
 	}
 	
+	public Weapon EquippedWeapon
+	{
+		get { return _equippedWeapon; }
+		set { _equippedWeapon = value; }
+	}
+	
+	public Armor EquippedArmor
+	{
+		get { return _equippedArmor; }
+		set { _equippedArmor = value; }
+	}
+	
 	public Inventory PlayerInventory
 	{
 		get { return _playerInventory; }
@@ -35,4 +55,27 @@ public partial class CharacterData : Node
 		get { return _playerStats; }
 	}
 	
+	public int HealthPoints 
+	{
+		get { return _healthPoints; }
+		set { _healthPoints = value; }
+	}
+	
+	public int ActionPoints 
+	{
+		get { return _actionPoints; }
+		set { _actionPoints = value; }
+	}
+	
+	public int CurrentLevel 
+	{
+		get { return _currentLevel; }
+		set { _currentLevel = value; }
+	}
+	
+	public int ExperiencePoints 
+	{
+		get { return _experiencePoints; }
+		set { _experiencePoints = value; }
+	}
 }

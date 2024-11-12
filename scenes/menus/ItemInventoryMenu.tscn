@@ -34,18 +34,25 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
-[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/MarginContainer2/PanelContainer2"]
+[node name="ItemInventoryItemList" type="ItemList" parent="PanelContainer/VBoxContainer/MarginContainer2/PanelContainer2"]
 layout_mode = 2
 max_text_lines = 10
-item_count = 3
-item_0/text = "Asd"
-item_1/text = "Asd"
-item_2/text = "Asd"
+item_count = 1
+item_0/text = "Item Inventory Error"
 
-[node name="BackItemInventoryMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="TakeAllMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Take All"
+
+[node name="BackItemInventoryMenuButton2" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BackItemInventoryMenuButton" to="." method="_on_back_item_inventory_menu_button_pressed"]
+[connection signal="item_activated" from="PanelContainer/VBoxContainer/MarginContainer2/PanelContainer2/ItemInventoryItemList" to="." method="_on_item_inventory_item_list_item_activated"]
+[connection signal="item_clicked" from="PanelContainer/VBoxContainer/MarginContainer2/PanelContainer2/ItemInventoryItemList" to="." method="_on_item_inventory_item_list_item_clicked"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TakeAllMenuButton" to="." method="_on_take_all_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BackItemInventoryMenuButton2" to="." method="_on_back_item_inventory_menu_button_pressed"]

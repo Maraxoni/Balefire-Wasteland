@@ -4,6 +4,9 @@ using System;
 public abstract partial class EnemyCharacter : CharacterBase
 {
 	[Export]
+	public int Health { get; set; } = 100; // Enemy's initial health
+
+	[Export]
 	public int AttackDamage { get; set; } = 10;
 
 	[Export]
@@ -13,10 +16,10 @@ public abstract partial class EnemyCharacter : CharacterBase
 	public float DetectionRange { get; set; } = 300f;
 
 	[Export]
-	public float StopChaseRange { get; set; } = 400f; // When to stop chasing and return to patrol
+	public float StopChaseRange { get; set; } = 400f;
 
 	[Export]
-	public float MoveSpeed { get; set; } = 100f; // Movement speed of the enemy
+	public float MoveSpeed { get; set; } = 100f;
 
 	private enum EnemyState
 	{
@@ -26,7 +29,6 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	private EnemyState _currentState = EnemyState.Patrolling;
 
-	// Common logic for all enemies, like patrolling, can be inherited
 	public override void _Ready()
 	{
 		GD.Print("Enemy ready with common setup.");
@@ -34,14 +36,19 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Health <= 0)
+		{
+			HandleDeath();
+			return;
+		}
+
 		var player = GetPlayer();
 
 		switch (_currentState)
 		{
 			case EnemyState.Patrolling:
-				Patrol(delta); // Patrol behavior inherited from CharacterBase
+				Patrol(delta);
 
-				// Transition to Chasing if player is within detection range
 				if (player != null && Position.DistanceTo(player.Position) < DetectionRange)
 				{
 					_currentState = EnemyState.Chasing;
@@ -51,13 +58,11 @@ public abstract partial class EnemyCharacter : CharacterBase
 			case EnemyState.Chasing:
 				FollowPlayer(player, delta);
 
-				// Return to patrolling if player is too far
 				if (player == null || Position.DistanceTo(player.Position) > StopChaseRange)
 				{
 					_currentState = EnemyState.Patrolling;
 				}
 
-				// If within attack range, attack the player
 				if (IsPlayerInAttackRange(player))
 				{
 					AttackPlayer();
@@ -66,27 +71,37 @@ public abstract partial class EnemyCharacter : CharacterBase
 		}
 	}
 
-	// Follow the player when in chase state
 	private void FollowPlayer(PlayerCharacter player, double delta)
 	{
 		if (player != null)
 		{
-			// Calculate direction towards the player
 			Vector2 direction = (player.Position - Position).Normalized();
 			Position += direction * (float)(MoveSpeed * delta);
 		}
 	}
 
-	// Check if the player is within attack range
 	protected virtual bool IsPlayerInAttackRange(PlayerCharacter player)
 	{
 		return player != null && Position.DistanceTo(player.Position) < AttackRange;
 	}
 
-	// Abstract attack method to be implemented by specific enemy types
 	protected abstract void AttackPlayer();
+	
+	public void TakeDamage(int damage)
+	{
+		Health = Health - damage;
+		if(Health < 0){
+			HandleDeath();
+		}
+	}
 
-	// Helper function to find the player
+	protected void HandleDeath()
+	{
+		// Handle the enemy's death here, for example:
+		GD.Print("Enemy has died.");
+		QueueFree(); // Remove the enemy from the scene, or trigger some death animation.
+	}
+
 	protected PlayerCharacter GetPlayer()
 	{
 		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");

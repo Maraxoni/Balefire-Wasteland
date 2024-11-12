@@ -50,7 +50,22 @@ public partial class InventoryMenu : Control
 		_itemList.Clear(); // Clear existing items from the item list
 		foreach (var item in inventory.GetItems())
 		{
-			_itemList.AddItem(item.Name); // Add each item to the item list
+			if(item is Weapon weapon){
+				if(weapon.IsEquipped == true){
+					_itemList.AddItem(item.Name + " - Equipped");
+				} else{
+					_itemList.AddItem(item.Name);
+				}
+			} else
+			if(item is Armor armor){
+				if(armor.IsEquipped == true){
+					_itemList.AddItem(item.Name + " - Equipped");
+				} else{
+					_itemList.AddItem(item.Name);
+				}
+			} else{
+				_itemList.AddItem(item.Name);
+			}
 		}
 	}
 
@@ -80,6 +95,11 @@ public partial class InventoryMenu : Control
 	
 	private void _on_item_list_item_clicked(long index, Vector2 at_position, long mouse_button_index)
 	{
+
+	}
+	
+	private void _on_item_list_item_activated(long index)
+	{
 		var inventory = _characterData.PlayerInventory;
 		if (inventory == null)
 		{
@@ -87,7 +107,23 @@ public partial class InventoryMenu : Control
 			return;
 		}
 		var item = inventory.GetItems()[(int)index];
-		inventory.RemoveItem(item);
+		
+		if(item is Weapon weapon){
+			if (_characterData.EquippedWeapon != null)
+			{
+				_characterData.EquippedWeapon.IsEquipped = false;
+			}
+			_characterData.EquippedWeapon = weapon;
+			_characterData.EquippedWeapon.IsEquipped = true;
+		} else if (item is Armor armor){
+			if (_characterData.EquippedArmor != null)
+			{
+				_characterData.EquippedArmor.IsEquipped = false;
+			}
+			_characterData.EquippedArmor = armor;
+			_characterData.EquippedArmor.IsEquipped = true;
+		}
+		
 		Refresh();
 	}
 	
@@ -95,7 +131,7 @@ public partial class InventoryMenu : Control
 	{
 		Node parent = GetParent();
 		parent.RemoveChild(this);
-		_userInterface.IsInventoryVisible = false;
+		_userInterface.IsInventoryMenuVisible = false;
 	}
 
 }

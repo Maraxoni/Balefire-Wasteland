@@ -78,6 +78,6 @@ public partial class DialogueMenu : Control
 	{
 		Node parent = GetParent();
 		parent.RemoveChild(this);
-		_userInterface.IsDialogueVisible = false;
+		_userInterface.IsDialogueMenuVisible = false;
 	}
 }

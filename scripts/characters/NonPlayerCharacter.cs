@@ -21,12 +21,25 @@ public partial class NonPlayerCharacter : CharacterBase
 			}
 		}
 	}
+	
+	public override void _Draw(){
+		Color blue = Colors.LightBlue;
+		Color transparent = new Color("0000008f");
+		
+		if(_isHovered){
+			DrawCircle(new Vector2(0, 10.0f), 25.0f, blue);
+			DrawCircle(new Vector2(0, 10.0f), 20.0f, transparent);
+		}
+	}
+	
 	private void _on_area_2d_mouse_entered(){
 		_isHovered = true;
+		QueueRedraw();
 	}
 
 	private void _on_area_2d_mouse_exited(){
 		_isHovered = false;
+		QueueRedraw();
 	}
 	
 }

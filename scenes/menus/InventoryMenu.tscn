@@ -140,10 +140,8 @@ layout_mode = 2
 [node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2"]
 layout_mode = 2
 max_text_lines = 10
-item_count = 3
-item_0/text = "Asd"
-item_1/text = "Asd"
-item_2/text = "Asd"
+item_count = 1
+item_0/text = "Inventory Error"
 
 [node name="BackInventoryMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -152,5 +150,6 @@ size_flags_vertical = 8
 text = "Back
 "
 
+[connection signal="item_activated" from="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/ItemList" to="." method="_on_item_list_item_activated"]
 [connection signal="item_clicked" from="PanelContainer/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer2/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BackInventoryMenuButton" to="." method="_on_back_inventory_menu_button_pressed"]

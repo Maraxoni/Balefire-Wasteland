@@ -156,3 +156,4 @@ one_way_collision_margin = 0.0
 sprite_frames = SubResource("SpriteFrames_4y1mq")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
