@@ -147,11 +147,11 @@ public partial class PlayerCharacter : CharacterBase
 	}
 	
 	private void PlayerAttack(){
-		if (_characterData.EquippedWeapon.IsRanged == true)
+		if (_characterData.EquippedWeapon != null && _characterData.EquippedWeapon.IsRanged == true)
 		{
 			SpawnBullet();
 		} else
-		if (_characterData.EquippedWeapon.IsRanged == false)
+		if (_characterData.EquippedWeapon != null && _characterData.EquippedWeapon.IsRanged == false)
 		{
 			SpawnShockwave();
 		} else

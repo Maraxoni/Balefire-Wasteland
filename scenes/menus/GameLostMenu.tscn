@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://deaeacosi88gd"]
+[gd_scene load_steps=2 format=3 uid="uid://deaeacosi88gd"]
+
+[ext_resource type="Script" path="res://scripts/menus/GameLostMenu.cs" id="1_xaojb"]
 
 [node name="GameLostMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xaojb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,6 +33,8 @@ layout_mode = 2
 text = "Game Lost!"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="GameLostReturnButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return to Main Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GameLostReturnButton" to="." method="_on_game_lost_return_button_pressed"]

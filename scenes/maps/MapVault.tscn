@@ -1423,7 +1423,7 @@ layer_1/name = "Objects"
 layer_2/name = "Air"
 
 [node name="StaticBody2D6" parent="." instance=ExtResource("4_hwgdw")]
-position = Vector2(457, 1361)
+position = Vector2(458, 1366)
 
 [node name="MapChange" parent="." instance=ExtResource("4_ofha7")]
 position = Vector2(820, 6)

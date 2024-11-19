@@ -13,7 +13,7 @@ public partial class BanditEnemy : EnemyCharacter
 		Speed = 50; // Specific speed for melee enemies
 	}
 
-	protected override void AttackPlayer()
+	protected override async void AttackPlayer()
 	{
 		if (IsPlayerInMeleeRange())
 		{

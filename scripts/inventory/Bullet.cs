@@ -28,11 +28,11 @@ public partial class Bullet : Node2D
 		if (body is EnemyCharacter)
 		{
 			(body as EnemyCharacter).TakeDamage(Damage);
-			QueueFree(); // Bullet disappears after hitting the enemy
+			QueueFree();
 		}
 		else if (body is StaticBody2D || body is TileMap) // Bullet hits a wall
 		{
-			QueueFree(); // Bullet disappears when hitting a wall or obstacle
+			QueueFree();
 		}
 	}
 }

@@ -10,7 +10,7 @@ public abstract partial class EnemyCharacter : CharacterBase
 	public int AttackDamage { get; set; } = 10;
 
 	[Export]
-	public float AttackRange { get; set; } = 100f;
+	public float AttackRange { get; set; } = 50f;
 
 	[Export]
 	public float DetectionRange { get; set; } = 300f;
@@ -24,7 +24,8 @@ public abstract partial class EnemyCharacter : CharacterBase
 	private enum EnemyState
 	{
 		Patrolling,
-		Chasing
+		Chasing,
+		Attacking
 	}
 
 	private EnemyState _currentState = EnemyState.Patrolling;
@@ -47,10 +48,12 @@ public abstract partial class EnemyCharacter : CharacterBase
 		switch (_currentState)
 		{
 			case EnemyState.Patrolling:
+				
 				Patrol(delta);
 
 				if (player != null && Position.DistanceTo(player.Position) < DetectionRange)
 				{
+					GD.Print("Ghoul state entered - Chasing.");
 					_currentState = EnemyState.Chasing;
 				}
 				break;
@@ -60,13 +63,28 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 				if (player == null || Position.DistanceTo(player.Position) > StopChaseRange)
 				{
+					GD.Print("Ghoul state entered - Patrolling.");
 					_currentState = EnemyState.Patrolling;
+				} else if(Position.DistanceTo(player.Position) < AttackRange)
+				{
+					GD.Print("Ghoul state entered - Attacking.");
+					_currentState = EnemyState.Attacking;
 				}
-
+				
+				break;
+				
+			case EnemyState.Attacking:
+				if (player != null && Position.DistanceTo(player.Position) < DetectionRange && Position.DistanceTo(player.Position) > AttackRange)
+				{
+					GD.Print("Ghoul state entered - Chasing.");
+					_currentState = EnemyState.Chasing;
+				}
+				
 				if (IsPlayerInAttackRange(player))
 				{
 					AttackPlayer();
 				}
+				
 				break;
 		}
 	}
@@ -75,8 +93,12 @@ public abstract partial class EnemyCharacter : CharacterBase
 	{
 		if (player != null)
 		{
+			// Calculate direction to the player
 			Vector2 direction = (player.Position - Position).Normalized();
-			Position += direction * (float)(MoveSpeed * delta);
+			
+			// Apply movement using MoveAndSlide
+			Velocity = direction * MoveSpeed;
+			MoveAndSlide();
 		}
 	}
 

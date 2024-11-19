@@ -1242,12 +1242,11 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 1966
 position = Vector2(493, 372)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_7ayj1")]
-position = Vector2(171, 414)
+position = Vector2(317, 614)
 
 [node name="GhoulCharacter" parent="." instance=ExtResource("7_sd61i")]
 position = Vector2(1000, 500)
 Health = 200
-AttackRange = 50.0
 DetectionRange = 100.0
 StopChaseRange = 200.0
 Health = 200
@@ -1262,5 +1261,5 @@ position = Vector2(581, 614)
 position = Vector2(824, 466)
 
 [node name="MapChange" parent="." instance=ExtResource("4_pwnk3")]
-position = Vector2(-1, 385)
+position = Vector2(1, 777)
 PathToFile = "res://scenes/maps/MapVault.tscn"
