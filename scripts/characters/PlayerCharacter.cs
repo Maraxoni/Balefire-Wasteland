@@ -32,19 +32,38 @@ public partial class PlayerCharacter : CharacterBase
 			string iconPath = _characterData.EquippedWeapon.IconPath;
 			if (!string.IsNullOrEmpty(iconPath))
 			{
-				Texture2D itemTexture = GD.Load<Texture2D>(iconPath);
-				if (itemTexture != null)
+			Texture2D texture = GD.Load<Texture2D>(iconPath);
+				 if (texture != null)
 				{
-					_mousePosition = GetGlobalMousePosition();
-					Vector2 direction = _mousePosition - GlobalPosition;
-					float angle = direction.Angle();
-					
-					// Set the rotation of the Node2D based on the calculated angle
-					//Rotation = angle; // Rotation expects a float (angle in radians)
-					
-					// Draw the icon at a specific position relative to the player
-					Vector2 iconPosition = new Vector2(0, 0); // Adjust the offset as needed
-					DrawTexture(itemTexture, iconPosition);
+					// Get or create a Sprite2D node
+				Sprite2D sprite = GetNodeOrNull<Sprite2D>("WeaponSprite");
+				if (sprite == null)
+				{
+					sprite = new Sprite2D();
+					sprite.Name = "WeaponSprite";
+					AddChild(sprite);
+				}
+
+				// Set the texture
+				sprite.Texture = texture;
+
+				// Calculate the direction from the character to the cursor
+				_mousePosition = GetGlobalMousePosition();
+				Vector2 direction = _mousePosition - GlobalPosition;
+
+				// Calculate the angle to rotate the sprite
+				float angle = direction.Angle();
+
+				// Set sprite position to rotate around the character
+				float radius = 50.0f; // Radius of the sprite orbit
+				Vector2 spritePosition = direction.Normalized() * radius;
+				sprite.Position = spritePosition;
+
+				// Rotate the sprite to face the cursor
+				sprite.Rotation = angle;
+
+				sprite.FlipH = true;
+				sprite.FlipV = direction[0] < 0;
 				}
 			}
 		}
@@ -63,7 +82,6 @@ public partial class PlayerCharacter : CharacterBase
 		
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_selectedShape = GetNode<CollisionShape2D>("CollisionShape");
-		SetInitialPosition(200, 200);
 
 		PrintInventoryContents();
 	}

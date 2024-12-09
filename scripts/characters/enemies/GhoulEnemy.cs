@@ -19,7 +19,7 @@ public partial class GhoulEnemy : EnemyCharacter
 		Speed = 50; // Specific speed for melee enemies
 		AttackRange = 60;
 	}
-
+	
 	protected override async void AttackPlayer()
 	{
 		if (IsPlayerInMeleeRange() && _isAttackOnCooldown == false)

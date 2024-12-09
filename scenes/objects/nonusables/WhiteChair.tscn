@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://boio0pqr086cd"]
+
+[ext_resource type="Texture2D" uid="uid://bsvjjtavcohb5" path="res://assets/misc/WhiteChairTexture.png" id="1_ua858"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j28p8"]
+size = Vector2(38, 32)
+
+[node name="WhiteChair" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.00003, -7.62939e-06)
+scale = Vector2(0.116608, 0.116608)
+texture = ExtResource("1_ua858")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_j28p8")

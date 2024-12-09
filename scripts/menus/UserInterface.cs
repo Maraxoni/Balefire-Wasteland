@@ -22,7 +22,7 @@ public partial class UserInterface : Control
 	private ProgressBar _experienceProgressBar;
 	// Map boundaries
 	private Vector2 _mapMinBounds = new Vector2(0, 0); // Minimum X and Y of the map
-	private Vector2 _mapMaxBounds = new Vector2(129, 897); // Maximum X and Y of the map
+	private Vector2 _mapMaxBounds = new Vector2(129, 913); // Maximum X and Y of the map
 	
 	public override void _Ready()
 	{

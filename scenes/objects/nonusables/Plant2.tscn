@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dexutqecm2vmf"]
+
+[ext_resource type="Texture2D" uid="uid://df281gupvli4d" path="res://assets/misc/Plant2Texture.png" id="1_s1mch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyx7h"]
+size = Vector2(26, 27)
+
+[node name="Plant2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.500004, -0.500002)
+scale = Vector2(0.111789, 0.100204)
+texture = ExtResource("1_s1mch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 1.5)
+shape = SubResource("RectangleShape2D_hyx7h")

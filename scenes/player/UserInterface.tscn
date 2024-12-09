@@ -62,7 +62,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 step = 1.0
-value = 65.0
+value = 5.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,7 +70,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Equiped weapon: "
+text = "Equipped weapon: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -92,7 +92,7 @@ text = "HP:"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 step = 1.0
-value = 65.0
+value = 95.0
 
 [node name="MenuInterfaceButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -114,7 +114,7 @@ text = "AP:"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 step = 1.0
-value = 65.0
+value = 5.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/MenuInterfaceButton" to="." method="_on_menu_interface_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SkillsInterfaceButton" to="." method="_on_skills_interface_button_pressed"]

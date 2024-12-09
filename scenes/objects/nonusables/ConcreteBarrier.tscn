@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://raqorneibgx7"]
+
+[ext_resource type="Texture2D" uid="uid://chwvdm13y0vt0" path="res://assets/misc/ConcreteBarrierTexture.png" id="1_d7kbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdoi"]
+size = Vector2(38, 18)
+
+[node name="ConcreteBarrier" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2.38419e-07)
+scale = Vector2(0.310078, 0.366667)
+texture = ExtResource("1_d7kbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mfdoi")

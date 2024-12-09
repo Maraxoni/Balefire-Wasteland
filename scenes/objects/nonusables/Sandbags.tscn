@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca134bwk2cfpv"]
+
+[ext_resource type="Texture2D" uid="uid://cpvbxoqdgbn5o" path="res://assets/misc/SandbagsTexture.png" id="1_sukhx"]
+
+[node name="Sandbags" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2.38419e-07)
+scale = Vector2(0.310078, 0.366667)
+texture = ExtResource("1_sukhx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-27, -18, -1, 1, 31, -12, 38, -1, -1, 15, -36, -5)

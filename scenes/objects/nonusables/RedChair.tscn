@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1tj1hgrk85b"]
+
+[ext_resource type="Texture2D" uid="uid://bjtdve6it8ew4" path="res://assets/misc/RedChairTexture.png" id="1_uibbc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdoi"]
+size = Vector2(38, 32)
+
+[node name="BlackChair" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.00003, -7.62939e-06)
+scale = Vector2(0.116608, 0.116608)
+texture = ExtResource("1_uibbc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_mfdoi")

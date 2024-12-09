@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj7m01xd7hyt8"]
+
+[ext_resource type="Texture2D" uid="uid://bu22ips6kps8f" path="res://assets/ConcreteDebrisTexture.png" id="1_6o302"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdoi"]
+size = Vector2(32, 30)
+
+[node name="ConcreteDebris" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2.38419e-07)
+scale = Vector2(0.310078, 0.366667)
+texture = ExtResource("1_6o302")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_mfdoi")

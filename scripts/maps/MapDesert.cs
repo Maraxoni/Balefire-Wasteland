@@ -3,18 +3,20 @@ using System;
 
 public partial class MapDesert : Node2D
 {
-	public Camera2D camera;
+	private Control _userInterface;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		NodePath Path = GetPath();
 		GD.Print("Path of MapDesert:", Path.ToString());
-		// Load and add the gameplay UI dynamically after the game starts
-		PackedScene gameplayUI = (PackedScene)GD.Load("res://scenes/player/UserInterface.tscn");
-		Control uiInstance = (Control)gameplayUI.Instantiate(); // Use Instantiate() instead of Instance()
-		uiInstance.Visible = true;
-		AddChild(uiInstance);
+
+		var scene = ResourceLoader.Load<PackedScene>("res://scenes/player/UserInterface.tscn").Instantiate();
+		_userInterface = (Control)scene;
+
+		GetTree().Root.CallDeferred("add_child", _userInterface);
+
+		_userInterface.Visible = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,4 +24,5 @@ public partial class MapDesert : Node2D
 	{
 		
 	}
+	
 }

@@ -23,14 +23,15 @@ public partial class Bullet : Node2D
 		// }
 	}
 
-	private void _on_Bullet_body_entered(Node body)
+	private void _on_area_2d_body_entered(Node body)
 	{
-		if (body is EnemyCharacter)
+		GD.Print($"Bullet hit: {body.Name}");
+		if (body is EnemyCharacter enemy)
 		{
-			(body as EnemyCharacter).TakeDamage(Damage);
+			enemy.TakeDamage(Damage);
 			QueueFree();
 		}
-		else if (body is StaticBody2D || body is TileMap) // Bullet hits a wall
+		else if (body is StaticBody2D || body is TileMap)
 		{
 			QueueFree();
 		}

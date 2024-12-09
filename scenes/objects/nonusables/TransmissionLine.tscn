@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6frabi5tf3p1"]
+
+[ext_resource type="Texture2D" uid="uid://b5d0ag2slqgpe" path="res://assets/misc/DestroyedTransmissionLinesTexture.png" id="1_ejdn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdoi"]
+size = Vector2(118, 59)
+
+[node name="TransmissionLine" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 1.66893e-06)
+scale = Vector2(0.248996, 0.237288)
+texture = ExtResource("1_ejdn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mfdoi")

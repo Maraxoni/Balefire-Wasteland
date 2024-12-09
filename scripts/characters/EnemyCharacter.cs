@@ -3,6 +3,8 @@ using System;
 
 public abstract partial class EnemyCharacter : CharacterBase
 {
+	private bool _isHovered = false;
+	
 	[Export]
 	public int Health { get; set; } = 100; // Enemy's initial health
 
@@ -33,6 +35,26 @@ public abstract partial class EnemyCharacter : CharacterBase
 	public override void _Ready()
 	{
 		GD.Print("Enemy ready with common setup.");
+	}
+	
+	public override void _Draw(){
+		Color red = Colors.Red;
+		Color transparent = new Color("0000008f");
+		
+		if(_isHovered){
+			DrawCircle(new Vector2(0, 10.0f), 25.0f, red);
+			DrawCircle(new Vector2(0, 10.0f), 20.0f, transparent);
+		}
+	}
+	
+	private void _on_area_2d_mouse_entered(){
+		_isHovered = true;
+		QueueRedraw();
+	}
+
+	private void _on_area_2d_mouse_exited(){
+		_isHovered = false;
+		QueueRedraw();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -128,4 +150,5 @@ public abstract partial class EnemyCharacter : CharacterBase
 	{
 		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");
 	}
+	
 }

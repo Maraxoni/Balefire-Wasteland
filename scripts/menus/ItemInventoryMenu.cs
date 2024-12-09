@@ -68,9 +68,22 @@ public partial class ItemInventoryMenu : Control
 	
 	private void _on_take_all_menu_button_pressed()
 	{
-		Node parent = GetParent();
-		parent.RemoveChild(this);
-		_userInterface.IsItemInventoryMenuVisible = false;
+		var _playerInventory = _characterData.PlayerInventory;
+		
+		if (_currentInventory == null)
+		{
+			GD.PrintErr("Error: Inventory is null in Container.");
+			return;
+		}
+		
+		// Przenieś wszystkie przedmioty z _currentInventory do _playerInventory
+		foreach (var item in _currentInventory.GetItems())
+		{
+			_playerInventory.AddItem(item);
+			_currentInventory.RemoveItem(item);
+		}
+		
+		Refresh();
 	}
 	
 	private void _on_back_item_inventory_menu_button_pressed()

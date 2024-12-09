@@ -1,12 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://baqmgqhqrkmu1"]
+[gd_scene load_steps=20 format=3 uid="uid://baqmgqhqrkmu1"]
 
 [ext_resource type="Script" path="res://scripts/maps/MapVault.cs" id="1_thua5"]
 [ext_resource type="Texture2D" uid="uid://bm6506pdk8hok" path="res://assets/maps/Vault_Tiles.png" id="4_frrtl"]
-[ext_resource type="PackedScene" uid="uid://cjk8lfc5831l0" path="res://scenes/objects/ChestBody.tscn" id="4_hwgdw"]
 [ext_resource type="PackedScene" uid="uid://ddvgav5bbl8e0" path="res://scenes/maps/MapChange.tscn" id="4_ofha7"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="5_p64dw"]
 [ext_resource type="PackedScene" uid="uid://bt1hdrlpb3ybx" path="res://scenes/characters/npcs/VaultMemberCharacter.tscn" id="6_0p3eb"]
 [ext_resource type="PackedScene" uid="uid://bk0roe1asf4ky" path="res://scenes/characters/enemies/GhoulCharacter.tscn" id="7_rn3mq"]
+[ext_resource type="PackedScene" uid="uid://ba1faonhldoyc" path="res://scenes/objects/nonusables/Sign.tscn" id="8_hlmgd"]
+[ext_resource type="PackedScene" uid="uid://boio0pqr086cd" path="res://scenes/objects/nonusables/WhiteChair.tscn" id="8_uu3qd"]
+[ext_resource type="PackedScene" uid="uid://c2ahb5wj5js6c" path="res://scenes/objects/nonusables/WhiteCouch.tscn" id="9_oknas"]
+[ext_resource type="PackedScene" uid="uid://83mvj0e2uqmh" path="res://scenes/objects/nonusables/Barrel.tscn" id="10_n123v"]
+[ext_resource type="PackedScene" uid="uid://byc620yy2c00n" path="res://scenes/objects/usables/MetalDoor.tscn" id="11_24kue"]
+[ext_resource type="PackedScene" uid="uid://bjk0jvxman18m" path="res://scenes/objects/usables/VaultDoor.tscn" id="12_cxgjm"]
+[ext_resource type="PackedScene" uid="uid://cjk8lfc5831l0" path="res://scenes/objects/usables/Chest.tscn" id="13_kcey4"]
+[ext_resource type="PackedScene" uid="uid://bmjg6p2akk048" path="res://scenes/objects/nonusables/BigBed.tscn" id="14_dq5n0"]
+[ext_resource type="PackedScene" uid="uid://b3ghubt2hcuml" path="res://scenes/objects/nonusables/SmallBed.tscn" id="15_g1vgj"]
+[ext_resource type="PackedScene" uid="uid://cj7m01xd7hyt8" path="res://scenes/objects/nonusables/ConcreteDebris.tscn" id="16_7p2nr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ghaq0"]
 
@@ -1422,15 +1431,12 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 1, 131072, 1, 2, 196608,
 layer_1/name = "Objects"
 layer_2/name = "Air"
 
-[node name="StaticBody2D6" parent="." instance=ExtResource("4_hwgdw")]
-position = Vector2(458, 1366)
-
 [node name="MapChange" parent="." instance=ExtResource("4_ofha7")]
-position = Vector2(820, 6)
+position = Vector2(835, 1)
 PathToFile = "res://scenes/maps/MapSwamp.tscn"
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_p64dw")]
-position = Vector2(932, 1990)
+position = Vector2(928, 1992)
 
 [node name="VaultMemberCharacter" parent="." instance=ExtResource("6_0p3eb")]
 position = Vector2(900, 1350)
@@ -1446,3 +1452,92 @@ Health = 200
 ActionPoints = 200
 Speed = 200
 PatrolPoints = [Vector2(1550, 125), Vector2(1575, 150)]
+
+[node name="Sign" parent="." instance=ExtResource("8_hlmgd")]
+position = Vector2(871, 36)
+
+[node name="WhiteChair" parent="." instance=ExtResource("8_uu3qd")]
+position = Vector2(1481, 1386)
+rotation = 1.5708
+
+[node name="WhiteCouch" parent="." instance=ExtResource("9_oknas")]
+position = Vector2(1034, 1365)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("10_n123v")]
+position = Vector2(447, 1502)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("10_n123v")]
+position = Vector2(446, 1433)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("10_n123v")]
+position = Vector2(448, 1363)
+
+[node name="MetalDoor4" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1633, 1344)
+
+[node name="MetalDoor5" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1120, 1888)
+
+[node name="MetalDoor3" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1889, 1344)
+
+[node name="MetalDoor2" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1376, 1344)
+
+[node name="MetalDoor" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1121, 1344)
+
+[node name="VaultDoor" parent="." instance=ExtResource("12_cxgjm")]
+position = Vector2(929, 1280)
+
+[node name="MetalDoor8" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1888, 1888)
+
+[node name="MetalDoor7" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1632, 1888)
+
+[node name="MetalDoor6" parent="." instance=ExtResource("11_24kue")]
+position = Vector2(1377, 1888)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("13_kcey4")]
+position = Vector2(213, 228)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("13_kcey4")]
+position = Vector2(334, 33)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("13_kcey4")]
+position = Vector2(457, 1868)
+
+[node name="BigBed" parent="." instance=ExtResource("14_dq5n0")]
+position = Vector2(1037, 1630)
+
+[node name="BigBed2" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1275, 1629)
+
+[node name="BigBed3" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1532, 1629)
+
+[node name="ConcreteDebris" parent="." instance=ExtResource("16_7p2nr")]
+position = Vector2(17, 1117)
+
+[node name="ConcreteDebris2" parent="." instance=ExtResource("16_7p2nr")]
+position = Vector2(18, 1152)
+
+[node name="BigBed4" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1787, 1629)
+
+[node name="BigBed5" parent="." instance=ExtResource("14_dq5n0")]
+position = Vector2(1035, 1509)
+rotation = 3.14159
+
+[node name="BigBed6" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1275, 1507)
+rotation = 3.14159
+
+[node name="BigBed7" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1530, 1509)
+rotation = 3.14159
+
+[node name="BigBed8" parent="." instance=ExtResource("15_g1vgj")]
+position = Vector2(1787, 1509)
+rotation = 3.14159

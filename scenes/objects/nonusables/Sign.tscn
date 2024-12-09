@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba1faonhldoyc"]
+
+[ext_resource type="Texture2D" uid="uid://b0vgsnmkcgye0" path="res://assets/misc/RoadSignTexture.png" id="1_ijsm3"]
+
+[node name="Sign" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.405797, 0.39011)
+texture = ExtResource("1_ijsm3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5, -12)
+scale = Vector2(1, 1.16506)
+polygon = PackedVector2Array(-11.5, -17, 8, 39.4828, 18, 39.4828, 7, -20.5997)
