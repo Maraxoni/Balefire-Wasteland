@@ -8,6 +8,8 @@ public partial class ChestBody : StaticBody2D
 	
 	private bool _isHovered = false;
 	
+	private const float InteractionRange = 100.0f;
+	
 	public override void _Ready()
 	{
 		_chestInventory.AddItem(new Caps(50));
@@ -22,10 +24,17 @@ public partial class ChestBody : StaticBody2D
 	{
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
+			var PlayerCharacter = GetPlayer();
 			if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed && _isHovered)
 			{
-				// Call the dialogue menu in UserInterface
-				GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleItemInventoryMenu(_chestInventory);
+				if (IsPlayerInRange())
+				{
+					GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleItemInventoryMenu(_chestInventory);
+				}
+				else
+				{
+					GD.Print("Player is out of range of the chest.");
+				}
 			}
 		}
 	}
@@ -48,6 +57,27 @@ public partial class ChestBody : StaticBody2D
 	private void _on_area_2d_mouse_exited(){
 		_isHovered = false;
 		QueueRedraw();
+	}
+	
+	private bool IsPlayerInRange()
+	{
+		var player = GetPlayer();
+		if (player == null)
+		{
+			GD.Print("Player not found!");
+			return false;
+		}
+
+		// Oblicz dystans między graczem a skrzynią
+		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+
+		// Sprawdź, czy dystans jest w zasięgu
+		return distance <= InteractionRange;
+	}
+	
+	protected PlayerCharacter GetPlayer()
+	{
+		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");
 	}
 	
 }

@@ -13,7 +13,6 @@ public partial class MapSwamp : Node2D
 
 		var scene = ResourceLoader.Load<PackedScene>("res://scenes/player/UserInterface.tscn").Instantiate();
 		_userInterface = (Control)scene;
-
 		GetTree().Root.CallDeferred("add_child", _userInterface);
 
 		_userInterface.Visible = true;

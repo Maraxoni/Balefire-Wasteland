@@ -5,6 +5,8 @@ public partial class NonPlayerCharacter : CharacterBase
 {
 	private bool _isHovered = false;
 	
+	private const float InteractionRange = 100.0f;
+	
 	public override void _Ready()
 	{
 	}
@@ -16,8 +18,14 @@ public partial class NonPlayerCharacter : CharacterBase
 		{
 			if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed && _isHovered)
 			{
-				// Call the dialogue menu in UserInterface
-				GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu("vaultmember", "start");
+				if (IsPlayerInRange())
+				{
+					GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu("vaultmember", "start");
+				}
+				else
+				{
+					GD.Print("Player is out of range of the NPC.");
+				}
 			}
 		}
 	}
@@ -40,6 +48,27 @@ public partial class NonPlayerCharacter : CharacterBase
 	private void _on_area_2d_mouse_exited(){
 		_isHovered = false;
 		QueueRedraw();
+	}
+	
+	private bool IsPlayerInRange()
+	{
+		var player = GetPlayer();
+		if (player == null)
+		{
+			GD.Print("Player not found!");
+			return false;
+		}
+
+		// Oblicz dystans między graczem a skrzynią
+		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+
+		// Sprawdź, czy dystans jest w zasięgu
+		return distance <= InteractionRange;
+	}
+	
+	protected PlayerCharacter GetPlayer()
+	{
+		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");
 	}
 	
 }

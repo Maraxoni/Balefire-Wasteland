@@ -44,6 +44,45 @@ public partial class UserInterface : Control
 		_experienceProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
 		
 		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
+		CenterCameraOnPlayer();
+	}
+	
+	public void CenterCameraOnPlayer()
+	{
+		var playerCharacter = FindPlayerCharacterInMaps();
+		NodePath Path = GetPath();
+		GD.Print("Path of UserInterface:", Path.ToString());
+		if (playerCharacter != null)
+		{
+			_screenSize = GetViewportRect().Size;
+			// Calculate camera position such that the player is centered
+			Vector2 newCameraPosition = playerCharacter.Position - (_screenSize / 2);
+			// Set camera to player position
+			Position = newCameraPosition;
+		} else 
+		{
+			GD.Print("Player does not exist");
+		}
+	}
+	
+	private PlayerCharacter FindPlayerCharacterInMaps()
+	{
+		Node root = GetTree().Root;
+
+		foreach (Node child in root.GetChildren()) // Przejdź przez dzieci węzła root
+		{
+			NodePath childPath = child.GetPath();
+			GD.Print("Path of UserInterface:", childPath.ToString());
+			// Sprawdź, czy dziecko ma PlayerCharacter
+			var playerCharacter = child.GetNodeOrNull<PlayerCharacter>("PlayerCharacter");
+			if (playerCharacter != null)
+			{
+				return playerCharacter; // Zwróć znalezionego PlayerCharacter
+			}
+		}
+
+		GD.PrintErr("PlayerCharacter not found in any map!");
+		return null; // Jeśli nie znaleziono, zwróć null
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
