@@ -1213,3 +1213,5 @@ rotation = -3.59014
 [node name="DeadBush8" parent="." instance=ExtResource("9_sq33j")]
 position = Vector2(479, 1465)
 rotation = 1.91463
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

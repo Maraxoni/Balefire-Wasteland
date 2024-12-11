@@ -21,7 +21,8 @@ public partial class MainMenu : Control
 	
 	private void _on_load_game_menu_button_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/menus/LoadGameMenu.tscn");
+		//GetTree().ChangeSceneToFile("res://scenes/menus/LoadGameMenu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/menus/GameWonMenu.tscn");
 	}
 	
 	private void _on_settings_menu_button_pressed()

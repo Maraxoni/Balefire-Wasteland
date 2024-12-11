@@ -1436,3 +1436,5 @@ position = Vector2(726, 1999)
 
 [node name="ConcreteDebris3" parent="." instance=ExtResource("22_bexxp")]
 position = Vector2(761, 2013)
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

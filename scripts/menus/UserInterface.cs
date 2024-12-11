@@ -8,6 +8,7 @@ public partial class UserInterface : Control
 	private bool _isInventoryMenuVisible = false;
 	private bool _isItemInventoryMenuVisible = false;
 	private bool _isDialogueMenuVisible = false;
+	
 	private Control pauseMenu;
 	private InventoryMenu inventoryMenu;
 	private ItemInventoryMenu itemInventoryMenu;
@@ -21,8 +22,10 @@ public partial class UserInterface : Control
 	private ProgressBar _actionProgressBar;
 	private ProgressBar _experienceProgressBar;
 	// Map boundaries
-	private Vector2 _mapMinBounds = new Vector2(0, 0); // Minimum X and Y of the map
-	private Vector2 _mapMaxBounds = new Vector2(129, 913); // Maximum X and Y of the map
+	private Vector2 _screenSize;
+	private Vector2 _mapSize = new Vector2(32*64, 32*64);
+	private Vector2 _mapMinBounds;
+	private Vector2 _mapMaxBounds;
 	
 	public override void _Ready()
 	{
@@ -36,9 +39,9 @@ public partial class UserInterface : Control
 		var itemInventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/ItemInventoryMenu.tscn");
 		itemInventoryMenu = itemInventoryScene.Instantiate<ItemInventoryMenu>();
 		
-		_healthProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer/HealthProgressBar");
-		_actionProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer/ActionProgressBar");
-		_experienceProgressBar = GetNode<ProgressBar>("MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
+		_healthProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/HealthProgressBar");
+		_actionProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ActionProgressBar");
+		_experienceProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
 		
 		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 	}
@@ -46,6 +49,7 @@ public partial class UserInterface : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		UpdateCameraBounds();
 		UpdateProgressBars();
 		// Get mouse position
 		Vector2 mousePosition = GetLocalMousePosition();
@@ -93,16 +97,14 @@ public partial class UserInterface : Control
 			} 
 		}
 		
-
 		// Move the camera
-	Position += cameraMovement * (float)(_cameraSpeed * delta);
+		Position += cameraMovement * (float)(_cameraSpeed * delta);
 
-	// Clamp the camera position within the boundaries
-	Position = new Vector2(
-		Mathf.Clamp(Position[0], _mapMinBounds[0], _mapMaxBounds[0]),
-		Mathf.Clamp(Position[1], _mapMinBounds[1], _mapMaxBounds[1])
-	);
-
+		// Clamp the camera position within the boundaries
+		Position = new Vector2(
+			Mathf.Clamp(Position.X, _mapMinBounds.X, _mapMaxBounds.X),
+			Mathf.Clamp(Position.Y, _mapMinBounds.Y, _mapMaxBounds.Y)
+		);
 
 	}
 	
@@ -140,31 +142,46 @@ public partial class UserInterface : Control
 	
 	private void ScrollContent(bool direction)
 	{
-		Vector2 TempSize;
+		float zoomChange = 0;
 		
 		if(direction)
 		{
-			if((Scale[0] > 0.5f) && (Scale[1] > 0.5f))
-			{
-				Scale = new Vector2(Scale[0] - _scaleChange, Scale[1] - _scaleChange);
-				interfaceCamera.Zoom = new Vector2(1 / Scale[0], 1 / Scale[1]);
-				Position = new Vector2(
-					Position[0], 
-					Position[1]
-				);
-			}
+			zoomChange = _scaleChange;
 		}
 		else{
-			if((Scale[0] < 4f) && (Scale[1] < 4f))
-			{
-				Scale = new Vector2(Scale[0] + _scaleChange, Scale[1] + _scaleChange);
-				interfaceCamera.Zoom = new Vector2(1 / Scale[0], 1 / Scale[1]);
-				Position = new Vector2( 
-					Position[0],
-					Position[1]
-				);
-			}
+			zoomChange = -_scaleChange;
 		}
+		// Obecny zoom kamery
+		Vector2 currentZoom = interfaceCamera.Zoom;
+
+		// Oblicz nowy zoom
+		Vector2 newZoom = currentZoom + new Vector2(zoomChange, zoomChange);
+
+		// Zoom
+		float minZoom = 1.0f;
+		float maxZoom = 2.0f;
+		newZoom.X = Mathf.Clamp(newZoom.X, minZoom, maxZoom);
+		newZoom.Y = Mathf.Clamp(newZoom.Y, minZoom, maxZoom);
+
+		// Camera
+		interfaceCamera.Zoom = newZoom;
+		Vector2 baseScale = new Vector2(1.0f, 1.0f);
+	}
+	
+	private void UpdateCameraBounds()
+	{
+		// Get current screen size and camera zoom
+		_screenSize = GetViewportRect().Size;
+		Vector2 currentZoom = interfaceCamera.Zoom;
+		// Base map boundaries
+		_mapMinBounds = new Vector2(0, 0);
+		_mapMaxBounds = new Vector2(_mapSize.X - _screenSize.X, _mapSize.Y - _screenSize.Y); 
+		
+		// Calculate scaled screen size
+		Vector2 scaledScreenSize = _screenSize / currentZoom;
+		
+		_mapMinBounds = new Vector2(_mapMinBounds.X - (_screenSize.X - scaledScreenSize.X) / 2, _mapMinBounds.Y - (_screenSize.Y - scaledScreenSize.Y) / 2);
+		_mapMaxBounds = new Vector2(_mapMaxBounds.X + (_screenSize.X - scaledScreenSize.X) / 2, _mapMaxBounds.Y + (_screenSize.Y - scaledScreenSize.Y) / 2);
 	}
 	
 	private void _on_menu_interface_button_pressed()

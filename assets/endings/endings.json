@@ -1,0 +1,14 @@
+{
+  "good_ending": {
+	"title": "Good Ending",
+	"description": "This is the first ending description."
+  },
+  "neutral_ending": {
+	"title": "Neutral Ending",
+	"description": "This is the second ending description."
+  },
+  "bad_ending": {
+	"title": "Bad Ending",
+	"description": "This is the third ending description."
+  }
+}

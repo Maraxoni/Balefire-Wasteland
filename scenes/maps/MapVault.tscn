@@ -1541,3 +1541,5 @@ rotation = 3.14159
 [node name="BigBed8" parent="." instance=ExtResource("15_g1vgj")]
 position = Vector2(1787, 1509)
 rotation = 3.14159
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

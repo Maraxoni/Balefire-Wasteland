@@ -24,5 +24,11 @@ public partial class MapVault : Node2D
 	{
 		
 	}
+
+	public void _on_tree_exited()
+	{
+		GD.Print("Interface freed from queue.");
+		_userInterface.QueueFree();
+	}
 	
 }

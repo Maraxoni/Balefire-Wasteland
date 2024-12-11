@@ -187,7 +187,7 @@ public partial class PlayerCharacter : CharacterBase
 		Bullet bullet = GD.Load<PackedScene>("res://scenes/Bullet.tscn").Instantiate<Bullet>();
 		bullet.Position = GlobalPosition; // Start the bullet at the player position
 		bullet.Initialize(direction); // Set the direction of the bullet
-
+		bullet.Rotation = direction.Angle();
 		// Add the bullet to the scene
 		GetParent().AddChild(bullet);
 	}

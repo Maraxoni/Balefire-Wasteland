@@ -33,6 +33,16 @@ layout_mode = 2
 text = "Game Won!"
 horizontal_alignment = 1
 
+[node name="EndingTitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ending Title"
+horizontal_alignment = 1
+
+[node name="EndingDescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ending Description"
+horizontal_alignment = 1
+
 [node name="GameWonReturnButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return to Main Menu"
