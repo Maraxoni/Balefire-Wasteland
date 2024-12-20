@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba314c4e1aovd"]
+[gd_scene load_steps=3 format=3 uid="uid://dxat0hmdk1aob"]
 
-[ext_resource type="Script" path="res://scripts/menus/CharacterCreationMenu.cs" id="1_5flfi"]
-[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="2_44hwj"]
+[ext_resource type="Script" path="res://scripts/menus/SkillsMenu.cs" id="1_fb30t"]
+[ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="2_a8msy"]
 
-[node name="CharacterCreationMenu" type="Control"]
+[node name="SkillsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5flfi")
+script = ExtResource("1_fb30t")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -19,9 +19,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.5
+offset_left = -357.0
 offset_top = -322.5
-offset_right = 350.5
+offset_right = 357.0
 offset_bottom = 322.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -53,25 +53,17 @@ horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Body Type"
+text = "Body Type
+"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "<"
-
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Default"
-horizontal_alignment = 1
-
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = ">"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 500)
@@ -79,6 +71,7 @@ layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label10" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -262,6 +255,7 @@ icon_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -269,21 +263,23 @@ text = "Character Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterNameTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
+[node name="CharacterNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Name Here"
+text = "Name
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="CreateCharButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
 layout_mode = 2
-text = "Create Character"
+text = "Confirm"
 icon_alignment = 1
 
-[node name="CharacterBody2D" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_44hwj")]
+[node name="CharacterBody2D" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_a8msy")]
 position = Vector2(364, 238.5)
 scale = Vector2(6, 6)
 script = null
@@ -303,5 +299,4 @@ script = null
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/ButtonLuckDecrease" to="." method="_on_button_luck_decrease_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/ButtonLuckIncrease" to="." method="_on_button_luck_increase_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CharacterNameTextEdit" to="." method="_on_text_edit_text_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/CreateCharButton" to="." method="_on_create_char_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/ConfirmButton" to="." method="_on_confirm_button_pressed"]

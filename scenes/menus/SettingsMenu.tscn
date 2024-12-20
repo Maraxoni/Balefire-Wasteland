@@ -130,12 +130,28 @@ text = "Key"
 layout_mode = 2
 text = ">"
 
-[node name="BackSettingsMenuButton" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -40.0
+offset_right = 46.5
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="SaveSettingsMenuButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 937.0
-offset_top = 1049.0
-offset_right = 982.0
-offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Save"
+
+[node name="BackSettingsMenuButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Back
@@ -145,4 +161,5 @@ text = "Back
 [connection signal="pressed" from="MarginContainer/TabContainer/Graphics/ScreenTypeContainer/ScreenTypeIncreaseButton" to="." method="_on_screen_type_increase_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Graphics/ResolutionContainer/ResolutionDecreaseButton" to="." method="_on_resolution_decrease_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/Graphics/ResolutionContainer/ResolutionIncreaseButton" to="." method="_on_resolution_increase_button_pressed"]
-[connection signal="pressed" from="BackSettingsMenuButton" to="." method="_on_back_options_menu_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SaveSettingsMenuButton" to="." method="_on_save_settings_menu_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/BackSettingsMenuButton" to="." method="_on_back_options_menu_button_pressed"]

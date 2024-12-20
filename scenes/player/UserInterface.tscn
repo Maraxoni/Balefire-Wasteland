@@ -94,7 +94,8 @@ text = "Menu"
 
 [node name="SkillsInterfaceButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Skills"
+text = "Skills
+"
 
 [node name="InventoryInterfaceButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

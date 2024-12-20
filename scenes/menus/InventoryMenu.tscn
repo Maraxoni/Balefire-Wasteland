@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rahc4t3l8uhq"]
 
-[ext_resource type="Script" path="res://scripts/data/InventoryMenu.cs" id="1_85heo"]
+[ext_resource type="Script" path="res://scripts/menus/InventoryMenu.cs" id="1_85heo"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="2_ucjt3"]
 
 [node name="InventoryMenu" type="Control"]

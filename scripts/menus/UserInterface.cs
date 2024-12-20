@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using GameProject;
+using System.Threading;
 
 public partial class UserInterface : Control
 {
@@ -8,21 +9,32 @@ public partial class UserInterface : Control
 	private bool _isInventoryMenuVisible = false;
 	private bool _isItemInventoryMenuVisible = false;
 	private bool _isDialogueMenuVisible = false;
+	private bool _isSkillsMenuVisible = false;
 	
 	private Control pauseMenu;
 	private InventoryMenu inventoryMenu;
 	private ItemInventoryMenu itemInventoryMenu;
 	private DialogueMenu dialogueMenu;
-	private Godot.Camera2D interfaceCamera;
+	private SkillsMenu skillsMenu;
+	
+	private Godot.Camera2D _interfaceCamera;
 	private float _cameraSpeed = 400.0f;
 	private float _scrollSpeed = 20.0f;
 	private float _scaleChange = 0.05f;
+	private float _scaleRatio = 1;
+	
+	float leftThreshold;
+	float rightThreshold;
+	float upThreshold;
+	float downThreshold;	
 	//Bars
 	private ProgressBar _healthProgressBar;
 	private ProgressBar _actionProgressBar;
 	private ProgressBar _experienceProgressBar;
 	// Map boundaries
 	private Vector2 _screenSize;
+	private Vector2 _defaultResolution = new Vector2(1920, 1080);
+	
 	private Vector2 _mapSize = new Vector2(32*64, 32*64);
 	private Vector2 _mapMinBounds;
 	private Vector2 _mapMaxBounds;
@@ -38,13 +50,39 @@ public partial class UserInterface : Control
 		inventoryMenu = inventoryScene.Instantiate<InventoryMenu>();
 		var itemInventoryScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/ItemInventoryMenu.tscn");
 		itemInventoryMenu = itemInventoryScene.Instantiate<ItemInventoryMenu>();
+		var skillsScene = ResourceLoader.Load<PackedScene>("res://scenes/menus/SkillsMenu.tscn");
+		skillsMenu = skillsScene.Instantiate<SkillsMenu>();
 		
 		_healthProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/HealthProgressBar");
 		_actionProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ActionProgressBar");
 		_experienceProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
 		
-		interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
+		_interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
+		
+		_screenSize = GetViewportRect().Size;
+		_scaleRatio = _screenSize.X / _defaultResolution.X;
+		_interfaceCamera.Zoom = _interfaceCamera.Zoom * _scaleRatio;
+		
 		CenterCameraOnPlayer();
+		AdjustSceneScale();
+		UpdateCameraScale();
+	}
+	
+	// Metoda dostosowująca skalę sceny
+	private void AdjustSceneScale()
+	{
+		// Pobierz aktualny rozmiar ekranu
+		_screenSize = GetViewportRect().Size;
+
+		// Oblicz stosunek rozdzielczości
+		float scaleX = _screenSize.X / _defaultResolution.X;
+		float scaleY = _screenSize.Y / _defaultResolution.Y;
+
+		// Możesz zdecydować, którą oś preferujesz (X lub Y), aby nie zdeformować elementów
+		float scaleFactor = Mathf.Min(scaleX, scaleY);
+
+		// Ustaw skalowanie sceny
+		this.Scale = new Vector2(scaleFactor, scaleFactor);
 	}
 	
 	public void CenterCameraOnPlayer()
@@ -63,6 +101,18 @@ public partial class UserInterface : Control
 		{
 			GD.Print("Player does not exist");
 		}
+	}
+	
+	private void CenterControlOnScreen(Control control)
+	{
+		_screenSize = GetViewportRect().Size;
+		Vector2 screenPosition = Position;
+		
+		Vector2 centerPosition = (_screenSize - control.Size) / 2;
+		
+		Vector2 centerPositionCamera = centerPosition + screenPosition;
+		
+		control.Position = centerPositionCamera;
 	}
 	
 	private PlayerCharacter FindPlayerCharacterInMaps()
@@ -95,29 +145,35 @@ public partial class UserInterface : Control
 
 		// Get screen size
 		Vector2 screenSize = GetViewportRect().Size;
-
-		// Define movement thresholds
-		float threshold = 1.0f;
-
+		Vector2 cameraSize = GetViewportRect().Size;
+		
+		//GD.Print($"offsetX: {offsetX}, offsetY: {offsetY}, Zoom: {_interfaceCamera.Zoom.Y}");
+		//GD.Print($"Scaled Camera: {scaledCameraSize}, MouseX: {mousePosition.X}, MouseY: {mousePosition.Y}");
+		
 		// Calculate camera movement based on mouse position
 		Vector2 cameraMovement = new Vector2();
-		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false && _isItemInventoryMenuVisible == false && _isDialogueMenuVisible == false){
-			if (mousePosition[0] < threshold)
+		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false && _isItemInventoryMenuVisible == false && _isDialogueMenuVisible == false && _isSkillsMenuVisible == false){
+			
+			//GD.Print($"leftThreshold: {leftThreshold}, rightThreshold: {rightThreshold}, upThreshold: {upThreshold}, downThreshold: {downThreshold}");
+			if (mousePosition.X * _scaleRatio < leftThreshold)
 			{
-				cameraMovement[0] -= 1;
+				cameraMovement.X -= 1;
 			}
-			else if (mousePosition[0] > screenSize[0] - threshold)
+			else if (mousePosition.X * _scaleRatio > rightThreshold)
 			{
-				cameraMovement[0] += 1;
+				cameraMovement.X += 1;
 			}
-			if (mousePosition[1] < threshold)
+
+			// Vertical movement
+			if (mousePosition.Y * _scaleRatio < upThreshold)
 			{
-				cameraMovement[1] -= 1;
+				cameraMovement.Y -= 1;
 			}
-			else if (mousePosition[1] > screenSize[1] - threshold)
+			else if (mousePosition.Y * _scaleRatio > downThreshold)
 			{
-				cameraMovement[1] += 1;
+				cameraMovement.Y += 1;
 			}
+			
 			if (Input.IsActionPressed("arrow_right"))
 			{
 				cameraMovement[0] += 1;
@@ -154,9 +210,12 @@ public partial class UserInterface : Control
 		{
 			TogglePauseMenu();
 		}
-		else if (@event.IsActionPressed("i_key"))
+		else if (@event.IsActionPressed("inventory_key"))
 		{
 			ToggleInventoryMenu();
+		} else if (@event.IsActionPressed("skills_key"))
+		{
+			ToggleSkillsMenu();
 		}
 		
 		if(_isPauseMenuVisible == false && _isInventoryMenuVisible == false)
@@ -176,7 +235,21 @@ public partial class UserInterface : Control
 			}
 		}
 		
+	}
 	
+	private void _on_menu_interface_button_pressed()
+	{
+		TogglePauseMenu();
+	}
+	
+	private void _on_skills_interface_button_pressed()
+	{
+		ToggleSkillsMenu();
+	}
+	
+	private void _on_inventory_interface_button_pressed()
+	{
+		ToggleInventoryMenu();
 	}
 	
 	private void ScrollContent(bool direction)
@@ -191,27 +264,42 @@ public partial class UserInterface : Control
 			zoomChange = -_scaleChange;
 		}
 		// Obecny zoom kamery
-		Vector2 currentZoom = interfaceCamera.Zoom;
+		Vector2 currentZoom = _interfaceCamera.Zoom;
 
 		// Oblicz nowy zoom
 		Vector2 newZoom = currentZoom + new Vector2(zoomChange, zoomChange);
 
 		// Zoom
-		float minZoom = 1.0f;
-		float maxZoom = 2.0f;
+		float minZoom = 1.0f * _scaleRatio;
+		float maxZoom = 2.0f * _scaleRatio;
 		newZoom.X = Mathf.Clamp(newZoom.X, minZoom, maxZoom);
 		newZoom.Y = Mathf.Clamp(newZoom.Y, minZoom, maxZoom);
 
 		// Camera
-		interfaceCamera.Zoom = newZoom;
+		_interfaceCamera.Zoom = newZoom;
 		Vector2 baseScale = new Vector2(1.0f, 1.0f);
+		
+		UpdateCameraScale();
+	}
+	
+	private void UpdateCameraScale()
+	{
+		Vector2 cameraSize = GetViewportRect().Size;
+		float threshold = 1.00f;
+		Vector2 scaledCameraSize = cameraSize / _interfaceCamera.Zoom.X;
+		float offsetX = (cameraSize.X - scaledCameraSize.X) / 2;
+		float offsetY = (cameraSize.Y - scaledCameraSize.Y) / 2;
+		leftThreshold = offsetX + threshold;
+		rightThreshold = (scaledCameraSize.X + offsetX) - threshold;
+		upThreshold = offsetY + threshold;
+		downThreshold = (scaledCameraSize.Y + offsetY) - threshold;
 	}
 	
 	private void UpdateCameraBounds()
 	{
 		// Get current screen size and camera zoom
 		_screenSize = GetViewportRect().Size;
-		Vector2 currentZoom = interfaceCamera.Zoom;
+		Vector2 currentZoom = _interfaceCamera.Zoom;
 		// Base map boundaries
 		_mapMinBounds = new Vector2(0, 0);
 		_mapMaxBounds = new Vector2(_mapSize.X - _screenSize.X, _mapSize.Y - _screenSize.Y); 
@@ -221,32 +309,6 @@ public partial class UserInterface : Control
 		
 		_mapMinBounds = new Vector2(_mapMinBounds.X - (_screenSize.X - scaledScreenSize.X) / 2, _mapMinBounds.Y - (_screenSize.Y - scaledScreenSize.Y) / 2);
 		_mapMaxBounds = new Vector2(_mapMaxBounds.X + (_screenSize.X - scaledScreenSize.X) / 2, _mapMaxBounds.Y + (_screenSize.Y - scaledScreenSize.Y) / 2);
-	}
-	
-	private void _on_menu_interface_button_pressed()
-	{
-		TogglePauseMenu();
-		if (_isInventoryMenuVisible)
-		{
-			_isInventoryMenuVisible = false;
-			if (inventoryMenu.GetParent() != null)
-			{
-				GetTree().Root.RemoveChild(inventoryMenu);
-			}
-		}
-	}
-	
-	private void _on_inventory_interface_button_pressed()
-	{
-		ToggleInventoryMenu();
-		if (_isPauseMenuVisible)
-		{
-			_isPauseMenuVisible = false;
-			if (pauseMenu.GetParent() != null)
-			{
-				GetTree().Root.RemoveChild(pauseMenu);
-			}
-		}
 	}
 	
 	public void UpdateProgressBars(){
@@ -271,8 +333,41 @@ public partial class UserInterface : Control
 			{
 				GetTree().Root.AddChild(pauseMenu);
 			}
-			pauseMenu.Position = new Vector2(Position[0], Position[1]);
+			CenterControlOnScreen(pauseMenu);
 			pauseMenu.Show();
+			
+			if (_isInventoryMenuVisible)
+			{
+				_isInventoryMenuVisible = false;
+				if (inventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(inventoryMenu);
+				}
+			}
+			if (_isItemInventoryMenuVisible)
+			{
+				_isItemInventoryMenuVisible = false;
+				if (itemInventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(itemInventoryMenu);
+				}
+			}
+			if (_isSkillsMenuVisible)
+			{
+				_isSkillsMenuVisible = false;
+				if (skillsMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(skillsMenu);
+				}
+			}
+			if (_isDialogueMenuVisible)
+			{
+				_isDialogueMenuVisible = false;
+				if (dialogueMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(dialogueMenu);
+				}
+			}
 		}
 		else
 		{
@@ -293,10 +388,42 @@ public partial class UserInterface : Control
 			{
 				GetTree().Root.AddChild(inventoryMenu);
 			}
-			inventoryMenu.Position = new Vector2(Position[0], Position[1]);
-			
+			CenterControlOnScreen(inventoryMenu);
 			inventoryMenu.Show();
 			inventoryMenu.Refresh();
+			
+			if (_isPauseMenuVisible)
+			{
+				_isPauseMenuVisible = false;
+				if (pauseMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(pauseMenu);
+				}
+			}
+			if (_isItemInventoryMenuVisible)
+			{
+				_isItemInventoryMenuVisible = false;
+				if (itemInventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(itemInventoryMenu);
+				}
+			}
+			if (_isSkillsMenuVisible)
+			{
+				_isSkillsMenuVisible = false;
+				if (skillsMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(skillsMenu);
+				}
+			}
+			if (_isDialogueMenuVisible)
+			{
+				_isDialogueMenuVisible = false;
+				if (dialogueMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(dialogueMenu);
+				}
+			}
 		}
 		else
 		{
@@ -318,8 +445,41 @@ public partial class UserInterface : Control
 			{
 				GetTree().Root.AddChild(itemInventoryMenu);
 			}
-			itemInventoryMenu.Position = new Vector2(Position[0], Position[1]);
+			CenterControlOnScreen(itemInventoryMenu);
 			itemInventoryMenu.Show();
+			
+			if (_isPauseMenuVisible)
+			{
+				_isPauseMenuVisible = false;
+				if (pauseMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(pauseMenu);
+				}
+			}
+			if (_isInventoryMenuVisible)
+			{
+				_isInventoryMenuVisible = false;
+				if (inventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(inventoryMenu);
+				}
+			}
+			if (_isSkillsMenuVisible)
+			{
+				_isSkillsMenuVisible = false;
+				if (skillsMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(skillsMenu);
+				}
+			}
+			if (_isDialogueMenuVisible)
+			{
+				_isDialogueMenuVisible = false;
+				if (dialogueMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(dialogueMenu);
+				}
+			}
 		}
 		else
 		{
@@ -340,9 +500,42 @@ public partial class UserInterface : Control
 			{
 				GetTree().Root.AddChild(dialogueMenu);
 			}
-			dialogueMenu.Position = new Vector2(Position[0], Position[1]);
+			CenterControlOnScreen(dialogueMenu);
 			dialogueMenu.StartDialogue(characterName, startingKey);
 			dialogueMenu.Show();
+			
+			if (_isPauseMenuVisible)
+			{
+				_isPauseMenuVisible = false;
+				if (pauseMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(pauseMenu);
+				}
+			}
+			if (_isInventoryMenuVisible)
+			{
+				_isInventoryMenuVisible = false;
+				if (inventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(inventoryMenu);
+				}
+			}
+			if (_isSkillsMenuVisible)
+			{
+				_isSkillsMenuVisible = false;
+				if (skillsMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(skillsMenu);
+				}
+			}
+			if (_isItemInventoryMenuVisible)
+			{
+				_isItemInventoryMenuVisible = false;
+				if (itemInventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(itemInventoryMenu);
+				}
+			}
 		}
 		else
 		{
@@ -350,6 +543,61 @@ public partial class UserInterface : Control
 			if (dialogueMenu.GetParent() != null)
 			{
 				GetTree().Root.RemoveChild(dialogueMenu);
+			}
+		}
+	}
+	
+	public void ToggleSkillsMenu()
+	{
+		if (!_isSkillsMenuVisible)
+		{
+			_isSkillsMenuVisible = true;
+			if (skillsMenu.GetParent() == null)
+			{
+				GetTree().Root.AddChild(skillsMenu);
+			}
+			CenterControlOnScreen(skillsMenu);
+			skillsMenu.Show();
+			
+			if (_isPauseMenuVisible)
+			{
+				_isPauseMenuVisible = false;
+				if (pauseMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(pauseMenu);
+				}
+			}
+			if (_isInventoryMenuVisible)
+			{
+				_isInventoryMenuVisible = false;
+				if (inventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(inventoryMenu);
+				}
+			}
+			if (_isDialogueMenuVisible)
+			{
+				_isDialogueMenuVisible = false;
+				if (dialogueMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(dialogueMenu);
+				}
+			}
+			if (_isItemInventoryMenuVisible)
+			{
+				_isItemInventoryMenuVisible = false;
+				if (itemInventoryMenu.GetParent() != null)
+				{
+					GetTree().Root.RemoveChild(itemInventoryMenu);
+				}
+			}
+		}
+		else
+		{
+			_isSkillsMenuVisible = false;
+			if (skillsMenu.GetParent() != null)
+			{
+				GetTree().Root.RemoveChild(skillsMenu);
 			}
 		}
 	}
@@ -376,5 +624,11 @@ public partial class UserInterface : Control
 	{
 		get { return _isDialogueMenuVisible; }
 		set { _isDialogueMenuVisible = value; }
+	}
+	
+	public bool IsSkillsMenuVisible
+	{
+		get { return _isSkillsMenuVisible; }
+		set { _isSkillsMenuVisible = value; }
 	}
 }

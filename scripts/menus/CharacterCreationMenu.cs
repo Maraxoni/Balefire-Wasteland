@@ -40,16 +40,16 @@ public partial class CharacterCreationMenu : Control
 		
 		NodePath Path = GetPath();
 		GD.Print("Path of CharacterCreation:", Path.ToString());
-		
-		_strengthLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Label");
-		_perceptionLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/Label");
-		_enduranceLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/Label");
-		_charismaLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/Label");
-		_intelligenceLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/Label");
-		_agilityLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/Label");
-		_luckLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/Label");
-		_remainingPointsLabel = GetNode<Label>("VBoxContainer/HBoxContainer/VBoxContainer2/Label9");
-		_nameTextEdit = GetNode<TextEdit>("VBoxContainer/HBoxContainer2/VBoxContainer/TextEdit");
+
+		_strengthLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Label");
+		_perceptionLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/Label");
+		_enduranceLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/Label");
+		_charismaLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/Label");
+		_intelligenceLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/Label");
+		_agilityLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/Label");
+		_luckLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/Label");
+		_remainingPointsLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Label9");
+		_nameTextEdit = GetNode<TextEdit>("MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CharacterNameTextEdit");
 		
 		UpdateLabels();
 	}
