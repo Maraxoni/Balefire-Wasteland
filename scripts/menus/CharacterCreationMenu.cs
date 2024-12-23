@@ -72,6 +72,7 @@ public partial class CharacterCreationMenu : Control
 	private void _on_text_edit_text_changed()
 	{
 		_creationCharacterData.PlayerStats.Name = _nameTextEdit.Text;
+		GD.Print("New name: " + _creationCharacterData.PlayerStats.Name);
 	}
 
 	

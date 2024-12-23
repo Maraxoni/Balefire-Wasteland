@@ -5,12 +5,6 @@ using Godot.Collections;
 public partial class CharacterBase : CharacterBody2D
 {
 	[Export]
-	public string Name { get; set; } = "CharacterNameHere";
-	[Export]
-	public int Health { get; set; } = 100;
-	[Export]
-	public int ActionPoints { get; set; } = 100;
-	[Export]
 	public int Speed { get; set; } = 100;
 	
 	protected Vector2 _character_position;
@@ -73,5 +67,11 @@ public partial class CharacterBase : CharacterBody2D
 	protected void SetInitialPosition(int x, int y)
 	{
 		this.Position = new Vector2(x, y);
+	}
+	
+	public CharacterData CharacterData
+	{
+		get { return _characterData; }
+		set { _characterData = value; }
 	}
 }

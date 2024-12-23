@@ -1148,8 +1148,6 @@ position = Vector2(1641, 238)
 Health = 200
 DetectionRange = 100.0
 StopChaseRange = 200.0
-Health = 200
-ActionPoints = 200
 Speed = 200
 PatrolPoints = [Vector2(1000, 500), Vector2(1100, 400), Vector2(1000, 600)]
 

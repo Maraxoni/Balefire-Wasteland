@@ -1,9 +1,13 @@
-res://scenes/maps/MapVault.tscn
+res://scenes/menus/SkillsMenu.tscn
 res://scripts/characters/PlayerCharacter.cs
 res://scripts/menus/GameWonMenu.cs
 res://scripts/inventory/Item.cs
 res://scripts/inventory/Inventory.cs
 res://scripts/menus/InventoryMenu.cs
+res://scripts/menus/CharacterCreationMenu.cs
+res://scripts/menus/SkillsMenu.cs
+res://scripts/data/CharacterData.cs
+res://scenes/maps/MapVault.tscn
 res://scenes/maps/MapSwamp.tscn
 res://scenes/maps/MapDesert.tscn
 res://scenes/maps/MapMountains.tscn
@@ -17,7 +21,6 @@ res://scenes/menus/LoadGameMenu.tscn
 res://scenes/menus/MainMenu.tscn
 res://scenes/menus/CharacterCreationMenu.tscn
 res://scenes/characters/npcs/VaultMemberCharacter.tscn
-res://scenes/menus/SkillsMenu.tscn
 res://scenes/player/UserInterface.tscn
 res://scripts/menus/SettingsMenu.cs
 res://scripts/characters/NonPlayerCharacter.cs
@@ -34,8 +37,6 @@ res://scripts/inventory/Stats.cs
 res://scripts/menus/LoadGameMenu.cs
 res://scripts/dialogues/DialogueManager.cs
 res://scripts/maps/MapDesert.cs
-res://scripts/menus/SkillsMenu.cs
-res://scripts/menus/CharacterCreationMenu.cs
 res://scripts/usables/VaultDoor.cs
 res://scripts/maps/MapVault.cs
 res://scripts/maps/MapMountains.cs
@@ -56,7 +57,5 @@ res://scripts/nonusable/BarrelBody.cs
 res://scripts/usables/ChestBody.cs
 res://scripts/menus/DialogueMenu.cs
 res://scripts/characters/CharacterBase.cs
-res://scripts/data/CharacterData.cs
 res://scripts/inventory/weapons/Knife.cs
 res://scripts/characters/enemies/GhoulEnemy.cs
-res://assets/settings/settings.json

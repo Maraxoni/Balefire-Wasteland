@@ -4,16 +4,22 @@ using GameProject;
 
 public partial class CharacterData : Node
 {
-	private int _healthPoints = 100;
-	private int _actionPoints = 100;
+	private string _characterName = "";
+	private Inventory _playerInventory = new Inventory();
+	private Stats _playerStats = new Stats();
+	
+	private float _healthPoints = 100;
+	private float _actionPoints = 100;
+	private float _experiencePoints = 0;
 	private int _currentLevel = 1;
-	private int _experiencePoints = 0;
+	private int _skillPoints = 0;
+	
+	private float _maxHealthPoints = 100;
+	private float _maxActionPoints = 100;
+	private float _maxExperiencePoints = 100;
 	
 	private Weapon _equippedWeapon;
 	private Armor _equippedArmor;
-	
-	private Inventory _playerInventory = new Inventory();
-	private Stats _playerStats = new Stats();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,6 +37,26 @@ public partial class CharacterData : Node
 	public override void _Process(double delta)
 	{
 		
+	}
+	
+	private void CalculateStats()
+	{
+		_maxHealthPoints = 50 + _playerStats.Endurance * 10;
+		_maxActionPoints = 50 + _playerStats.Agility * 10;
+		_maxExperiencePoints = _currentLevel * 100;
+	}
+	
+	private void CheckLevelUp()
+	{
+		if (_experiencePoints >= _maxExperiencePoints)
+		{
+			_experiencePoints -= _maxExperiencePoints; // Zachowaj nadwyżkę doświadczenia
+			_currentLevel++; // Zwiększ poziom
+			_skillPoints++;
+			CalculateStats(); // Przelicz statystyki dla nowego poziomu
+			
+			GD.Print($"Current level: {_currentLevel}.");
+		}
 	}
 	
 	public Weapon EquippedWeapon
@@ -55,13 +81,13 @@ public partial class CharacterData : Node
 		get { return _playerStats; }
 	}
 	
-	public int HealthPoints 
+	public float HealthPoints 
 	{
 		get { return _healthPoints; }
 		set { _healthPoints = value; }
 	}
 	
-	public int ActionPoints 
+	public float ActionPoints 
 	{
 		get { return _actionPoints; }
 		set { _actionPoints = value; }
@@ -73,9 +99,25 @@ public partial class CharacterData : Node
 		set { _currentLevel = value; }
 	}
 	
-	public int ExperiencePoints 
+	public float ExperiencePoints 
 	{
 		get { return _experiencePoints; }
-		set { _experiencePoints = value; }
+		set 
+		{ 
+			_experiencePoints = value; 
+			CheckLevelUp(); 
+		}
+	}
+	
+	public int SkillPoints
+	{
+		get { return _skillPoints; }
+		set { _skillPoints = value; }
+	}
+	
+	public string CharacterName
+	{
+		get { return _characterName; }
+		set { _characterName = value; }
 	}
 }

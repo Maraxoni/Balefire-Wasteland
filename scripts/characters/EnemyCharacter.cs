@@ -22,6 +22,9 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	[Export]
 	public float MoveSpeed { get; set; } = 100f;
+	
+	[Export]
+	public float ExperiencePoints { get; set; } = 100f;
 
 	private enum EnemyState
 	{
@@ -141,9 +144,12 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	protected void HandleDeath()
 	{
-		// Handle the enemy's death here, for example:
 		GD.Print("Enemy has died.");
-		QueueFree(); // Remove the enemy from the scene, or trigger some death animation.
+		
+		var player = GetPlayer();
+		player.CharacterData.ExperiencePoints =+ ExperiencePoints;
+		
+		QueueFree(); 
 	}
 
 	protected PlayerCharacter GetPlayer()

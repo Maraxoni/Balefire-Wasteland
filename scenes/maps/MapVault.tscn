@@ -1440,16 +1440,12 @@ position = Vector2(928, 1992)
 
 [node name="VaultMemberCharacter" parent="." instance=ExtResource("6_0p3eb")]
 position = Vector2(900, 1350)
-Health = 200
-ActionPoints = 200
 PatrolPoints = [Vector2(900, 1350), Vector2(900, 1550)]
 
 [node name="GhoulCharacter" parent="." instance=ExtResource("7_rn3mq")]
 position = Vector2(1547, 123)
 Health = 200
 AttackRange = 10.0
-Health = 200
-ActionPoints = 200
 Speed = 200
 PatrolPoints = [Vector2(1550, 125), Vector2(1575, 150)]
 
