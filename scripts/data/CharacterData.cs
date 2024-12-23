@@ -31,6 +31,8 @@ public partial class CharacterData : Node
 		_playerStats.Intelligence = 5;
 		_playerStats.Agility = 5;
 		_playerStats.Luck = 5;
+		
+		CalculateStats();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,6 +81,7 @@ public partial class CharacterData : Node
 	public Stats PlayerStats 
 	{
 		get { return _playerStats; }
+		set { _playerStats = value; }
 	}
 	
 	public float HealthPoints 
@@ -87,10 +90,22 @@ public partial class CharacterData : Node
 		set { _healthPoints = value; }
 	}
 	
+	public float MaxHealthPoints 
+	{
+		get { return _maxHealthPoints; }
+		set { _maxHealthPoints = value; }
+	}
+	
 	public float ActionPoints 
 	{
 		get { return _actionPoints; }
 		set { _actionPoints = value; }
+	}
+	
+	public float MaxActionPoints 
+	{
+		get { return _maxActionPoints; }
+		set { _maxActionPoints = value; }
 	}
 	
 	public int CurrentLevel 
@@ -107,6 +122,12 @@ public partial class CharacterData : Node
 			_experiencePoints = value; 
 			CheckLevelUp(); 
 		}
+	}
+	
+	public float MaxExperiencePoints
+	{
+		get { return _maxExperiencePoints; }
+		set { _maxExperiencePoints = value; }
 	}
 	
 	public int SkillPoints

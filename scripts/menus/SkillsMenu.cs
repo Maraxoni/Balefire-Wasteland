@@ -15,15 +15,22 @@ public partial class SkillsMenu : Control
 	
 	private UserInterface _userInterface;
 	private CharacterData _currentCharacterData;
-	private CharacterData _modifiedCharacterData;
+	private Stats _modifiedPlayerStats;
 	private int _skillPoints = 0;
 	private int _remainingPoints = 0;
+	private string _currentName;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_currentCharacterData = GetNode<CharacterData>("/root/GlobalCharacterData");
 		_userInterface = GetNode<UserInterface>("/root/UserInterface");
+		
+		_modifiedPlayerStats = _currentCharacterData.PlayerStats.Clone();
+		_skillPoints = _currentCharacterData.SkillPoints;
+		_remainingPoints = _skillPoints;
+		
+		_currentName = _currentCharacterData.PlayerStats.Name;
 		
 		NodePath Path = GetPath();
 		GD.Print("Path of CharacterCreation:", Path.ToString());
@@ -39,7 +46,6 @@ public partial class SkillsMenu : Control
 		_characterNameLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/CharacterNameLabel");
 		
 		UpdateLabels();
-		RefreshStats();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,6 +55,7 @@ public partial class SkillsMenu : Control
 	
 	private void _on_confirm_button_pressed()
 	{
+		ConfirmStats();
 		Node parent = GetParent();
 		parent.RemoveChild(this);
 		_userInterface.IsSkillsMenuVisible = false;
@@ -61,11 +68,17 @@ public partial class SkillsMenu : Control
 		_userInterface.IsSkillsMenuVisible = false;
 	}
 	
+	private void ConfirmStats()
+	{
+		_currentCharacterData.PlayerStats = _modifiedPlayerStats;
+		UpdateLabels();
+	}
+	
 	private void _on_button_strength_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Strength > _currentCharacterData.PlayerStats.Strength)
+		if (_modifiedPlayerStats.Strength > _currentCharacterData.PlayerStats.Strength)
 		{
-			_modifiedCharacterData.PlayerStats.Strength--;
+			_modifiedPlayerStats.Strength--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -73,9 +86,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_strength_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Strength < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Strength < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Strength++;
+			_modifiedPlayerStats.Strength++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -83,9 +96,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_perception_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Perception > _currentCharacterData.PlayerStats.Perception)
+		if (_modifiedPlayerStats.Perception > _currentCharacterData.PlayerStats.Perception)
 		{
-			_modifiedCharacterData.PlayerStats.Perception--;
+			_modifiedPlayerStats.Perception--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -93,9 +106,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_perception_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Perception < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Perception < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Perception++;
+			_modifiedPlayerStats.Perception++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -103,9 +116,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_endurance_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Endurance > _currentCharacterData.PlayerStats.Endurance)
+		if (_modifiedPlayerStats.Endurance > _currentCharacterData.PlayerStats.Endurance)
 		{
-			_modifiedCharacterData.PlayerStats.Endurance--;
+			_modifiedPlayerStats.Endurance--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -113,9 +126,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_endurance_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Endurance < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Endurance < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Endurance++;
+			_modifiedPlayerStats.Endurance++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -123,9 +136,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_charisma_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Charisma > _currentCharacterData.PlayerStats.Charisma)
+		if (_modifiedPlayerStats.Charisma > _currentCharacterData.PlayerStats.Charisma)
 		{
-			_modifiedCharacterData.PlayerStats.Charisma--;
+			_modifiedPlayerStats.Charisma--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -133,9 +146,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_charisma_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Charisma < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Charisma < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Charisma++;
+			_modifiedPlayerStats.Charisma++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -143,9 +156,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_intelligence_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Intelligence > _currentCharacterData.PlayerStats.Intelligence)
+		if (_modifiedPlayerStats.Intelligence > _currentCharacterData.PlayerStats.Intelligence)
 		{
-			_modifiedCharacterData.PlayerStats.Intelligence--;
+			_modifiedPlayerStats.Intelligence--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -153,9 +166,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_intelligence_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Intelligence < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Intelligence < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Intelligence++;
+			_modifiedPlayerStats.Intelligence++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -163,9 +176,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_agility_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Agility > _currentCharacterData.PlayerStats.Agility)
+		if (_modifiedPlayerStats.Agility > _currentCharacterData.PlayerStats.Agility)
 		{
-			_modifiedCharacterData.PlayerStats.Agility--;
+			_modifiedPlayerStats.Agility--;
 			_remainingPoints++;
 		}
 		UpdateLabels();
@@ -173,9 +186,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_agility_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Agility < 10 && _remainingPoints > 0) 
+		if (_modifiedPlayerStats.Agility < 10 && _remainingPoints > 0) 
 		{
-			_modifiedCharacterData.PlayerStats.Agility++;
+			_modifiedPlayerStats.Agility++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
@@ -183,9 +196,9 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_luck_decrease_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Luck > 0)
+		if (_modifiedPlayerStats.Luck > _currentCharacterData.PlayerStats.Luck)
 		{
-			_modifiedCharacterData.PlayerStats.Luck--;
+			_modifiedPlayerStats.Luck--;
 			_remainingPoints++;
 		} 
 		UpdateLabels();
@@ -193,39 +206,25 @@ public partial class SkillsMenu : Control
 
 	private void _on_button_luck_increase_pressed()
 	{
-		if (_modifiedCharacterData.PlayerStats.Luck < 10 && _remainingPoints > 0)
+		if (_modifiedPlayerStats.Luck < 10 && _remainingPoints > 0)
 		{
-			_modifiedCharacterData.PlayerStats.Luck++;
+			_modifiedPlayerStats.Luck++;
 			_remainingPoints--;
 		}
 		UpdateLabels();
 	}
 	
-	private void RefreshStats()
+	public void UpdateLabels()
 	{
-		_modifiedCharacterData = _currentCharacterData;
-		_skillPoints = _modifiedCharacterData.SkillPoints;
-		_remainingPoints = _skillPoints;
-		UpdateLabels();
-	}
-	
-	private void ConfirmStats()
-	{
-		_currentCharacterData = _modifiedCharacterData;
-		UpdateLabels();
-	}
-	
-	private void UpdateLabels()
-	{
-		_strengthLabel.Text = $"{_modifiedCharacterData.PlayerStats.Strength}";
-		_perceptionLabel.Text = $"{_modifiedCharacterData.PlayerStats.Perception}";
-		_enduranceLabel.Text = $"{_modifiedCharacterData.PlayerStats.Endurance}";
-		_charismaLabel.Text = $"{_modifiedCharacterData.PlayerStats.Charisma}";
-		_intelligenceLabel.Text = $"{_modifiedCharacterData.PlayerStats.Intelligence}";
-		_agilityLabel.Text = $"{_modifiedCharacterData.PlayerStats.Agility}";
-		_luckLabel.Text = $"{_modifiedCharacterData.PlayerStats.Luck}";
+		_strengthLabel.Text = $"{_modifiedPlayerStats.Strength}";
+		_perceptionLabel.Text = $"{_modifiedPlayerStats.Perception}";
+		_enduranceLabel.Text = $"{_modifiedPlayerStats.Endurance}";
+		_charismaLabel.Text = $"{_modifiedPlayerStats.Charisma}";
+		_intelligenceLabel.Text = $"{_modifiedPlayerStats.Intelligence}";
+		_agilityLabel.Text = $"{_modifiedPlayerStats.Agility}";
+		_luckLabel.Text = $"{_modifiedPlayerStats.Luck}";
 		_remainingPointsLabel.Text = $"{_remainingPoints}";
-		_characterNameLabel.Text = $"{_modifiedCharacterData.CharacterName}";
+		_characterNameLabel.Text = $"{_modifiedPlayerStats.Name}";
 	}
 	
 }

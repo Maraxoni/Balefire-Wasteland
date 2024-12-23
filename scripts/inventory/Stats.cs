@@ -78,4 +78,18 @@ public partial class Stats : Node
 		return _strength + _perception + _endurance + _charisma + _intelligence + _agility + _luck;
 	}
 	
+	public Stats Clone()
+	{
+		var clone = new Stats();
+		clone.Name = this.Name;
+		clone.Strength = this.Strength;
+		clone.Perception = this.Perception;
+		clone.Endurance = this.Endurance;
+		clone.Charisma = this.Charisma;
+		clone.Intelligence = this.Intelligence;
+		clone.Agility = this.Agility;
+		clone.Luck = this.Luck;
+		return clone;
+	}
+	
 }

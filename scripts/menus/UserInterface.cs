@@ -11,6 +11,7 @@ public partial class UserInterface : Control
 	private bool _isDialogueMenuVisible = false;
 	private bool _isSkillsMenuVisible = false;
 	
+	private CharacterData _currentCharacterData;
 	private Control pauseMenu;
 	private InventoryMenu inventoryMenu;
 	private ItemInventoryMenu itemInventoryMenu;
@@ -31,6 +32,8 @@ public partial class UserInterface : Control
 	private ProgressBar _healthProgressBar;
 	private ProgressBar _actionProgressBar;
 	private ProgressBar _experienceProgressBar;
+	
+	private Label _levelLabel;
 	// Map boundaries
 	private Vector2 _screenSize;
 	private Vector2 _defaultResolution = new Vector2(1920, 1080);
@@ -57,6 +60,8 @@ public partial class UserInterface : Control
 		_actionProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ActionProgressBar");
 		_experienceProgressBar = GetNode<ProgressBar>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExperienceProgressBar");
 		
+		_levelLabel = GetNode<Label>("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/LevelLabel");
+		
 		_interfaceCamera = GetNode<Godot.Camera2D>("InterfaceCamera");
 		
 		_screenSize = GetViewportRect().Size;
@@ -67,6 +72,7 @@ public partial class UserInterface : Control
 		AdjustSceneScale();
 		UpdateCameraScale();
 	}
+	
 	
 	// Metoda dostosowująca skalę sceny
 	private void AdjustSceneScale()
@@ -312,16 +318,18 @@ public partial class UserInterface : Control
 	}
 	
 	public void UpdateProgressBars(){
-		CharacterData _characterData = GetNode<CharacterData>("/root/GlobalCharacterData");
+		_currentCharacterData = GetNode<CharacterData>("/root/GlobalCharacterData");
 		_healthProgressBar.MinValue = 0;
-		_healthProgressBar.MaxValue = 100;
+		_healthProgressBar.MaxValue = _currentCharacterData.MaxHealthPoints;
 		_actionProgressBar.MinValue = 0;
-		_actionProgressBar.MaxValue = 100;
+		_actionProgressBar.MaxValue = _currentCharacterData.MaxActionPoints;
 		_experienceProgressBar.MinValue = 0;
-		_experienceProgressBar.MaxValue = 100;
-		_healthProgressBar.Value = _characterData.HealthPoints;
-		_actionProgressBar.Value = _characterData.ActionPoints;
-		_experienceProgressBar.Value = _characterData.ExperiencePoints;
+		_experienceProgressBar.MaxValue = _currentCharacterData.MaxExperiencePoints;
+		_healthProgressBar.Value = _currentCharacterData.HealthPoints;
+		_actionProgressBar.Value = _currentCharacterData.ActionPoints;
+		_experienceProgressBar.Value = _currentCharacterData.ExperiencePoints;
+		_levelLabel.Text = $"{_currentCharacterData.CurrentLevel}";
+		
 	}
 	
 	public void TogglePauseMenu()
@@ -557,6 +565,7 @@ public partial class UserInterface : Control
 				GetTree().Root.AddChild(skillsMenu);
 			}
 			CenterControlOnScreen(skillsMenu);
+			skillsMenu.UpdateLabels();
 			skillsMenu.Show();
 			
 			if (_isPauseMenuVisible)

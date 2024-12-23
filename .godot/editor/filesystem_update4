@@ -59,3 +59,4 @@ res://scripts/menus/DialogueMenu.cs
 res://scripts/characters/CharacterBase.cs
 res://scripts/inventory/weapons/Knife.cs
 res://scripts/characters/enemies/GhoulEnemy.cs
+res://assets/settings/settings.json

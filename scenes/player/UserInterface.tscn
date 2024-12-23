@@ -55,8 +55,9 @@ vertical_alignment = 1
 [node name="ExperienceProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_vertical = 1
 step = 1.0
-value = 5.0
+value = 50.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -86,7 +87,7 @@ text = "HP:"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 step = 1.0
-value = 95.0
+value = 50.0
 
 [node name="MenuInterfaceButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
