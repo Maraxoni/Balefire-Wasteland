@@ -7,6 +7,8 @@ public partial class MetalDoor : StaticBody2D
 	private AnimationPlayer _animationPlayer;
 	private bool _isOpen = false;
 	
+	private const float InteractionRange = 100.0f;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -52,14 +54,38 @@ public partial class MetalDoor : StaticBody2D
 	
 	private void ToggleDoor()
 	{
-		if (_isOpen)
+		if(IsPlayerInRange())
 		{
-			_animationPlayer.Play("close");
+			if (_isOpen)
+			{
+				_animationPlayer.Play("close");
+			}
+			else
+			{
+				_animationPlayer.Play("open");
+			}
+			_isOpen = !_isOpen;
 		}
-		else
+	}
+	
+	private bool IsPlayerInRange()
+	{
+		var player = GetPlayer();
+		if (player == null)
 		{
-			_animationPlayer.Play("open");
+			GD.Print("Player not found!");
+			return false;
 		}
-		_isOpen = !_isOpen;
+
+		// Oblicz dystans między graczem a skrzynią
+		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+
+		// Sprawdź, czy dystans jest w zasięgu
+		return distance <= InteractionRange;
+	}
+	
+	protected PlayerCharacter GetPlayer()
+	{
+		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");
 	}
 }

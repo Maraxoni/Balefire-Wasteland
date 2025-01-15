@@ -15,10 +15,13 @@ public partial class GameWonMenu : Control
 	private Dictionary<string, Ending> _endings = new Dictionary<string, Ending>();  // Zmieniony na Dictionary
 	private string _currentEndingKey = "";  // Klucz aktualnie wyświetlanego zakończenia
 	
+	private GameData _globalGameData;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_userInterface = GetNode<UserInterface>("/root/UserInterface");
+		_globalGameData = GetNode<GameData>("/root/GlobalGameData");
 		if (_userInterface != null)
 		{
 			_userInterface.Hide();
@@ -51,30 +54,14 @@ public partial class GameWonMenu : Control
 	
 	private void DisplayEnding()
 	{
-		// Tu dodaj logikę do przypisania odpowiedniego klucza, np.:
-		if (false)
-		{
-			_currentEndingKey = "good_ending";
-		}
-		else if (true)
-		{
-			_currentEndingKey = "neutral_ending";
-		}
-		else if (false)
-		{
-			_currentEndingKey = "bad_ending";
-		}
-		else
-		{
-			_currentEndingKey = "";  // Jeśli nie ma wybranego zakończenia
-		}
 		
-		// Sprawdzenie czy zakończenie o danym kluczu istnieje
+		_currentEndingKey = _globalGameData.GetEndingType();
+		
+		
 		if (_endings != null && _endings.Count > 0 && _endings.ContainsKey(_currentEndingKey))
 		{
-			var ending = _endings[_currentEndingKey];  // Pobranie zakończenia po kluczu
+			var ending = _endings[_currentEndingKey];
 
-			// Ustawienie tytułu i opisu
 			if (ending != null)
 			{
 				_titleLabel.Text = ending.Title;

@@ -22,13 +22,6 @@ public partial class DialogueManager : Node
 		GD.Print("Dialogues loading...");
 		try
 		{
-			//// Ensure the file exists before reading
-			//if (!File.Exists(filePath))
-			//{
-				//GD.PrintErr($"File not found: {filePath}");
-				//return;
-			//}
-			// Read the JSON file as text
 			string jsonText = File.ReadAllText(filePath);
 			// Deserialize the JSON data into Dictionary<string, DialogueCharacter>
 			allCharacterDialogues = JsonSerializer.Deserialize<Dictionary<string, DialogueCharacter>>(jsonText);

@@ -28,6 +28,7 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	private enum EnemyState
 	{
+		Idle,
 		Patrolling,
 		Chasing,
 		Attacking

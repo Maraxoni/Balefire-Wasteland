@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GlobalCharacterData="*res://scripts/data/CharacterData.cs"
 GlobalDialogueManager="*res://scripts/dialogues/DialogueManager.cs"
 GlobalSettingsData="*res://scripts/data/SettingsData.cs"
+GlobalGameData="*res://scripts/data/GameData.cs"
 
 [display]
 

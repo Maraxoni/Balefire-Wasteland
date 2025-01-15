@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://83mvj0e2uqmh"]
+[gd_scene load_steps=3 format=3 uid="uid://83mvj0e2uqmh"]
 
-[ext_resource type="Script" path="res://scripts/nonusable/BarrelBody.cs" id="1_dsjtf"]
 [ext_resource type="Texture2D" uid="uid://duay1o43cl6uy" path="res://assets/misc/BarrelTexture.png" id="2_fojyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pas3u"]
 size = Vector2(54, 33)
 
 [node name="StaticBody2D" type="StaticBody2D"]
-script = ExtResource("1_dsjtf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -1.72853e-06)

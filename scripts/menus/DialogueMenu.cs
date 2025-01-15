@@ -11,11 +11,13 @@ public partial class DialogueMenu : Control
 	private string _currentCharacter;
 	
 	private UserInterface _userInterface;
+	private GameData _globalGameData;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_userInterface = GetNode<UserInterface>("/root/UserInterface");
+		_globalGameData = GetNode<GameData>("/root/GlobalGameData");
 		// Initialize UI components
 		_dialogueLabel = GetNode<Label>("PanelContainer/VBoxContainer/DialogueLabel");
 		_choicesContainer = GetNode<VBoxContainer>("PanelContainer/VBoxContainer/ChoiceButtonList");
@@ -70,9 +72,43 @@ public partial class DialogueMenu : Control
 	// Called when a choice is selected
 	private void OnChoiceSelected(string nextKey)
 	{
+		CheckChoice(nextKey);
 		ShowDialogue(nextKey);
 	}
+	
+	private void CheckChoice(string choiceKey)
+	{
+		switch (choiceKey)
+		{
+			case "start_game":
+				GD.Print("Choice changed value 1");
+				_globalGameData.DialogueChoice1 = true;
+				break;
 
+			case "load_game":
+				GD.Print("Choice changed value 2");
+				_globalGameData.DialogueChoice2 = true;
+				break;
+
+			case "exit_game":
+				GD.Print("Choice changed value 3");
+				_globalGameData.DialogueChoice3 = true;
+				break;
+				
+			case "sample1":
+				GD.Print("Choice changed value 4");
+				_globalGameData.DialogueChoice4 = true;
+				break;
+				
+			case "sample2":
+				GD.Print("Choice changed value 5");
+				_globalGameData.DialogueChoice5 = true;
+				break;
+				
+			default:
+				break;
+		}
+	}
 	
 	private void _on_back_dialogue_menu_button_pressed()
 	{
