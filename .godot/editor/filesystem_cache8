@@ -1,10 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737109585
+::res://::1737126392
 export_presets.cfg::TextFile::-1::1736253381::0::1::::<><>::
 icon.svg::CompressedTexture2D::8224858452583056634::1710327343::1730798402::1::::<><>::
 ::res://assets/::1736728228
-::res://assets/dialogues/::1736728418
-dialogues.json::JSON::-1::1736728418::0::1::::<><>::
+::res://assets/dialogues/::1737125386
+dialogues.json::JSON::-1::1737125386::0::1::::<><>::
 ::res://assets/endings/::1736728418
 endings.json::JSON::-1::1736728418::0::1::::<><>::
 ::res://assets/equipables/::1731407403
@@ -62,10 +62,12 @@ Enemy 4-trot.png::CompressedTexture2D::2690947372823904158::1736346144::17363461
 ::res://assets/sprites/dweller/::1736346357
 Friendly 3-stand.png::CompressedTexture2D::4980123278534569734::1736346357::1736346357::1::::<><>::
 Friendly 3-walk.png::CompressedTexture2D::636911020276423964::1736346357::1736346357::1::::<><>::
-::res://assets/sprites/ghoul/::1737110893
+::res://assets/sprites/ghoul/::1737128291
 Enemy 1-boop.png::CompressedTexture2D::4111854485080549156::1737110892::1737110893::1::::<><>::
 Enemy 1-stand.png::CompressedTexture2D::7586621207701594305::1737110892::1737110893::1::::<><>::
 Enemy 1-walk.png::CompressedTexture2D::3078852788671516463::1737110892::1737110893::1::::<><>::
+Ghoul-stand.png::CompressedTexture2D::6100023986921085983::1729524172::1737128548::1::::<><>::
+Ghoul-walk.png::CompressedTexture2D::314401842467818337::1729523607::1737128548::1::::<><>::
 ::res://assets/sprites/player/::1730798402
 Pony-stand.png::CompressedTexture2D::8635993203478557023::1715759720::1730798402::1::::<><>::
 Pony-trot.png::CompressedTexture2D::4922183096701902510::1715759720::1730798402::1::::<><>::
@@ -79,43 +81,43 @@ Friendly 2-walk.png::CompressedTexture2D::2329096602650632342::1736346378::17363
 Enemy 3-boop.png::CompressedTexture2D::4900890560702037288::1736346162::1736346162::1::::<><>::
 Enemy 3-stand.png::CompressedTexture2D::7140889157674935087::1736346162::1736346162::1::::<><>::
 Enemy 3-walk.png::CompressedTexture2D::625671032784558782::1736346162::1736346162::1::::<><>::
-::res://data_Balefire Imperium_windows_x86_64/::1736253384
+::res://data_Balefire Imperium_windows_x86_64/::1737126399
 Balefire Imperium.deps.json::JSON::-1::1736253383::0::1::::<><>::
 Balefire Imperium.runtimeconfig.json::JSON::-1::1736253383::0::1::::<><>::
 ::res://scenes/::1733213048
 Bullet.tscn::PackedScene::5087816228352951443::1733213048::0::1::::<><>::uid://cmgile511rrbt::::res://assets/equipables/weapons/bullet.png<>res://scripts/inventory/Bullet.cs
 ::res://scenes/characters/::1729576067
-::res://scenes/characters/enemies/::1737110927
-BanditCharacter.tscn::PackedScene::1840621101271184053::1737110483::0::1::::<><>::res://scripts/characters/enemies/BanditEnemy.cs<>uid://dcdqe26e7nr07::::res://assets/sprites/bandit/Enemy 2-boop.png<>uid://dlvi8p1tgcyhn::::res://assets/sprites/bandit/Enemy 2-stand.png<>uid://16en8s1ipg65::::res://assets/sprites/bandit/Enemy 2-trot.png
-GhoulCharacter.tscn::PackedScene::3140976004199217576::1736762314::0::1::::<><>::res://scripts/characters/enemies/GhoulEnemy.cs<>uid://cjgioi52cyx3r::::res://assets/sprites/ghoul/Ghoul-stand.png<>uid://cdn4qmwqje3sj::::res://assets/sprites/ghoul/Ghoul-walk.png
-BossCharacter.tscn::PackedScene::8531279356286184235::1737110994::0::1::::<><>::res://scripts/characters/enemies/GhoulEnemy.cs
-ZebraCharacter.tscn::PackedScene::631713763186388945::1737110975::0::1::::<><>::res://scripts/characters/enemies/ZebraEnemy.cs<>uid://cb3a7l68kqtvs::::res://assets/sprites/zebra/Enemy 3-boop.png<>uid://c80dnvyanb6kh::::res://assets/sprites/zebra/Enemy 3-stand.png<>uid://i6cyflooufms::::res://assets/sprites/zebra/Enemy 3-walk.png
-::res://scenes/characters/npcs/::1737109789
-VaultDwellerCharacter.tscn::PackedScene::8913067740718201745::1737109779::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://dhhh3wfixnvhb::::res://assets/sprites/vaultmember/vaultmember-stand.png<>uid://dtrhavwjeex6h::::res://assets/sprites/vaultmember/vaultmember-walk.png
-VaultMemberCharacter.tscn::PackedScene::3774113821326147497::1736762315::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://dhhh3wfixnvhb::::res://assets/sprites/vaultmember/vaultmember-stand.png<>uid://dtrhavwjeex6h::::res://assets/sprites/vaultmember/vaultmember-walk.png
-WastelanderCharacter.tscn::PackedScene::496909822395180143::1737109789::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://dhhh3wfixnvhb::::res://assets/sprites/vaultmember/vaultmember-stand.png<>uid://dtrhavwjeex6h::::res://assets/sprites/vaultmember/vaultmember-walk.png
-::res://scenes/maps/::1736762313
+::res://scenes/characters/enemies/::1737127630
+BanditCharacter.tscn::PackedScene::1840621101271184053::1737127630::0::1::::<><>::res://scripts/characters/enemies/BanditEnemy.cs<>uid://dcdqe26e7nr07::::res://assets/sprites/bandit/Enemy 2-boop.png<>uid://dlvi8p1tgcyhn::::res://assets/sprites/bandit/Enemy 2-stand.png<>uid://16en8s1ipg65::::res://assets/sprites/bandit/Enemy 2-trot.png
+BossCharacter.tscn::PackedScene::8531279356286184235::1737127630::0::1::::<><>::res://scripts/characters/enemies/BossEnemy.cs<>uid://cju4jwsi702vd::::res://assets/sprites/boss/Enemy 4-boop.png<>uid://bo62cb6w4qqfh::::res://assets/sprites/boss/Enemy 4-stand.png<>uid://belrrlwdx00t3::::res://assets/sprites/boss/Enemy 4-trot.png
+GhoulCharacter.tscn::PackedScene::3140976004199217576::1737127629::0::1::::<><>::res://scripts/characters/enemies/GhoulEnemy.cs<>uid://byt2v34r85v4w::::res://assets/sprites/ghoul/Enemy 1-boop.png<>uid://dgdaspta5ac2d::::res://assets/sprites/ghoul/Enemy 1-stand.png<>uid://bj4oixqia01wt::::res://assets/sprites/ghoul/Enemy 1-walk.png
+ZebraCharacter.tscn::PackedScene::631713763186388945::1737127630::0::1::::<><>::res://scripts/characters/enemies/ZebraEnemy.cs<>uid://cb3a7l68kqtvs::::res://assets/sprites/zebra/Enemy 3-boop.png<>uid://c80dnvyanb6kh::::res://assets/sprites/zebra/Enemy 3-stand.png<>uid://i6cyflooufms::::res://assets/sprites/zebra/Enemy 3-walk.png
+::res://scenes/characters/npcs/::1737127630
+VaultDwellerCharacter.tscn::PackedScene::8913067740718201745::1737127630::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://cc7n5xvl6c8gw::::res://assets/sprites/dweller/Friendly 3-stand.png<>uid://jcr3jfkxj0aa::::res://assets/sprites/dweller/Friendly 3-walk.png
+VaultMemberCharacter.tscn::PackedScene::3774113821326147497::1737127629::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://dhhh3wfixnvhb::::res://assets/sprites/vaultmember/vaultmember-stand.png<>uid://dtrhavwjeex6h::::res://assets/sprites/vaultmember/vaultmember-walk.png
+WastelanderCharacter.tscn::PackedScene::496909822395180143::1737127630::0::1::::<><>::res://scripts/characters/NonPlayerCharacter.cs<>uid://ew13o82mjp3b::::res://assets/sprites/wastelander/Friendly 2-stand.png<>uid://8gh47fn2qata::::res://assets/sprites/wastelander/Friendly 2-walk.png
+::res://scenes/maps/::1737127628
 MapChange.tscn::PackedScene::7413545966166982317::1733919527::0::1::::<><>::res://scripts/maps/MapChange.cs
-MapDesert.tscn::PackedScene::4598718339128905188::1736762313::0::1::::<><>::uid://celspim6pkmnf::::res://assets/maps/Desert_Tiles.png<>res://scripts/maps/MapDesert.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://cahbpre0jtrr7::::res://scenes/objects/nonusables/Tent.tscn<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://bd4ms1el6wjev::::res://scenes/objects/nonusables/Campfire.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://dps0juhhmbcdu::::res://scenes/objects/nonusables/DeadBush.tscn
-MapMountains.tscn::PackedScene::5371810723366771536::1736762313::0::1::::<><>::uid://r2lqr25vpn4f::::res://assets/maps/Mountains_Tiles.png<>res://scripts/maps/MapMountains.cs<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://raqorneibgx7::::res://scenes/objects/nonusables/ConcreteBarrier.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn<>uid://ca134bwk2cfpv::::res://scenes/objects/nonusables/Sandbags.tscn
-MapSwamp.tscn::PackedScene::3747417506812666871::1736762313::0::1::::<><>::res://scripts/maps/MapSwamp.cs<>uid://br2ma54neih6e::::res://assets/maps/Swamp_Tiles.png<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bd4ms1el6wjev::::res://scenes/objects/nonusables/Campfire.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://dps0juhhmbcdu::::res://scenes/objects/nonusables/DeadBush.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://c2ahb5wj5js6c::::res://scenes/objects/nonusables/WhiteCouch.tscn<>uid://boio0pqr086cd::::res://scenes/objects/nonusables/WhiteChair.tscn<>uid://cahbpre0jtrr7::::res://scenes/objects/nonusables/Tent.tscn<>uid://bjk0jvxman18m::::res://scenes/objects/usables/VaultDoor.tscn<>uid://dm88w7s02r7fp::::res://scenes/objects/nonusables/RuinedBuilding.tscn<>uid://dd2gdibay3nnt::::res://scenes/objects/nonusables/Plant1.tscn<>uid://dexutqecm2vmf::::res://scenes/objects/nonusables/Plant2.tscn<>uid://b6frabi5tf3p1::::res://scenes/objects/nonusables/TransmissionLine.tscn<>uid://grmapc6r0ag6::::res://scenes/objects/nonusables/PowerLine.tscn<>uid://bug6h1f6u1hqa::::res://scenes/objects/nonusables/Trunk.tscn<>uid://raqorneibgx7::::res://scenes/objects/nonusables/ConcreteBarrier.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn
-MapVault.tscn::PackedScene::2420190898372009746::1736762312::0::1::::<><>::res://scripts/maps/MapVault.cs<>uid://bm6506pdk8hok::::res://assets/maps/Vault_Tiles.png<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bt1hdrlpb3ybx::::res://scenes/characters/npcs/VaultMemberCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://boio0pqr086cd::::res://scenes/objects/nonusables/WhiteChair.tscn<>uid://c2ahb5wj5js6c::::res://scenes/objects/nonusables/WhiteCouch.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://byc620yy2c00n::::res://scenes/objects/usables/MetalDoor.tscn<>uid://bjk0jvxman18m::::res://scenes/objects/usables/VaultDoor.tscn<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://bmjg6p2akk048::::res://scenes/objects/nonusables/BigBed.tscn<>uid://b3ghubt2hcuml::::res://scenes/objects/nonusables/SmallBed.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn
-::res://scenes/menus/::1736762315
-CharacterCreationMenu.tscn::PackedScene::2445853840704476517::1736762315::0::1::::<><>::res://scripts/menus/CharacterCreationMenu.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn
+MapDesert.tscn::PackedScene::4598718339128905188::1737127628::0::1::::<><>::uid://celspim6pkmnf::::res://assets/maps/Desert_Tiles.png<>res://scripts/maps/MapDesert.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://cahbpre0jtrr7::::res://scenes/objects/nonusables/Tent.tscn<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://bd4ms1el6wjev::::res://scenes/objects/nonusables/Campfire.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://dps0juhhmbcdu::::res://scenes/objects/nonusables/DeadBush.tscn<>uid://1hu04jnwnghh::::res://scenes/characters/enemies/BanditCharacter.tscn<>uid://dy8s6nshy4ie8::::res://scenes/characters/npcs/VaultDwellerCharacter.tscn
+MapMountains.tscn::PackedScene::5371810723366771536::1737127628::0::1::::<><>::uid://r2lqr25vpn4f::::res://assets/maps/Mountains_Tiles.png<>res://scripts/maps/MapMountains.cs<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://raqorneibgx7::::res://scenes/objects/nonusables/ConcreteBarrier.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn<>uid://ca134bwk2cfpv::::res://scenes/objects/nonusables/Sandbags.tscn<>uid://dtsu6o2ageku2::::res://scenes/characters/enemies/BossCharacter.tscn
+MapSwamp.tscn::PackedScene::3747417506812666871::1737127628::0::1::::<><>::res://scripts/maps/MapSwamp.cs<>uid://br2ma54neih6e::::res://assets/maps/Swamp_Tiles.png<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bd4ms1el6wjev::::res://scenes/objects/nonusables/Campfire.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://dps0juhhmbcdu::::res://scenes/objects/nonusables/DeadBush.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://c2ahb5wj5js6c::::res://scenes/objects/nonusables/WhiteCouch.tscn<>uid://boio0pqr086cd::::res://scenes/objects/nonusables/WhiteChair.tscn<>uid://cahbpre0jtrr7::::res://scenes/objects/nonusables/Tent.tscn<>uid://bjk0jvxman18m::::res://scenes/objects/usables/VaultDoor.tscn<>uid://dm88w7s02r7fp::::res://scenes/objects/nonusables/RuinedBuilding.tscn<>uid://dd2gdibay3nnt::::res://scenes/objects/nonusables/Plant1.tscn<>uid://dexutqecm2vmf::::res://scenes/objects/nonusables/Plant2.tscn<>uid://b6frabi5tf3p1::::res://scenes/objects/nonusables/TransmissionLine.tscn<>uid://grmapc6r0ag6::::res://scenes/objects/nonusables/PowerLine.tscn<>uid://bug6h1f6u1hqa::::res://scenes/objects/nonusables/Trunk.tscn<>uid://raqorneibgx7::::res://scenes/objects/nonusables/ConcreteBarrier.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn<>uid://jaah61778arh::::res://scenes/characters/enemies/ZebraCharacter.tscn<>uid://hcybdgvfvff0::::res://scenes/characters/npcs/WastelanderCharacter.tscn
+MapVault.tscn::PackedScene::2420190898372009746::1737127627::0::1::::<><>::res://scripts/maps/MapVault.cs<>uid://bm6506pdk8hok::::res://assets/maps/Vault_Tiles.png<>uid://ddvgav5bbl8e0::::res://scenes/maps/MapChange.tscn<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn<>uid://bt1hdrlpb3ybx::::res://scenes/characters/npcs/VaultMemberCharacter.tscn<>uid://bk0roe1asf4ky::::res://scenes/characters/enemies/GhoulCharacter.tscn<>uid://ba1faonhldoyc::::res://scenes/objects/nonusables/Sign.tscn<>uid://boio0pqr086cd::::res://scenes/objects/nonusables/WhiteChair.tscn<>uid://c2ahb5wj5js6c::::res://scenes/objects/nonusables/WhiteCouch.tscn<>uid://83mvj0e2uqmh::::res://scenes/objects/nonusables/Barrel.tscn<>uid://byc620yy2c00n::::res://scenes/objects/usables/MetalDoor.tscn<>uid://bjk0jvxman18m::::res://scenes/objects/usables/VaultDoor.tscn<>uid://cjk8lfc5831l0::::res://scenes/objects/usables/Chest.tscn<>uid://bmjg6p2akk048::::res://scenes/objects/nonusables/BigBed.tscn<>uid://b3ghubt2hcuml::::res://scenes/objects/nonusables/SmallBed.tscn<>uid://cj7m01xd7hyt8::::res://scenes/objects/nonusables/ConcreteDebris.tscn
+::res://scenes/menus/::1737127630
+CharacterCreationMenu.tscn::PackedScene::2445853840704476517::1737127629::0::1::::<><>::res://scripts/menus/CharacterCreationMenu.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn
 CreditsMenu.tscn::PackedScene::8032247050438413494::1730802674::0::1::::<><>::res://scripts/menus/CreditsMenu.cs
-DialogueMenu.tscn::PackedScene::230533763668891986::1736762315::0::1::::<><>::res://scripts/menus/DialogueMenu.cs
+DialogueMenu.tscn::PackedScene::230533763668891986::1737127629::0::1::::<><>::res://scripts/menus/DialogueMenu.cs
 GameLostMenu.tscn::PackedScene::7440260421106324379::1733939549::0::1::::<><>::res://scripts/menus/GameLostMenu.cs
-GameWonMenu.tscn::PackedScene::1684009084801326576::1736762315::0::1::::<><>::res://scripts/menus/GameWonMenu.cs
+GameWonMenu.tscn::PackedScene::1684009084801326576::1737127629::0::1::::<><>::res://scripts/menus/GameWonMenu.cs
 InventoryMenu.tscn::PackedScene::1193640486200375622::1734350658::0::1::::<><>::res://scripts/menus/InventoryMenu.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn
 ItemInventoryMenu.tscn::PackedScene::781365115722591010::1733939549::0::1::::<><>::res://scripts/menus/ItemInventoryMenu.cs
-LoadGameMenu.tscn::PackedScene::3434296663854735324::1736762315::0::1::::<><>::res://scripts/menus/LoadGameMenu.cs
-MainMenu.tscn::PackedScene::943310042234773255::1736762315::0::1::::<><>::res://scripts/menus/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
+LoadGameMenu.tscn::PackedScene::3434296663854735324::1737127629::0::1::::<><>::res://scripts/menus/LoadGameMenu.cs
+MainMenu.tscn::PackedScene::943310042234773255::1737127629::0::1::::<><>::res://scripts/menus/MainMenu.cs<>uid://dc1xoc6ngmbf3::::res://assets/misc/MainMenuBackground.jpg
 PauseMenu.tscn::PackedScene::1244502056695251268::1731394039::0::1::::<><>::res://scripts/menus/PauseMenu.cs
-SettingsMenu.tscn::PackedScene::8868694129000853610::1736762314::0::1::::<><>::res://scripts/menus/SettingsMenu.cs
-SkillsMenu.tscn::PackedScene::8774804108816029229::1736762315::0::1::::<><>::res://scripts/menus/SkillsMenu.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn
+SettingsMenu.tscn::PackedScene::8868694129000853610::1737127629::0::1::::<><>::res://scripts/menus/SettingsMenu.cs
+SkillsMenu.tscn::PackedScene::8774804108816029229::1737127630::0::1::::<><>::res://scripts/menus/SkillsMenu.cs<>uid://j71sbfwl0syn::::res://scenes/player/PlayerCharacter.tscn
 ::res://scenes/objects/::1733221002
-::res://scenes/objects/nonusables/::1736762315
-Barrel.tscn::PackedScene::2374801034302832239::1736762315::0::1::::<><>::uid://duay1o43cl6uy::::res://assets/misc/BarrelTexture.png
+::res://scenes/objects/nonusables/::1737127630
+Barrel.tscn::PackedScene::2374801034302832239::1737127630::0::1::::<><>::uid://duay1o43cl6uy::::res://assets/misc/BarrelTexture.png
 BigBed.tscn::PackedScene::3247686698277435919::1733919528::0::1::::<><>::uid://y6420i0ohx0r::::res://assets/misc/BigBedTexture.png
 Campfire.tscn::PackedScene::2657616290006830145::1733919527::0::1::::<><>::uid://chjs06nj4hk6i::::res://assets/misc/CampfireTexture.png
 ConcreteBarrier.tscn::PackedScene::1194207728017371790::1733919528::0::1::::<><>::uid://chwvdm13y0vt0::::res://assets/misc/ConcreteBarrierTexture.png
@@ -135,28 +137,29 @@ TransmissionLine.tscn::PackedScene::4573628980389901728::1733919527::0::1::::<><
 Trunk.tscn::PackedScene::3804479925078583276::1733919528::0::1::::<><>::uid://do5jpjjnkgv8j::::res://assets/misc/TrunkTexture.png
 WhiteChair.tscn::PackedScene::3386475012778651899::1733216603::0::1::::<><>::uid://bsvjjtavcohb5::::res://assets/misc/WhiteChairTexture.png
 WhiteCouch.tscn::PackedScene::6668368560491932592::1733216659::0::1::::<><>::uid://q68ujvwlp10w::::res://assets/misc/WhiteCouchTexture.png
-::res://scenes/objects/usables/::1736762314
-Chest.tscn::PackedScene::5427208309277990823::1736762314::0::1::::<><>::res://scripts/usables/ChestBody.cs<>uid://vnur5p22ldyx::::res://assets/misc/CrateTexture.png
+::res://scenes/objects/usables/::1737127629
+Chest.tscn::PackedScene::5427208309277990823::1737127629::0::1::::<><>::res://scripts/usables/ChestBody.cs<>uid://vnur5p22ldyx::::res://assets/misc/CrateTexture.png
 MetalDoor.tscn::PackedScene::4077013481010889603::1733220468::0::1::::<><>::res://scripts/usables/MetalDoor.cs<>uid://b752h44aefiso::::res://assets/misc/MetalDoorTexture.png
 VaultDoor.tscn::PackedScene::3040299190006917758::1733919527::0::1::::<><>::res://scripts/usables/VaultDoor.cs<>uid://b0uunwaotaxcu::::res://assets/misc/VaultDoorTexture.png
-::res://scenes/player/::1736762315
+::res://scenes/player/::1737127630
 HUD.tscn::PackedScene::6676055909044301905::1729762890::0::1::::<><>::
-PlayerCharacter.tscn::PackedScene::699370528237075965::1736762314::0::1::::<><>::res://scripts/characters/PlayerCharacter.cs<>uid://ccelvv0sb8ym5::::res://assets/sprites/player/Pony-trot.png<>uid://dvblsts3kcy3x::::res://assets/sprites/player/Pony-stand.png
-UserInterface.tscn::PackedScene::6452364196576309550::1736762315::0::1::::<><>::res://scripts/menus/UserInterface.cs
+PlayerCharacter.tscn::PackedScene::699370528237075965::1737127628::0::1::::<><>::res://scripts/characters/PlayerCharacter.cs<>uid://ccelvv0sb8ym5::::res://assets/sprites/player/Pony-trot.png<>uid://dvblsts3kcy3x::::res://assets/sprites/player/Pony-stand.png
+UserInterface.tscn::PackedScene::6452364196576309550::1737127630::0::1::::<><>::res://scripts/menus/UserInterface.cs
 ::res://scripts/::1736728311
-::res://scripts/characters/::1737110161
-CharacterBase.cs::CSharpScript::-1::1736728417::0::1::::<>CharacterBody2D<>::
-EnemyCharacter.cs::CSharpScript::-1::1736728418::0::1::::<>CharacterBody2D<>::
-NonPlayerCharacter.cs::CSharpScript::-1::1736728419::0::1::::<>CharacterBody2D<>::
-PlayerCharacter.cs::CSharpScript::-1::1737110161::0::1::::<>CharacterBody2D<>::
-::res://scripts/characters/enemies/::1737110970
-BanditEnemy.cs::CSharpScript::-1::1737110975::0::1::::<>CharacterBody2D<>::
-BossEnemy.cs::CSharpScript::-1::1737110945::0::1::::<><>::
+::res://scripts/characters/::1737123984
+CharacterBase.cs::CSharpScript::-1::1737123395::0::1::::<>CharacterBody2D<>::
+EnemyCharacter.cs::CSharpScript::-1::1737123984::0::1::::<>CharacterBody2D<>::
+NonPlayerCharacter.cs::CSharpScript::-1::1737123979::0::1::::<>CharacterBody2D<>::
+PlayerCharacter.cs::CSharpScript::-1::1737120665::0::1::::<>CharacterBody2D<>::
+::res://scripts/characters/enemies/::1737128229
+BanditEnemy.cs::CSharpScript::-1::1737111033::0::1::::<>CharacterBody2D<>::
+BossCharacter.cs::CSharpScript::-1::1737110927::0::1::::<><>::
+BossEnemy.cs::CSharpScript::-1::1737111203::0::1::::<>CharacterBody2D<>::
 GhoulEnemy.cs::CSharpScript::-1::1736728418::0::1::::<>CharacterBody2D<>::
-ZebraEnemy.cs::CSharpScript::-1::1737110249::0::1::::<><>::
+ZebraEnemy.cs::CSharpScript::-1::1737110249::0::1::::<>CharacterBody2D<>::
 ::res://scripts/characters/npcs/::1729523891
-::res://scripts/data/::1736728420
-CharacterData.cs::CSharpScript::-1::1736728417::0::1::::<>Node<>::
+::res://scripts/data/::1737112669
+CharacterData.cs::CSharpScript::-1::1737112669::0::1::::<>Node<>::
 Ending.cs::CSharpScript::-1::1736728418::0::1::::<><>::
 GameData.cs::CSharpScript::-1::1736728418::0::1::::<>Node<>::
 Settings.cs::CSharpScript::-1::1736728420::0::1::::<><>::
@@ -189,10 +192,10 @@ MapDesert.cs::CSharpScript::-1::1736728419::0::1::::<>Node2D<>::
 MapMountains.cs::CSharpScript::-1::1736728419::0::1::::<>Node2D<>::
 MapSwamp.cs::CSharpScript::-1::1736728419::0::1::::<>Node2D<>::
 MapVault.cs::CSharpScript::-1::1736728419::0::1::::<>Node2D<>::
-::res://scripts/menus/::1737110161
+::res://scripts/menus/::1737126091
 CharacterCreationMenu.cs::CSharpScript::-1::1736728417::0::1::::<>Control<>::
 CreditsMenu.cs::CSharpScript::-1::1736728417::0::1::::<>Control<>::
-DialogueMenu.cs::CSharpScript::-1::1736728418::0::1::::<>Control<>::
+DialogueMenu.cs::CSharpScript::-1::1737126091::0::1::::<>Control<>::
 GameLostMenu.cs::CSharpScript::-1::1736728418::0::1::::<>Control<>::
 GameWonMenu.cs::CSharpScript::-1::1737110161::0::1::::<>Control<>::
 InventoryMenu.cs::CSharpScript::-1::1737110161::0::1::::<>Control<>::

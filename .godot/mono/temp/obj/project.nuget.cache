@@ -1,14 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "bt4la3Td0vc=",
+  "dgSpecHash": "2+syf0xHYNU=",
   "success": true,
   "projectFilePath": "D:\\Maraxowanie\\Programowanie\\Balefire-Wasteland\\Balefire Imperium.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marax\\.nuget\\packages\\godot.sourcegenerators\\4.3.0\\godot.sourcegenerators.4.3.0.nupkg.sha512",
     "C:\\Users\\Marax\\.nuget\\packages\\godotsharp\\4.3.0\\godotsharp.4.3.0.nupkg.sha512",
-    "C:\\Users\\Marax\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.35\\microsoft.netcore.app.runtime.win-x64.6.0.35.nupkg.sha512",
-    "C:\\Users\\Marax\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.35\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.35.nupkg.sha512",
-    "C:\\Users\\Marax\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.35\\microsoft.aspnetcore.app.runtime.win-x64.6.0.35.nupkg.sha512"
+    "C:\\Users\\Marax\\.nuget\\packages\\godotsharpeditor\\4.3.0\\godotsharpeditor.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

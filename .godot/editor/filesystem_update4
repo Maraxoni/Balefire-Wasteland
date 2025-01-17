@@ -68,3 +68,4 @@ res://scripts/characters/EnemyCharacter.cs
 res://scripts/usables/MetalDoor.cs
 res://scripts/usables/VaultDoor.cs
 res://assets/dialogues/dialogues.json
+res://scenes/menus/ItemInventoryMenu.tscn
