@@ -1,0 +1,131 @@
+[gd_scene load_steps=18 format=3 uid="uid://dy8s6nshy4ie8"]
+
+[ext_resource type="Script" path="res://scripts/characters/NonPlayerCharacter.cs" id="1_wv7ds"]
+[ext_resource type="Texture2D" uid="uid://cc7n5xvl6c8gw" path="res://assets/sprites/dweller/Friendly 3-stand.png" id="2_qhf6n"]
+[ext_resource type="Texture2D" uid="uid://jcr3jfkxj0aa" path="res://assets/sprites/dweller/Friendly 3-walk.png" id="3_ikwo2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilpyl"]
+atlas = ExtResource("2_qhf6n")
+region = Rect2(0, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vqau"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(0, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1q3q"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(80, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kjed"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(160, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ceg"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(240, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edtpd"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(320, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4abu"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(400, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32xdq"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(480, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka6c7"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(560, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv8ov"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(640, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_napto"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(720, 0, 80, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivw3y"]
+atlas = ExtResource("3_ikwo2")
+region = Rect2(800, 0, 80, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4y1mq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilpyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vqau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1q3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kjed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3ceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edtpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4abu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32xdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka6c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv8ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_napto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivw3y")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtcig"]
+
+[node name="VaultDwellerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_wv7ds")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4y1mq")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 12)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_vtcig")
+one_way_collision_margin = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1, 12)
+scale = Vector2(2.5, 2.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9.53674e-07, -1.90735e-06)
+shape = SubResource("CircleShape2D_vtcig")
+one_way_collision_margin = 0.0
+
+[connection signal="draw" from="Area2D" to="." method="_on_area_2d_draw"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

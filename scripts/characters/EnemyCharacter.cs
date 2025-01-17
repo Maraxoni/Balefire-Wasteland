@@ -25,7 +25,9 @@ public abstract partial class EnemyCharacter : CharacterBase
 	
 	[Export]
 	public float ExperiencePoints { get; set; } = 100f;
-
+	
+	private Vector2 _previousPosition;
+	
 	private enum EnemyState
 	{
 		Idle,
@@ -38,6 +40,7 @@ public abstract partial class EnemyCharacter : CharacterBase
 
 	public override void _Ready()
 	{
+		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GD.Print("Enemy ready with common setup.");
 	}
 	
@@ -68,28 +71,48 @@ public abstract partial class EnemyCharacter : CharacterBase
 			HandleDeath();
 			return;
 		}
+		
+		var movementDirection = Position - _previousPosition;
+		if (movementDirection.X > 0)
+		{
+			_animatedSprite.FlipH = true;
+		}
+		else if (movementDirection.X < 0)
+		{
+			_animatedSprite.FlipH = false;
+		}
+		_previousPosition = Position;
 
 		var player = GetPlayer();
 
 		switch (_currentState)
 		{
 			case EnemyState.Patrolling:
+				if(PatrolPoints.Count > 0)
+				{
+					Patrol(delta);
+					_animatedSprite.Play("walk");
+				}
+				else
+				{
+					GD.Print("Enemy state entered - Idle.");
+					_currentState = EnemyState.Idle;
+				}
 				
-				Patrol(delta);
-
 				if (player != null && Position.DistanceTo(player.Position) < DetectionRange)
 				{
-					GD.Print("Ghoul state entered - Chasing.");
+					GD.Print("Enemy state entered - Chasing.");
 					_currentState = EnemyState.Chasing;
 				}
 				break;
 
 			case EnemyState.Chasing:
 				FollowPlayer(player, delta);
-
+				_animatedSprite.Play("walk");
+				
 				if (player == null || Position.DistanceTo(player.Position) > StopChaseRange)
 				{
-					GD.Print("Ghoul state entered - Patrolling.");
+					GD.Print("Enemy state entered - Patrolling.");
 					_currentState = EnemyState.Patrolling;
 				} else if(Position.DistanceTo(player.Position) < AttackRange)
 				{
@@ -102,15 +125,26 @@ public abstract partial class EnemyCharacter : CharacterBase
 			case EnemyState.Attacking:
 				if (player != null && Position.DistanceTo(player.Position) < DetectionRange && Position.DistanceTo(player.Position) > AttackRange)
 				{
-					GD.Print("Ghoul state entered - Chasing.");
+					GD.Print("Enemy state entered - Chasing.");
 					_currentState = EnemyState.Chasing;
 				}
 				
 				if (IsPlayerInAttackRange(player))
 				{
+					_animatedSprite.Play("attack");
 					AttackPlayer();
 				}
 				
+				break;
+				
+			case EnemyState.Idle:
+				_animatedSprite.Play("default");
+				
+				if (player != null && Position.DistanceTo(player.Position) < DetectionRange && Position.DistanceTo(player.Position) > AttackRange)
+				{
+					GD.Print("Enemy state entered - Chasing.");
+					_currentState = EnemyState.Chasing;
+				}
 				break;
 		}
 	}

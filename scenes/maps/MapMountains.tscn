@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cise65cuqxio3"]
+[gd_scene load_steps=15 format=3 uid="uid://cise65cuqxio3"]
 
 [ext_resource type="Texture2D" uid="uid://r2lqr25vpn4f" path="res://assets/maps/Mountains_Tiles.png" id="1_iypof"]
 [ext_resource type="Script" path="res://scripts/maps/MapMountains.cs" id="1_v3wny"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://raqorneibgx7" path="res://scenes/objects/nonusables/ConcreteBarrier.tscn" id="9_5clqm"]
 [ext_resource type="PackedScene" uid="uid://cj7m01xd7hyt8" path="res://scenes/objects/nonusables/ConcreteDebris.tscn" id="10_31odc"]
 [ext_resource type="PackedScene" uid="uid://ca134bwk2cfpv" path="res://scenes/objects/nonusables/Sandbags.tscn" id="11_rr473"]
+[ext_resource type="PackedScene" uid="uid://dtsu6o2ageku2" path="res://scenes/characters/enemies/BossCharacter.tscn" id="12_u23l2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2t2w"]
 texture = ExtResource("1_iypof")
@@ -1217,12 +1218,12 @@ position = Vector2(1454, 847)
 position = Vector2(143, 1914)
 
 [node name="GhoulCharacter" parent="." instance=ExtResource("4_cc42c")]
-position = Vector2(1531, 515)
+position = Vector2(1662, 1297)
 Health = 200
 DetectionRange = 100.0
 StopChaseRange = 200.0
 Speed = 200
-PatrolPoints = [Vector2(1000, 500), Vector2(1100, 400), Vector2(1000, 600)]
+PatrolPoints = [Vector2(1606, 1085), Vector2(1662, 1297)]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_1hu3x")]
 position = Vector2(804, 733)
@@ -1288,5 +1289,9 @@ rotation = 0.23911
 [node name="Sandbags3" parent="." instance=ExtResource("11_rr473")]
 position = Vector2(1333, 877)
 rotation = 0.47822
+
+[node name="BossCharacter" parent="." instance=ExtResource("12_u23l2")]
+position = Vector2(1181, 359)
+PatrolPoints = [Vector2(1034, 228), Vector2(1397, 302), Vector2(1181, 359)]
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

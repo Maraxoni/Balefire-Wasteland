@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6rwhpmbew67y"]
+[gd_scene load_steps=14 format=3 uid="uid://b6rwhpmbew67y"]
 
 [ext_resource type="Texture2D" uid="uid://celspim6pkmnf" path="res://assets/maps/Desert_Tiles.png" id="1_pxqwn"]
 [ext_resource type="Script" path="res://scripts/maps/MapDesert.cs" id="1_srjec"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bd4ms1el6wjev" path="res://scenes/objects/nonusables/Campfire.tscn" id="7_m33j6"]
 [ext_resource type="PackedScene" uid="uid://ba1faonhldoyc" path="res://scenes/objects/nonusables/Sign.tscn" id="8_rjfor"]
 [ext_resource type="PackedScene" uid="uid://dps0juhhmbcdu" path="res://scenes/objects/nonusables/DeadBush.tscn" id="9_sq33j"]
+[ext_resource type="PackedScene" uid="uid://1hu04jnwnghh" path="res://scenes/characters/enemies/BanditCharacter.tscn" id="10_lytrk"]
+[ext_resource type="PackedScene" uid="uid://dy8s6nshy4ie8" path="res://scenes/characters/npcs/VaultDwellerCharacter.tscn" id="11_1fhbt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4jwf"]
 texture = ExtResource("1_pxqwn")
@@ -1144,12 +1146,12 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 65537, 0, 2, 131073, 0, 3, 1966
 position = Vector2(1050, 1909)
 
 [node name="GhoulCharacter" parent="." instance=ExtResource("4_1md55")]
-position = Vector2(1641, 238)
+position = Vector2(1721, 1148)
 Health = 200
 DetectionRange = 100.0
 StopChaseRange = 200.0
 Speed = 200
-PatrolPoints = [Vector2(1000, 500), Vector2(1100, 400), Vector2(1000, 600)]
+PatrolPoints = [Vector2(1766, 942), Vector2(1721, 1148)]
 
 [node name="MapChange2" parent="." instance=ExtResource("6_jyu1y")]
 position = Vector2(1039, 1985)
@@ -1211,5 +1213,16 @@ rotation = -3.59014
 [node name="DeadBush8" parent="." instance=ExtResource("9_sq33j")]
 position = Vector2(479, 1465)
 rotation = 1.91463
+
+[node name="BanditCharacter" parent="." instance=ExtResource("10_lytrk")]
+position = Vector2(1708, 436)
+
+[node name="BanditCharacter2" parent="." instance=ExtResource("10_lytrk")]
+position = Vector2(1407, 287)
+
+[node name="VaultDwellerCharacter" parent="." instance=ExtResource("11_1fhbt")]
+position = Vector2(445, 325)
+_npcKey = "vaultdweller"
+PatrolPoints = [Vector2(73, 313), Vector2(445, 325)]
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

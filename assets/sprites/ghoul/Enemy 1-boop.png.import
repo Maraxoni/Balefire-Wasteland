@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdn4qmwqje3sj"
-path="res://.godot/imported/Ghoul-walk.png-630ebcb75c6109e00cb22f444ef14a95.ctex"
+uid="uid://byt2v34r85v4w"
+path="res://.godot/imported/Enemy 1-boop.png-889ed7b293d88597fe0f98d4a220f7ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ghoul/Ghoul-walk.png"
-dest_files=["res://.godot/imported/Ghoul-walk.png-630ebcb75c6109e00cb22f444ef14a95.ctex"]
+source_file="res://assets/sprites/ghoul/Enemy 1-boop.png"
+dest_files=["res://.godot/imported/Enemy 1-boop.png-889ed7b293d88597fe0f98d4a220f7ce.ctex"]
 
 [params]
 

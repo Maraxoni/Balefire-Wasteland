@@ -14,9 +14,9 @@ public partial class CharacterBase : CharacterBody2D
 	
 	// Patrol points and patrol logic
 	[Export]
-	private Array<Vector2> PatrolPoints = new Array<Vector2>();
-	private int _currentPatrolIndex = 0;
-	private bool _isPatrolling = true;
+	protected Array<Vector2> PatrolPoints = new Array<Vector2>();
+	protected int _currentPatrolIndex = 0;
+	protected bool _isPatrolling = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,10 +33,7 @@ public partial class CharacterBase : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_isPatrolling && PatrolPoints.Count > 0)
-		{
-			Patrol(delta);
-		}
+
 	}
 	
 	protected void Patrol(double delta)

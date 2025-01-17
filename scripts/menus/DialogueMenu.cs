@@ -80,27 +80,27 @@ public partial class DialogueMenu : Control
 	{
 		switch (choiceKey)
 		{
-			case "start_game":
+			case "deal_response":
 				GD.Print("Choice changed value 1");
 				_globalGameData.DialogueChoice1 = true;
 				break;
 
-			case "load_game":
+			case "advice_response":
 				GD.Print("Choice changed value 2");
 				_globalGameData.DialogueChoice2 = true;
 				break;
 
-			case "exit_game":
+			case "accept_response":
 				GD.Print("Choice changed value 3");
 				_globalGameData.DialogueChoice3 = true;
 				break;
 				
-			case "sample1":
+			case "tips_response":
 				GD.Print("Choice changed value 4");
 				_globalGameData.DialogueChoice4 = true;
 				break;
 				
-			case "sample2":
+			case "thanks_response":
 				GD.Print("Choice changed value 5");
 				_globalGameData.DialogueChoice5 = true;
 				break;

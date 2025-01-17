@@ -1,5 +1,12 @@
-res://scripts/data
 D:/Maraxowanie/Programowanie/Balefire-Wasteland
+res://assets/sprites/dweller
+res://assets/sprites/wastelander
+res://assets/sprites/boss
+res://assets/sprites/ghoul
+res://scripts/characters/enemies
+res://assets/sprites/zebra
+res://assets/sprites/bandit
+res://scripts/data
 res://scripts/menus
 res://assets/settings
 res://assets/endings
@@ -9,10 +16,7 @@ res://
 res://scenes/player
 res://scripts/maps
 res://scripts/characters
-res://assets/sprites/ghoul
-res://scripts/characters/enemies
 res://scripts
 res://scenes
 res://scripts/inventory
 res://assets/maps
-res://assets/sprites

@@ -11,15 +11,226 @@
 		  "ask_description": {
 			"text": "What do you mean?",
 			"next": "description_response"
+		  },
+		  "ask_advice": {
+			"text": "Any advice for surviving?",
+			"next": "advice_response"
 		  }
 		}
 	  },
 	  "name_response": {
-		"text": "My name is Lavender Dust.",
-		"choices": {}
+		"text": "My name is Lavender Dust. I've lived here my whole life.",
+		"choices": {
+		  "ask_about_vault": {
+			"text": "What's life like in the vault?",
+			"next": "vault_life_response"
+		  }
+		}
 	  },
 	  "description_response": {
-		"text": "There are lots of ghouls and mutants on the surface.",
+		"text": "There are lots of ghouls and mutants on the surface. It's no place for the unprepared.",
+		"choices": {
+		  "ask_more": {
+			"text": "How do you deal with them?",
+			"next": "deal_response"
+		  }
+		}
+	  },
+	  "advice_response": {
+		"text": "Stay quiet, stick to the shadows, and never underestimate the ghouls.",
+		"choices": {}
+	  },
+	  "vault_life_response": {
+		"text": "It's safe, but sometimes I wonder what the surface is like.",
+		"choices": {
+		  "encourage_explore": {
+			"text": "Why not explore?",
+			"next": "explore_response"
+		  },
+		  "discourage_explore": {
+			"text": "Better stay safe.",
+			"next": "stay_safe_response"
+		  }
+		}
+	  },
+	  "deal_response": {
+		"text": "With luck, a gun, and lots of hiding.",
+		"choices": {}
+	  },
+	  "explore_response": {
+		"text": "Maybe someday... but not today.",
+		"choices": {}
+	  },
+	  "stay_safe_response": {
+		"text": "You're probably right. It's not worth the risk.",
+		"choices": {}
+	  }
+	}
+  },
+  "vaultdweller": {
+	"dialogues": {
+	  "start": {
+		"text": "Can you help me? I need you to deal with bandits in the mountains.",
+		"choices": {
+		  "ask_name": {
+			"text": "What's your name?",
+			"next": "name_response"
+		  },
+		  "ask_description": {
+			"text": "What do you mean?",
+			"next": "description_response"
+		  },
+		  "accept_mission": {
+			"text": "Alright, I'll deal with the bandits.",
+			"next": "accept_response"
+		  },
+		  "decline_mission": {
+			"text": "Sorry, I can't help you.",
+			"next": "decline_response"
+		  }
+		}
+	  },
+	  "name_response": {
+		"text": "My name is Iron Flint. I'm a scout for our vault.",
+		"choices": {
+		  "ask_more_about_vault": {
+			"text": "Tell me about your vault.",
+			"next": "vault_info_response"
+		  },
+		  "ask_why_help": {
+			"text": "Why do you need my help?",
+			"next": "why_help_response"
+		  }
+		}
+	  },
+	  "description_response": {
+		"text": "The bandits have been attacking our caravans. If we lose any more supplies, the vault won't survive the winter.",
+		"choices": {
+		  "ask_bandits": {
+			"text": "Where are these bandits?",
+			"next": "bandits_location"
+		  },
+		  "offer_help": {
+			"text": "I'll take care of them.",
+			"next": "accept_response"
+		  }
+		}
+	  },
+	  "accept_response": {
+		"text": "Thank you! The vault depends on this.",
+		"choices": {
+		  "ask_reward": {
+			"text": "What do I get in return?",
+			"next": "reward_response"
+		  },
+		  "ask_tips": {
+			"text": "Any tips for fighting them?",
+			"next": "tips_response"
+		  }
+		}
+	  },
+	  "decline_response": {
+		"text": "That's... disappointing. But I understand. It's not your fight.",
+		"choices": {}
+	  },
+	  "vault_info_response": {
+		"text": "Our vault is small, but we’ve survived for generations. Lately, it’s been harder to find resources outside.",
+		"choices": {
+		  "ask_resources": {
+			"text": "What resources do you need?",
+			"next": "resources_response"
+		  },
+		  "ask_more_details": {
+			"text": "What else can you tell me?",
+			"next": "more_details_response"
+		  }
+		}
+	  },
+	  "why_help_response": {
+		"text": "You're better equipped than most of us. You're our only chance to stop them.",
+		"choices": {}
+	  },
+	  "bandits_location": {
+		"text": "They’ve set up a camp in the mountains to the north. Watch out for traps.",
+		"choices": {}
+	  },
+	  "reward_response": {
+		"text": "We don’t have much, but you’ll be compensated with supplies or weapons from the vault.",
+		"choices": {}
+	  },
+	  "tips_response": {
+		"text": "The bandits are well-armed but disorganized. If you take out their leader, the rest might scatter.",
+		"choices": {}
+	  },
+	  "resources_response": {
+		"text": "We need food, water, and medical supplies. Anything you can bring back will help.",
+		"choices": {}
+	  },
+	  "more_details_response": {
+		"text": "The vault has strict rules, but they’ve kept us alive. If you want to learn more, come visit after dealing with the bandits.",
+		"choices": {}
+	  }
+	}
+  },
+  "wastelander": {
+	"dialogues": {
+	  "start": {
+		"text": "The situation on the wasteland makes you wish for a nuclear winter.",
+		"choices": {
+		  "ask_why": {
+			"text": "Why?",
+			"next": "why_response"
+		  },
+		  "say_weirdo": {
+			"text": "Weirdo.",
+			"next": "weirdo_response"
+		  },
+		  "offer_help": {
+			"text": "Can I help?",
+			"next": "help_response"
+		  }
+		}
+	  },
+	  "why_response": {
+		"text": "The bandits are confiscating everything we've got. Food, water, even weapons.",
+		"choices": {
+		  "ask_bandits": {
+			"text": "Where are the bandits?",
+			"next": "bandits_location"
+		  },
+		  "ignore": {
+			"text": "Sounds rough.",
+			"next": "weirdo_response"
+		  }
+		}
+	  },
+	  "weirdo_response": {
+		"text": "Yeah, well, you're not exactly my type either.",
+		"choices": {}
+	  },
+	  "help_response": {
+		"text": "If you could deal with the bandits, we'd all be safer.",
+		"choices": {
+		  "accept": {
+			"text": "I'll deal with them.",
+			"next": "thanks_response"
+		  },
+		  "decline": {
+			"text": "Sorry, that's not my problem.",
+			"next": "angry_response"
+		  }
+		}
+	  },
+	  "bandits_location": {
+		"text": "They've holed up in the mountains to the north. Watch your back.",
+		"choices": {}
+	  },
+	  "thanks_response": {
+		"text": "Thank you. We all owe you one.",
+		"choices": {}
+	  },
+	  "angry_response": {
+		"text": "Figures. Nobody cares about us out here.",
 		"choices": {}
 	  }
 	}
@@ -30,13 +241,21 @@
 		"text": "Get lost.",
 		"choices": {
 		  "ask_about": {
-			"text": "What?",
-			"next": "what_response"
+			"text": "What's your problem?",
+			"next": "problem_response"
+		  },
+		  "intimidate": {
+			"text": "Watch your tone.",
+			"next": "intimidate_response"
 		  }
 		}
 	  },
-	  "what_response": {
-		"text": "Get lost!",
+	  "problem_response": {
+		"text": "The surface has no place for the likes of you.",
+		"choices": {}
+	  },
+	  "intimidate_response": {
+		"text": "Hah, tough talk. You won't last a minute out there.",
 		"choices": {}
 	  }
 	}

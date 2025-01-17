@@ -4,6 +4,7 @@ using GameProject;
 
 public partial class CharacterData : Node
 {
+	[Export]
 	private string _characterName = "";
 	private Inventory _playerInventory = new Inventory();
 	private Stats _playerStats = new Stats();

@@ -3,12 +3,87 @@ using System.Collections.Generic;
 
 public partial class NonPlayerCharacter : CharacterBase
 {
+	[Export]
+	private string _npcKey = "";
+	
 	private bool _isHovered = false;
 	
 	private const float InteractionRange = 100.0f;
 	
+	private Vector2 _previousPosition;
+	
+	private enum NPCState
+	{
+		Idle,
+		Patrolling,
+		Talking
+	}
+	
+	private NPCState _currentState = NPCState.Patrolling;
+	
 	public override void _Ready()
 	{
+		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		GD.Print("NPC ready with common setup.");
+	}
+	
+	public override void _PhysicsProcess(double delta)
+	{
+		var player = GetPlayer();
+		
+		var movementDirection = Position - _previousPosition;
+		if (movementDirection.X > 0)
+		{
+			_animatedSprite.FlipH = true;
+		}
+		else if (movementDirection.X < 0)
+		{
+			_animatedSprite.FlipH = false;
+		}
+		_previousPosition = Position;
+		
+		switch (_currentState)
+		{
+			case NPCState.Patrolling:
+				if(PatrolPoints.Count > 0)
+				{
+					Patrol(delta);
+					_animatedSprite.Play("walk");
+				}
+				else
+				{
+					GD.Print("Npc state entered - Idle.");
+					_currentState = NPCState.Idle;
+				}
+				
+				if (Position.DistanceTo(player.Position) < InteractionRange)
+				{
+					GD.Print("Npc state entered - Talking.");
+					_currentState = NPCState.Talking;
+				}
+				break;
+
+			case NPCState.Talking:
+				_animatedSprite.Play("default");
+				
+				if(Position.DistanceTo(player.Position) > InteractionRange)
+				{
+					GD.Print("NPC state entered - Patrolling.");
+					_currentState = NPCState.Patrolling;
+				}
+				
+				break;
+
+			case NPCState.Idle:
+				_animatedSprite.Play("default");
+				
+				if (Position.DistanceTo(player.Position) < InteractionRange)
+				{
+					GD.Print("Npc state entered - Talking.");
+					_currentState = NPCState.Talking;
+				}
+				break;
+		}
 	}
 
 	// Handle input events
@@ -20,7 +95,7 @@ public partial class NonPlayerCharacter : CharacterBase
 			{
 				if (IsPlayerInRange())
 				{
-					GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu("vaultmember", "start");
+					GetTree().Root.GetNode<UserInterface>("UserInterface").ToggleDialogueMenu(_npcKey, "start");
 				}
 				else
 				{
@@ -69,6 +144,12 @@ public partial class NonPlayerCharacter : CharacterBase
 	protected PlayerCharacter GetPlayer()
 	{
 		return GetNodeOrNull<PlayerCharacter>("../PlayerCharacter");
+	}
+	
+	public string NPCKey
+	{
+		get { return _npcKey; }
+		set { _npcKey = value; }
 	}
 	
 }

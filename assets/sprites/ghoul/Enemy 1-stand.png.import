@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjgioi52cyx3r"
-path="res://.godot/imported/Ghoul-stand.png-2cd3a4213ab5fd128927b8e3b2b883dd.ctex"
+uid="uid://dgdaspta5ac2d"
+path="res://.godot/imported/Enemy 1-stand.png-18ad7a674caf5a0d2e15bf520c4b72cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ghoul/Ghoul-stand.png"
-dest_files=["res://.godot/imported/Ghoul-stand.png-2cd3a4213ab5fd128927b8e3b2b883dd.ctex"]
+source_file="res://assets/sprites/ghoul/Enemy 1-stand.png"
+dest_files=["res://.godot/imported/Enemy 1-stand.png-18ad7a674caf5a0d2e15bf520c4b72cd.ctex"]
 
 [params]
 
