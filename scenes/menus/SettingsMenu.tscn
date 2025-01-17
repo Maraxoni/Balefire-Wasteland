@@ -21,9 +21,10 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
-current_tab = 0
+current_tab = 2
 
 [node name="Graphics" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 0
@@ -82,7 +83,7 @@ metadata/_tab_index = 1
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Resolution"
+text = "Game Volume"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio"]
@@ -103,7 +104,6 @@ layout_mode = 2
 text = ">"
 
 [node name="Keybinds" type="VBoxContainer" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 2
@@ -111,7 +111,7 @@ metadata/_tab_index = 2
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Keybinds"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Resolution"
+text = "Keybinds"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Keybinds"]
