@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://no7gco06hit0"]
 
 [ext_resource type="Script" path="res://scripts/menus/MainMenu.cs" id="1_32iv5"]
-[ext_resource type="Texture2D" uid="uid://dc1xoc6ngmbf3" path="res://assets/misc/MainMenuBackground.jpg" id="2_cshcw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c80bv"]
+load_path = "res://.godot/imported/MainMenuBackground.jpg-d52d2cf51f7a442c6ded5a3183e13240.ctex"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,7 +29,7 @@ layout_mode = 2
 
 [node name="MenuBackground" type="TextureRect" parent="MarginContainer2/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("2_cshcw")
+texture = SubResource("CompressedTexture2D_c80bv")
 expand_mode = 2
 stretch_mode = 5
 

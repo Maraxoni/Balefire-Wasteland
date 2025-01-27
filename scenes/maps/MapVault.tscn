@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://baqmgqhqrkmu1"]
 
 [ext_resource type="Script" path="res://scripts/maps/MapVault.cs" id="1_thua5"]
-[ext_resource type="Texture2D" uid="uid://bm6506pdk8hok" path="res://assets/maps/Vault_Tiles.png" id="4_frrtl"]
 [ext_resource type="PackedScene" uid="uid://ddvgav5bbl8e0" path="res://scenes/maps/MapChange.tscn" id="4_ofha7"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="5_p64dw"]
 [ext_resource type="PackedScene" uid="uid://bt1hdrlpb3ybx" path="res://scenes/characters/npcs/VaultMemberCharacter.tscn" id="6_0p3eb"]
@@ -19,8 +18,11 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ghaq0"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cbt3t"]
+load_path = "res://.godot/imported/Vault_Tiles.png-a8748e641b8529dcdd1fd213d283dba3.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21kw5"]
-texture = ExtResource("4_frrtl")
+texture = SubResource("CompressedTexture2D_cbt3t")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -28, -27, -26.5, -26.5, 32, -32, 32)

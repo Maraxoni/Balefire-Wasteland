@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Balefire Imperium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bcdfd291a9917eab07018e4937cdb49b4d1d380")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02d4ad4cb117b411d5b7119e121fe658937defab")]
 [assembly: System.Reflection.AssemblyProductAttribute("Balefire Imperium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Balefire Imperium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

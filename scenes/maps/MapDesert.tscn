@@ -1,6 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://b6rwhpmbew67y"]
 
-[ext_resource type="Texture2D" uid="uid://celspim6pkmnf" path="res://assets/maps/Desert_Tiles.png" id="1_pxqwn"]
 [ext_resource type="Script" path="res://scripts/maps/MapDesert.cs" id="1_srjec"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="3_sxwpi"]
 [ext_resource type="PackedScene" uid="uid://bk0roe1asf4ky" path="res://scenes/characters/enemies/GhoulCharacter.tscn" id="4_1md55"]
@@ -12,8 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://1hu04jnwnghh" path="res://scenes/characters/enemies/BanditCharacter.tscn" id="10_lytrk"]
 [ext_resource type="PackedScene" uid="uid://dy8s6nshy4ie8" path="res://scenes/characters/npcs/VaultDwellerCharacter.tscn" id="11_1fhbt"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r5y0h"]
+load_path = "res://.godot/imported/Desert_Tiles.png-bb2e07ad61630765940cc73bf7ec3f88.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4jwf"]
-texture = ExtResource("1_pxqwn")
+texture = SubResource("CompressedTexture2D_r5y0h")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0

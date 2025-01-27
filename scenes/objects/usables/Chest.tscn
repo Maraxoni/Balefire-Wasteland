@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjk8lfc5831l0"]
 
 [ext_resource type="Script" path="res://scripts/usables/ChestBody.cs" id="1_0ghn0"]
-[ext_resource type="Texture2D" uid="uid://vnur5p22ldyx" path="res://assets/misc/CrateTexture.png" id="2_eyocr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xgu5"]
+load_path = "res://.godot/imported/CrateTexture.png-ba7c263261ed2b4822f8b9b634e683f8.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pas3u"]
 size = Vector2(32, 32)
@@ -12,7 +14,7 @@ script = ExtResource("1_0ghn0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.5, 0.499999)
 scale = Vector2(0.585714, 0.596774)
-texture = ExtResource("2_eyocr")
+texture = SubResource("CompressedTexture2D_2xgu5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pas3u")

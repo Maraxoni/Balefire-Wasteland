@@ -1,6 +1,5 @@
 [gd_scene load_steps=15 format=3 uid="uid://cise65cuqxio3"]
 
-[ext_resource type="Texture2D" uid="uid://r2lqr25vpn4f" path="res://assets/maps/Mountains_Tiles.png" id="1_iypof"]
 [ext_resource type="Script" path="res://scripts/maps/MapMountains.cs" id="1_v3wny"]
 [ext_resource type="PackedScene" uid="uid://cjk8lfc5831l0" path="res://scenes/objects/usables/Chest.tscn" id="2_clvcn"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="3_3ekkh"]
@@ -13,8 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://ca134bwk2cfpv" path="res://scenes/objects/nonusables/Sandbags.tscn" id="11_rr473"]
 [ext_resource type="PackedScene" uid="uid://dtsu6o2ageku2" path="res://scenes/characters/enemies/BossCharacter.tscn" id="12_u23l2"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_20536"]
+load_path = "res://.godot/imported/Mountains_Tiles.png-29db76b7c2aaa0317d8ad450b6c74da8.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2t2w"]
-texture = ExtResource("1_iypof")
+texture = SubResource("CompressedTexture2D_20536")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0

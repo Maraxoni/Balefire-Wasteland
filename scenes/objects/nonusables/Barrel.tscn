@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://83mvj0e2uqmh"]
 
-[ext_resource type="Texture2D" uid="uid://duay1o43cl6uy" path="res://assets/misc/BarrelTexture.png" id="2_fojyx"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xdu7j"]
+load_path = "res://.godot/imported/BarrelTexture.png-3e38544a0f2638364a402b1607b50a01.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pas3u"]
 size = Vector2(54, 33)
@@ -10,7 +11,7 @@ size = Vector2(54, 33)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -1.72853e-06)
 scale = Vector2(0.813953, 0.791667)
-texture = ExtResource("2_fojyx")
+texture = SubResource("CompressedTexture2D_xdu7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

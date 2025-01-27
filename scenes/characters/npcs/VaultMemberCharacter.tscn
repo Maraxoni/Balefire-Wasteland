@@ -1,58 +1,62 @@
 [gd_scene load_steps=17 format=3 uid="uid://bt1hdrlpb3ybx"]
 
 [ext_resource type="Script" path="res://scripts/characters/NonPlayerCharacter.cs" id="1_ce0or"]
-[ext_resource type="Texture2D" uid="uid://dhhh3wfixnvhb" path="res://assets/sprites/vaultmember/vaultmember-stand.png" id="2_awui8"]
-[ext_resource type="Texture2D" uid="uid://dtrhavwjeex6h" path="res://assets/sprites/vaultmember/vaultmember-walk.png" id="3_4s5on"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ru6wy"]
+load_path = "res://.godot/imported/vaultmember-stand.png-46be9d77fadfe36ee98a8e5f2111b0ed.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_806o8"]
+load_path = "res://.godot/imported/vaultmember-walk.png-048bb2e23d7e70cb1d14e6633a086985.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bu0ay"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(0, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwf3m"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(80, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3aoq"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(160, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a06q"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(240, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_27oiv"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(320, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ta0r"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(400, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ri8ql"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(480, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npdnk"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(560, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaccj"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(640, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s16ux"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(720, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rr73c"]
-atlas = ExtResource("3_4s5on")
+atlas = SubResource("CompressedTexture2D_806o8")
 region = Rect2(800, 0, 80, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y1mq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_awui8")
+"texture": SubResource("CompressedTexture2D_ru6wy")
 }],
 "loop": true,
 "name": &"default",

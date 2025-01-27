@@ -1,7 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://btnjoif2fi10n"]
 
 [ext_resource type="Script" path="res://scripts/maps/MapSwamp.cs" id="1_gbkwx"]
-[ext_resource type="Texture2D" uid="uid://br2ma54neih6e" path="res://assets/maps/Swamp_Tiles.png" id="2_68ngw"]
 [ext_resource type="PackedScene" uid="uid://ddvgav5bbl8e0" path="res://scenes/maps/MapChange.tscn" id="4_pwnk3"]
 [ext_resource type="PackedScene" uid="uid://j71sbfwl0syn" path="res://scenes/player/PlayerCharacter.tscn" id="5_7ayj1"]
 [ext_resource type="PackedScene" uid="uid://bd4ms1el6wjev" path="res://scenes/objects/nonusables/Campfire.tscn" id="6_xt3k1"]
@@ -25,8 +24,11 @@
 [ext_resource type="PackedScene" uid="uid://jaah61778arh" path="res://scenes/characters/enemies/ZebraCharacter.tscn" id="23_byja6"]
 [ext_resource type="PackedScene" uid="uid://hcybdgvfvff0" path="res://scenes/characters/npcs/WastelanderCharacter.tscn" id="24_7ey5r"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rj4ys"]
+load_path = "res://.godot/imported/Swamp_Tiles.png-6752c91b55618fa784ae5506d70f642d.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v76rm"]
-texture = ExtResource("2_68ngw")
+texture = SubResource("CompressedTexture2D_rj4ys")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0

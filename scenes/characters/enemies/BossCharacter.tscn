@@ -1,148 +1,154 @@
 [gd_scene load_steps=42 format=3 uid="uid://dtsu6o2ageku2"]
 
 [ext_resource type="Script" path="res://scripts/characters/enemies/BossEnemy.cs" id="1_1bqy1"]
-[ext_resource type="Texture2D" uid="uid://cju4jwsi702vd" path="res://assets/sprites/boss/Enemy 4-boop.png" id="2_irkip"]
-[ext_resource type="Texture2D" uid="uid://bo62cb6w4qqfh" path="res://assets/sprites/boss/Enemy 4-stand.png" id="3_tiyg2"]
-[ext_resource type="Texture2D" uid="uid://belrrlwdx00t3" path="res://assets/sprites/boss/Enemy 4-trot.png" id="4_71xkh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_porme"]
+load_path = "res://.godot/imported/Enemy 4-boop.png-7bf2040601573a488b3c4f2ae170dfba.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ataxh"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(0, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfwym"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(80, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84yse"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(160, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxcfj"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(240, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct66o"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(320, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f5p5"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(400, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtdwr"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(480, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_if2tc"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(560, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0c0r4"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(640, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpuxc"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(720, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7msq8"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(800, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ellha"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(880, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xcwqr"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(960, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy1ms"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(1040, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f54i"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(1120, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfcbo"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(1200, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2qxh"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(1280, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x42ln"]
-atlas = ExtResource("2_irkip")
+atlas = SubResource("CompressedTexture2D_porme")
 region = Rect2(1360, 0, 80, 90)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_557hr"]
+load_path = "res://.godot/imported/Enemy 4-stand.png-9743407104eb771be7b3f29c28f1f3a0.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nx83y"]
-atlas = ExtResource("3_tiyg2")
+atlas = SubResource("CompressedTexture2D_557hr")
 region = Rect2(0, 0, 80, 90)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i7wpg"]
+load_path = "res://.godot/imported/Enemy 4-trot.png-1514ea2f1c44e20dc3709a564e57798e.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xem70"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(0, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrtq5"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(80, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8yfs"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(160, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjrri"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(240, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_426t2"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(320, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7p3vd"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(400, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fum7"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(480, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni1gi"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(560, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnenv"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(640, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djaxo"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(720, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxt02"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(800, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcty4"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(880, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_juepf"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(960, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byoj6"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(1040, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0b81g"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(1120, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0dxx"]
-atlas = ExtResource("4_71xkh")
+atlas = SubResource("CompressedTexture2D_i7wpg")
 region = Rect2(1200, 0, 80, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y1mq"]

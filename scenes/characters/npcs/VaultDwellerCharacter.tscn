@@ -1,55 +1,59 @@
 [gd_scene load_steps=18 format=3 uid="uid://dy8s6nshy4ie8"]
 
 [ext_resource type="Script" path="res://scripts/characters/NonPlayerCharacter.cs" id="1_wv7ds"]
-[ext_resource type="Texture2D" uid="uid://cc7n5xvl6c8gw" path="res://assets/sprites/dweller/Friendly 3-stand.png" id="2_qhf6n"]
-[ext_resource type="Texture2D" uid="uid://jcr3jfkxj0aa" path="res://assets/sprites/dweller/Friendly 3-walk.png" id="3_ikwo2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ky8ro"]
+load_path = "res://.godot/imported/Friendly 3-stand.png-97d933e78d6efd54c068841d68063a66.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilpyl"]
-atlas = ExtResource("2_qhf6n")
+atlas = SubResource("CompressedTexture2D_ky8ro")
 region = Rect2(0, 0, 80, 90)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bfuww"]
+load_path = "res://.godot/imported/Friendly 3-walk.png-bf1b33fcecf171e198b0e9816d716ac4.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vqau"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(0, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1q3q"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(80, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kjed"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(160, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3ceg"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(240, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edtpd"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(320, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4abu"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(400, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32xdq"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(480, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ka6c7"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(560, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bv8ov"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(640, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_napto"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(720, 0, 80, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivw3y"]
-atlas = ExtResource("3_ikwo2")
+atlas = SubResource("CompressedTexture2D_bfuww")
 region = Rect2(800, 0, 80, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y1mq"]
